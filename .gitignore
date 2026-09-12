@@ -1,0 +1,32 @@
+# --- Next.js / Node ---
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+
+# --- Environment files (secrets) ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Data (kept out of Git; see docs/data_sources.md) ---
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/README.md
+
+# --- Local tooling state ---
+.claude/
+
+# --- OS ---
+.DS_Store

@@ -1,0 +1,18 @@
+# Python environment & notebooks
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+analysis/
+scripts/
+
+# Raw and local processed research data
+data/
+
+# Documentation & internal notes
+docs/
+.claude/
+
+# Logs and OS files
+*.log
+.DS_Store

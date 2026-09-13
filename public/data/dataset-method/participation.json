@@ -1,0 +1,33 @@
+{
+  "total_respondent_records": 109430,
+  "listing_only": 56073,
+  "main_survey": 53357,
+  "qfl_split": [
+    {
+      "label": "NON-INVESTOR",
+      "n": 81548,
+      "pct": 74.5
+    },
+    {
+      "label": "INVESTOR",
+      "n": 27882,
+      "pct": 25.5
+    }
+  ],
+  "int_type_split": [
+    {
+      "label": "Random",
+      "n": 91950,
+      "pct": 84.0
+    },
+    {
+      "label": "Booster",
+      "n": 17480,
+      "pct": 16.0
+    }
+  ],
+  "notes": [
+    "QFL (Investor / Non-Investor) is a separate classification decided at the Listing stage. It is not the same split as Listing-only vs. Main-survey completion, and this study never substitutes one for the other.",
+    "Not every Main-survey respondent answered every Main-survey question \u2014 routing narrows further within the Mains section (see the field catalogue and the coverage section below)."
+  ]
+}

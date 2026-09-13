@@ -1,0 +1,60 @@
+{
+  "field_code": "AA3_DD3",
+  "question_wording": "AA3_DD3:MF+EF - Factors would encourage you to consider investing in MF/ETF that you currently do not invest in",
+  "denominator": 266,
+  "focused_group_size": 553,
+  "intended_respondent_group": "Non-Investors (SUPPORTED by exact base-count match: Table 7.2)",
+  "routing_evidence": "SUPPORTED (exact base-count match) \u2014 base exactly matches Table 7.2 (Non-Investors); same '2 products' sampling rule (field-to-table link inferred from the match)",
+  "options": [
+    {
+      "option": "Simple and easy process for investing (e.g. account opening, documentation, etc.)",
+      "n": 117,
+      "pct_of_answered": 44.0
+    },
+    {
+      "option": "Reducing the minimum investment requirement",
+      "n": 106,
+      "pct_of_answered": 39.8
+    },
+    {
+      "option": "Better education on how mutual funds work",
+      "n": 97,
+      "pct_of_answered": 36.5
+    },
+    {
+      "option": "Friendly and easy to use trading platforms and tools",
+      "n": 97,
+      "pct_of_answered": 36.5
+    },
+    {
+      "option": "Success stories or positive media coverage about funds\u2019 investments",
+      "n": 92,
+      "pct_of_answered": 34.6
+    },
+    {
+      "option": "Reducing the fees and charges (transaction, management)",
+      "n": 81,
+      "pct_of_answered": 30.5
+    },
+    {
+      "option": "Positive recommendations from family, friends, or financial advisors",
+      "n": 66,
+      "pct_of_answered": 24.8
+    },
+    {
+      "option": "Availability of trusted financial advice and guidance",
+      "n": 53,
+      "pct_of_answered": 19.9
+    },
+    {
+      "option": "Assurance of lower risk",
+      "n": 53,
+      "pct_of_answered": 19.9
+    },
+    {
+      "option": "Improved economic conditions and positive market outlook",
+      "n": 36,
+      "pct_of_answered": 13.5
+    }
+  ]
+}

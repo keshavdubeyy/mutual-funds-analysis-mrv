@@ -1,0 +1,1550 @@
+{
+  "focused_group_size": 553,
+  "note": "Simple unweighted frequency counts, not previously part of this study's verified findings docs — new descriptive tabulation only, no comparison or significance test.",
+  "fields": [
+    {
+      "field_code": "Q1",
+      "label": "Gender",
+      "question_wording": "Gender",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Male",
+          "n": 464,
+          "pct": 83.9
+        },
+        {
+          "label": "Female",
+          "n": 89,
+          "pct": 16.1
+        }
+      ]
+    },
+    {
+      "field_code": "Q3D",
+      "label": "Education level",
+      "question_wording": "Can you please tell me your education level?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Graduate: General – (e.g. – BA/BCom/BSc)",
+          "n": 230,
+          "pct": 41.6
+        },
+        {
+          "label": "12th Grade / Higher Secondary Board (e.g., HSC/ISC)",
+          "n": 84,
+          "pct": 15.2
+        },
+        {
+          "label": "Graduate: Professional (e.g. – B.Tech/MBBS/LLB/BBA/B.Arch./B.Ed.)",
+          "n": 76,
+          "pct": 13.7
+        },
+        {
+          "label": "Postgraduate: General – (e.g. – MA/MCom/MSc)",
+          "n": 64,
+          "pct": 11.6
+        },
+        {
+          "label": "Some College (incl. a Diploma but not Grad.)",
+          "n": 39,
+          "pct": 7.1
+        },
+        {
+          "label": "Postgraduate: Professional (e.g. – MBA/PGDM/M.Tech./LL.M./M.D./M.S./MCA./M.Ed.)",
+          "n": 29,
+          "pct": 5.2
+        },
+        {
+          "label": "10th Grade / Secondary Board (e.g., SSC/CBSE/ICSE)",
+          "n": 21,
+          "pct": 3.8
+        },
+        {
+          "label": "School - 5 to 9 years",
+          "n": 10,
+          "pct": 1.8
+        }
+      ]
+    },
+    {
+      "field_code": "Q13",
+      "label": "Marital status",
+      "question_wording": "What is your marital status?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Single",
+          "n": 436,
+          "pct": 78.8
+        },
+        {
+          "label": "Married with kids",
+          "n": 81,
+          "pct": 14.6
+        },
+        {
+          "label": "Married without kids",
+          "n": 36,
+          "pct": 6.5
+        }
+      ]
+    },
+    {
+      "field_code": "Q5A",
+      "label": "Family type",
+      "question_wording": "Can you please tell me about your Family Type?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Nuclear Family (Living only with your spouse/partner and children or only parents and/or siblings)",
+          "n": 481,
+          "pct": 87.0
+        },
+        {
+          "label": "Joint Family (Living with extended family members, such as grandparents, uncles, aunts, cousins, or with your spouse/partner and children and parents and/or siblings, etc.)",
+          "n": 58,
+          "pct": 10.5
+        },
+        {
+          "label": "Single Person Household",
+          "n": 14,
+          "pct": 2.5
+        }
+      ]
+    },
+    {
+      "field_code": "URBANRURAL",
+      "label": "Urban / Rural",
+      "question_wording": "Urban-Rural Classification",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Urban",
+          "n": 462,
+          "pct": 83.5
+        },
+        {
+          "label": "Rural",
+          "n": 91,
+          "pct": 16.5
+        }
+      ]
+    },
+    {
+      "field_code": "Life_Stage",
+      "label": "Age band",
+      "question_wording": "Generation band (no raw age-in-years field exists in this workbook — this is the closest available proxy for age)",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Gen Z",
+          "n": 553,
+          "pct": 100.0
+        }
+      ]
+    },
+    {
+      "field_code": "SELECTED_STATE",
+      "label": "State",
+      "question_wording": "Selected State",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "TAMIL NADU",
+          "n": 82,
+          "pct": 14.8
+        },
+        {
+          "label": "KERALA",
+          "n": 67,
+          "pct": 12.1
+        },
+        {
+          "label": "MAHARASHTRA",
+          "n": 57,
+          "pct": 10.3
+        },
+        {
+          "label": "NCT OF DELHI",
+          "n": 50,
+          "pct": 9.0
+        },
+        {
+          "label": "GUJARAT",
+          "n": 34,
+          "pct": 6.1
+        },
+        {
+          "label": "ANDHRA PRADESH",
+          "n": 32,
+          "pct": 5.8
+        },
+        {
+          "label": "UTTAR PRADESH",
+          "n": 32,
+          "pct": 5.8
+        },
+        {
+          "label": "MADHYA PRADESH",
+          "n": 24,
+          "pct": 4.3
+        },
+        {
+          "label": "RAJASTHAN",
+          "n": 23,
+          "pct": 4.2
+        },
+        {
+          "label": "KARNATAKA",
+          "n": 20,
+          "pct": 3.6
+        },
+        {
+          "label": "WEST BENGAL",
+          "n": 16,
+          "pct": 2.9
+        },
+        {
+          "label": "TELANGANA",
+          "n": 16,
+          "pct": 2.9
+        },
+        {
+          "label": "ODISHA",
+          "n": 14,
+          "pct": 2.5
+        },
+        {
+          "label": "JHARKHAND",
+          "n": 13,
+          "pct": 2.4
+        },
+        {
+          "label": "BIHAR",
+          "n": 10,
+          "pct": 1.8
+        },
+        {
+          "label": "PUNJAB",
+          "n": 9,
+          "pct": 1.6
+        },
+        {
+          "label": "HARYANA",
+          "n": 8,
+          "pct": 1.4
+        },
+        {
+          "label": "SIKKIM",
+          "n": 7,
+          "pct": 1.3
+        },
+        {
+          "label": "CHHATTISGARH",
+          "n": 5,
+          "pct": 0.9
+        },
+        {
+          "label": "GOA",
+          "n": 5,
+          "pct": 0.9
+        },
+        {
+          "label": "JAMMU & KASHMIR",
+          "n": 5,
+          "pct": 0.9
+        },
+        {
+          "label": "UTTARAKHAND",
+          "n": 5,
+          "pct": 0.9
+        },
+        {
+          "label": "CHANDIGARH",
+          "n": 4,
+          "pct": 0.7
+        },
+        {
+          "label": "PUDUCHERRY",
+          "n": 4,
+          "pct": 0.7
+        },
+        {
+          "label": "ASSAM",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "DAMAN & DIU",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "HIMACHAL PRADESH",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "NAGALAND",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "ARUNACHAL PRADESH",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "ANDAMAN & NICOBAR ISLANDS",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "MIZORAM",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Zone_DP",
+      "label": "Zone",
+      "question_wording": "Zone",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "SOUTH",
+          "n": 221,
+          "pct": 40.0
+        },
+        {
+          "label": "WEST",
+          "n": 150,
+          "pct": 27.1
+        },
+        {
+          "label": "NORTH",
+          "n": 115,
+          "pct": 20.8
+        },
+        {
+          "label": "EAST",
+          "n": 67,
+          "pct": 12.1
+        }
+      ]
+    },
+    {
+      "field_code": "SECNEW",
+      "label": "Socio-economic class (NCCS)",
+      "question_wording": "NCCS socio-economic classification",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "A2",
+          "n": 183,
+          "pct": 33.1
+        },
+        {
+          "label": "A3",
+          "n": 153,
+          "pct": 27.7
+        },
+        {
+          "label": "A1",
+          "n": 98,
+          "pct": 17.7
+        },
+        {
+          "label": "B1",
+          "n": 61,
+          "pct": 11.0
+        },
+        {
+          "label": "B2",
+          "n": 27,
+          "pct": 4.9
+        },
+        {
+          "label": "C1",
+          "n": 18,
+          "pct": 3.3
+        },
+        {
+          "label": "C2",
+          "n": 9,
+          "pct": 1.6
+        },
+        {
+          "label": "D1",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "D2",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q9",
+      "label": "Living arrangement",
+      "question_wording": "Which of the following best describes the living arrangement for the house in which you stay currently?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "The house that I am staying in is owned by me/us",
+          "n": 438,
+          "pct": 79.2
+        },
+        {
+          "label": "The house that I am staying in is rented by me/us",
+          "n": 115,
+          "pct": 20.8
+        }
+      ]
+    },
+    {
+      "field_code": "Q8",
+      "label": "House type",
+      "question_wording": "What is the type of house that you live in? (interviewer-observed)",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Independent House - A standalone residential structure, typically found in urban and suburban areas",
+          "n": 391,
+          "pct": 70.7
+        },
+        {
+          "label": "Pucca House - Built using high-quality materials like bricks, cement, steel, and concrete, typically found in rural or semi-urban areas",
+          "n": 72,
+          "pct": 13.0
+        },
+        {
+          "label": "Apartment - A residential unit in a multi-storied building, usually found in urban areas",
+          "n": 66,
+          "pct": 11.9
+        },
+        {
+          "label": "Semi-Pucca House - A combination of both Pucca and Kutcha materials. For example, walls made of bricks, but the roof made of thatch",
+          "n": 10,
+          "pct": 1.8
+        },
+        {
+          "label": "Kutcha House - Built using low-quality materials such as mud, thatch, bamboo, and other natural materials",
+          "n": 9,
+          "pct": 1.6
+        },
+        {
+          "label": "Others (Specify)",
+          "n": 5,
+          "pct": 0.9
+        }
+      ]
+    },
+    {
+      "field_code": "Q11",
+      "label": "Mother tongue",
+      "question_wording": "What is your mother tongue?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Hindi",
+          "n": 199,
+          "pct": 36.0
+        },
+        {
+          "label": "Tamil",
+          "n": 87,
+          "pct": 15.7
+        },
+        {
+          "label": "Malayalam",
+          "n": 67,
+          "pct": 12.1
+        },
+        {
+          "label": "Telugu",
+          "n": 49,
+          "pct": 8.9
+        },
+        {
+          "label": "Marathi",
+          "n": 39,
+          "pct": 7.1
+        },
+        {
+          "label": "Gujarati",
+          "n": 33,
+          "pct": 6.0
+        },
+        {
+          "label": "Bengali",
+          "n": 17,
+          "pct": 3.1
+        },
+        {
+          "label": "Others (Specify)",
+          "n": 15,
+          "pct": 2.7
+        },
+        {
+          "label": "Kannada",
+          "n": 14,
+          "pct": 2.5
+        },
+        {
+          "label": "Odia",
+          "n": 13,
+          "pct": 2.4
+        },
+        {
+          "label": "Punjabi",
+          "n": 7,
+          "pct": 1.3
+        },
+        {
+          "label": "Urdu",
+          "n": 6,
+          "pct": 1.1
+        },
+        {
+          "label": "Konkani",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "Assamese",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "Bhojpuri",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "English",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q12",
+      "label": "Religion",
+      "question_wording": "Which faith or spiritual practice do you personally follow or identify with?",
+      "group": "Demographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Hinduism",
+          "n": 465,
+          "pct": 84.1
+        },
+        {
+          "label": "Islam",
+          "n": 52,
+          "pct": 9.4
+        },
+        {
+          "label": "Christianity",
+          "n": 18,
+          "pct": 3.3
+        },
+        {
+          "label": "I do not wish to disclose (DO NOT AID THIS OPTION)",
+          "n": 7,
+          "pct": 1.3
+        },
+        {
+          "label": "Buddhism",
+          "n": 6,
+          "pct": 1.1
+        },
+        {
+          "label": "Sikhism",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "Others (Specify)",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "I do not practice any religion",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q29",
+      "label": "Has a Demat / trading account",
+      "question_wording": "Do you have a Demat account / Share Market trading account?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Yes",
+          "n": 326,
+          "pct": 59.0
+        },
+        {
+          "label": "No",
+          "n": 209,
+          "pct": 37.8
+        },
+        {
+          "label": "Can’t remember (DO NOT AID THIS OPTION)",
+          "n": 18,
+          "pct": 3.3
+        }
+      ]
+    },
+    {
+      "field_code": "Q10M",
+      "label": "Reaction to a market downturn",
+      "question_wording": "Reaction to Market Downturn",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "I understand these things happen. I’ll keep my money invested and wait for the market to recover.",
+          "n": 200,
+          "pct": 36.2
+        },
+        {
+          "label": "I would be a bit worried and may take out some money from the market.",
+          "n": 175,
+          "pct": 31.6
+        },
+        {
+          "label": "I would be very worried. I might stop investing in the market and move my money to safer options like fixed deposits.",
+          "n": 126,
+          "pct": 22.8
+        },
+        {
+          "label": "I’ll invest more now so I can earn better returns when the market goes up again.",
+          "n": 52,
+          "pct": 9.4
+        }
+      ]
+    },
+    {
+      "field_code": "Q11M",
+      "label": "Familiarity with stock markets",
+      "question_wording": "How familiar are you with investing in stock markets?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "I am familiar with the stock markets and update myself periodically on its movements.",
+          "n": 227,
+          "pct": 41.0
+        },
+        {
+          "label": "I am very familiar with the stock markets. I follow them on a regular basis",
+          "n": 172,
+          "pct": 31.1
+        },
+        {
+          "label": "I know a little about the stock markets and their broader market trends.",
+          "n": 109,
+          "pct": 19.7
+        },
+        {
+          "label": "Don't Know",
+          "n": 45,
+          "pct": 8.1
+        }
+      ]
+    },
+    {
+      "field_code": "Q12M",
+      "label": "Financial literacy (inflation vs. savings)",
+      "question_wording": "Suppose the rate of return on your savings is 5% per year and inflation is 6% per year — after a year, will you be able to buy more, less, or the same as today with this money?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Less than today",
+          "n": 245,
+          "pct": 44.3
+        },
+        {
+          "label": "Exactly as today",
+          "n": 130,
+          "pct": 23.5
+        },
+        {
+          "label": "More than today",
+          "n": 94,
+          "pct": 17.0
+        },
+        {
+          "label": "Do not know",
+          "n": 69,
+          "pct": 12.5
+        },
+        {
+          "label": "Refuse to answer",
+          "n": 15,
+          "pct": 2.7
+        }
+      ]
+    },
+    {
+      "field_code": "QRT",
+      "label": "Return / risk preference",
+      "question_wording": "Which of the following best describes your preference when considering returns from investments?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Preservation of capital (amount invested) is more important to me than returns.",
+          "n": 211,
+          "pct": 38.2
+        },
+        {
+          "label": "I need to have good but stable and reliable returns with minimal losses",
+          "n": 192,
+          "pct": 34.7
+        },
+        {
+          "label": "I aim for better, higher returns and realize that there will be some ups and downs in my investment, but I wouldn't be able to accept significant losses",
+          "n": 103,
+          "pct": 18.6
+        },
+        {
+          "label": "I would like high returns and am not too concerned with risk. I am prepared for significant short-term losses to achieve better long-term returns",
+          "n": 47,
+          "pct": 8.5
+        }
+      ]
+    },
+    {
+      "field_code": "Q20AM",
+      "label": "Attended an investor education program",
+      "question_wording": "There are Investor Education Programmes run by prominent institutions/Industry Associations (SEBI, NISM, Stock Exchanges, Depositories, AMFI, etc.) — have you attended any of these?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Have not attended any investor education program",
+          "n": 527,
+          "pct": 95.3
+        },
+        {
+          "label": "Yes, attended it online (webinars / virtual training sessions)",
+          "n": 20,
+          "pct": 3.6
+        },
+        {
+          "label": "Yes, attended it in-person (seminars / workshops)",
+          "n": 6,
+          "pct": 1.1
+        }
+      ]
+    },
+    {
+      "field_code": "Q20E",
+      "label": "Preferred language for investor education",
+      "question_wording": "In which language would you prefer investor education programmes to be conducted?",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Hindi",
+          "n": 188,
+          "pct": 34.0
+        },
+        {
+          "label": "English",
+          "n": 141,
+          "pct": 25.5
+        },
+        {
+          "label": "Tamil",
+          "n": 76,
+          "pct": 13.7
+        },
+        {
+          "label": "Telugu",
+          "n": 36,
+          "pct": 6.5
+        },
+        {
+          "label": "Malayalam",
+          "n": 31,
+          "pct": 5.6
+        },
+        {
+          "label": "Gujarati",
+          "n": 23,
+          "pct": 4.2
+        },
+        {
+          "label": "Marathi",
+          "n": 20,
+          "pct": 3.6
+        },
+        {
+          "label": "Kannada",
+          "n": 16,
+          "pct": 2.9
+        },
+        {
+          "label": "Bengali",
+          "n": 8,
+          "pct": 1.4
+        },
+        {
+          "label": "Odia",
+          "n": 6,
+          "pct": 1.1
+        },
+        {
+          "label": "Punjabi",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "No preference, comfortable with any language",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "Assamese",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "Urdu",
+          "n": 1,
+          "pct": 0.2
+        },
+        {
+          "label": "Others (please specify)",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_1}].Q1B",
+      "label": "Regulators are well regulated",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — are well regulated",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 260,
+          "pct": 47.0
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 179,
+          "pct": 32.4
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 62,
+          "pct": 11.2
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 25,
+          "pct": 4.5
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 15,
+          "pct": 2.7
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 12,
+          "pct": 2.2
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_2}].Q1B",
+      "label": "Regulators can handle market ups and downs",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — are strong enough to handle ups and downs in the markets",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 274,
+          "pct": 49.5
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 169,
+          "pct": 30.6
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 61,
+          "pct": 11.0
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 26,
+          "pct": 4.7
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 13,
+          "pct": 2.4
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 10,
+          "pct": 1.8
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_3}].Q1B",
+      "label": "Regulators offer new investment avenues",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — offer new avenues and instruments to invest",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 268,
+          "pct": 48.5
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 178,
+          "pct": 32.2
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 59,
+          "pct": 10.7
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 26,
+          "pct": 4.7
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 12,
+          "pct": 2.2
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 10,
+          "pct": 1.8
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_4}].Q1B",
+      "label": "Regulators are accessible to investors like me",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — are accessible to investors like me",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 266,
+          "pct": 48.1
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 184,
+          "pct": 33.3
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 54,
+          "pct": 9.8
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 27,
+          "pct": 4.9
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 14,
+          "pct": 2.5
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 8,
+          "pct": 1.4
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_5}].Q1B",
+      "label": "Regulators offer good wealth-creation opportunities",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — offer good opportunities for wealth creation",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 279,
+          "pct": 50.5
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 170,
+          "pct": 30.7
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 57,
+          "pct": 10.3
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 26,
+          "pct": 4.7
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 15,
+          "pct": 2.7
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 6,
+          "pct": 1.1
+        }
+      ]
+    },
+    {
+      "field_code": "g_Q1B[{_6}].Q1B",
+      "label": "Regulators are easy and convenient",
+      "question_wording": "Perceptions of India's securities-market regulators/entities — are easy and convenient to invest in",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Strongly Agree",
+          "n": 269,
+          "pct": 48.6
+        },
+        {
+          "label": "Slightly Agree",
+          "n": 186,
+          "pct": 33.6
+        },
+        {
+          "label": "Neither Agree Nor Disagree",
+          "n": 44,
+          "pct": 8.0
+        },
+        {
+          "label": "Slightly Disagree",
+          "n": 33,
+          "pct": 6.0
+        },
+        {
+          "label": "Strongly Disagree",
+          "n": 14,
+          "pct": 2.5
+        },
+        {
+          "label": "Don’t Know / Can’t Say",
+          "n": 7,
+          "pct": 1.3
+        }
+      ]
+    },
+    {
+      "field_code": "Q1M_DP[{_1}].Q1M",
+      "label": "Income allocation: monthly expenses",
+      "question_wording": "Allocation of monthly income — Monthly Expenses (rent, utilities, groceries, transportation, medical)",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "11-20%",
+          "n": 132,
+          "pct": 23.9
+        },
+        {
+          "label": "31-40%",
+          "n": 111,
+          "pct": 20.1
+        },
+        {
+          "label": "21-30%",
+          "n": 110,
+          "pct": 19.9
+        },
+        {
+          "label": "41-50%",
+          "n": 80,
+          "pct": 14.5
+        },
+        {
+          "label": "51-60%",
+          "n": 42,
+          "pct": 7.6
+        },
+        {
+          "label": "61-70%",
+          "n": 29,
+          "pct": 5.2
+        },
+        {
+          "label": "0%",
+          "n": 21,
+          "pct": 3.8
+        },
+        {
+          "label": "1-10%",
+          "n": 14,
+          "pct": 2.5
+        },
+        {
+          "label": "71-80%",
+          "n": 11,
+          "pct": 2.0
+        },
+        {
+          "label": "81-90%",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "91-100%",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q1M_DP[{_2}].Q1M",
+      "label": "Income allocation: savings",
+      "question_wording": "Allocation of monthly income — Savings (savings accounts, emergency funds)",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "11-20%",
+          "n": 253,
+          "pct": 45.8
+        },
+        {
+          "label": "1-10%",
+          "n": 151,
+          "pct": 27.3
+        },
+        {
+          "label": "21-30%",
+          "n": 94,
+          "pct": 17.0
+        },
+        {
+          "label": "0%",
+          "n": 32,
+          "pct": 5.8
+        },
+        {
+          "label": "31-40%",
+          "n": 13,
+          "pct": 2.4
+        },
+        {
+          "label": "41-50%",
+          "n": 8,
+          "pct": 1.4
+        },
+        {
+          "label": "61-70%",
+          "n": 2,
+          "pct": 0.4
+        }
+      ]
+    },
+    {
+      "field_code": "Q1M_DP[{_3}].Q1M",
+      "label": "Income allocation: loan repayments",
+      "question_wording": "Allocation of monthly income — Loan Repayments (home/personal/car loan EMIs, credit card)",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "0%",
+          "n": 182,
+          "pct": 32.9
+        },
+        {
+          "label": "11-20%",
+          "n": 173,
+          "pct": 31.3
+        },
+        {
+          "label": "1-10%",
+          "n": 161,
+          "pct": 29.1
+        },
+        {
+          "label": "21-30%",
+          "n": 28,
+          "pct": 5.1
+        },
+        {
+          "label": "41-50%",
+          "n": 4,
+          "pct": 0.7
+        },
+        {
+          "label": "31-40%",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "51-60%",
+          "n": 2,
+          "pct": 0.4
+        }
+      ]
+    },
+    {
+      "field_code": "Q1M_DP[{_4}].Q1M",
+      "label": "Income allocation: investments",
+      "question_wording": "Allocation of monthly income — Investments (stocks, mutual funds, real estate, gold, retirement products)",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "1-10%",
+          "n": 221,
+          "pct": 40.0
+        },
+        {
+          "label": "11-20%",
+          "n": 205,
+          "pct": 37.1
+        },
+        {
+          "label": "0%",
+          "n": 75,
+          "pct": 13.6
+        },
+        {
+          "label": "21-30%",
+          "n": 42,
+          "pct": 7.6
+        },
+        {
+          "label": "31-40%",
+          "n": 6,
+          "pct": 1.1
+        },
+        {
+          "label": "41-50%",
+          "n": 4,
+          "pct": 0.7
+        }
+      ]
+    },
+    {
+      "field_code": "Q1M_DP[{_5}].Q1M",
+      "label": "Income allocation: other expenses",
+      "question_wording": "Allocation of monthly income — Other Expenses (dining out, travel, hobbies, entertainment, luxury)",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "11-20%",
+          "n": 234,
+          "pct": 42.3
+        },
+        {
+          "label": "1-10%",
+          "n": 148,
+          "pct": 26.8
+        },
+        {
+          "label": "21-30%",
+          "n": 77,
+          "pct": 13.9
+        },
+        {
+          "label": "0%",
+          "n": 40,
+          "pct": 7.2
+        },
+        {
+          "label": "31-40%",
+          "n": 21,
+          "pct": 3.8
+        },
+        {
+          "label": "41-50%",
+          "n": 18,
+          "pct": 3.3
+        },
+        {
+          "label": "51-60%",
+          "n": 9,
+          "pct": 1.6
+        },
+        {
+          "label": "61-70%",
+          "n": 3,
+          "pct": 0.5
+        },
+        {
+          "label": "71-80%",
+          "n": 2,
+          "pct": 0.4
+        },
+        {
+          "label": "91-100%",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q20CM",
+      "label": "Preferred medium for investor education",
+      "question_wording": "Please let me know what your preferred medium would be to receive the investor education program (top 3) — multi-select, percentages sum to more than 100%",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Information on social media (YouTube, Instagram, etc.)",
+          "n": 355,
+          "pct": 64.2
+        },
+        {
+          "label": "Mobile apps",
+          "n": 332,
+          "pct": 60.0
+        },
+        {
+          "label": "Advertisements on TV, Digital or other mediums",
+          "n": 244,
+          "pct": 44.1
+        },
+        {
+          "label": "In-person seminars or workshops",
+          "n": 175,
+          "pct": 31.6
+        },
+        {
+          "label": "Online webinars and virtual training sessions",
+          "n": 169,
+          "pct": 30.6
+        },
+        {
+          "label": "Websites/online portal",
+          "n": 161,
+          "pct": 29.1
+        },
+        {
+          "label": "Email",
+          "n": 133,
+          "pct": 24.1
+        },
+        {
+          "label": "Expert opinion /expert interview / Expert panel discussion",
+          "n": 90,
+          "pct": 16.3
+        },
+        {
+          "label": "Others (please specify)",
+          "n": 0,
+          "pct": 0.0
+        }
+      ]
+    },
+    {
+      "field_code": "Q20DM",
+      "label": "Preferred format for investor education",
+      "question_wording": "Could you please share your preferred format for receiving the investor education program (top 3) — multi-select, percentages sum to more than 100%",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "Videos",
+          "n": 401,
+          "pct": 72.5
+        },
+        {
+          "label": "Social media post",
+          "n": 331,
+          "pct": 59.9
+        },
+        {
+          "label": "Online courses",
+          "n": 280,
+          "pct": 50.6
+        },
+        {
+          "label": "Article/blogs/newsletters/educational article/ whitepapers",
+          "n": 236,
+          "pct": 42.7
+        },
+        {
+          "label": "Audio books",
+          "n": 223,
+          "pct": 40.3
+        },
+        {
+          "label": "Podcast",
+          "n": 187,
+          "pct": 33.8
+        },
+        {
+          "label": "Others (please specify)",
+          "n": 1,
+          "pct": 0.2
+        }
+      ]
+    },
+    {
+      "field_code": "Q20F",
+      "label": "Preferred investor-education topics",
+      "question_wording": "Which topics should be covered in these investor education programs to enhance financial awareness and decision-making? — multi-select, percentages sum to more than 100%",
+      "group": "Psychographics",
+      "denominator": 553,
+      "n_answered": 553,
+      "n_blank": 0,
+      "options": [
+        {
+          "label": "How to Identify Financial Frauds & Scams (protecting against Ponzi schemes, phishing, and fraud)",
+          "n": 332,
+          "pct": 60.0
+        },
+        {
+          "label": "Investor Rights & SEBI Regulations (understanding legal protections and grievance redressal mechanisms)",
+          "n": 311,
+          "pct": 56.2
+        },
+        {
+          "label": "Risk Management & Portfolio Diversification (how to minimize investment risks)",
+          "n": 286,
+          "pct": 51.7
+        },
+        {
+          "label": "Information on various investment options available (stocks, bonds, mutual funds, etc.)",
+          "n": 265,
+          "pct": 47.9
+        },
+        {
+          "label": "Retirement & Long-Term Financial Planning (planning for a secure financial future)",
+          "n": 262,
+          "pct": 47.4
+        },
+        {
+          "label": "Using Digital Investment Platforms Safely (avoiding cyber threats and securing online transactions)",
+          "n": 238,
+          "pct": 43.0
+        },
+        {
+          "label": "Understanding fact sheets of mutual funds and other financial reports",
+          "n": 139,
+          "pct": 25.1
+        },
+        {
+          "label": "Others (please specify)",
+          "n": 3,
+          "pct": 0.5
+        }
+      ]
+    }
+  ]
+}

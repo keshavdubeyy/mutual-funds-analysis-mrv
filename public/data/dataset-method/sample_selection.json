@@ -1,0 +1,307 @@
+{
+  "title": "How we selected the research sample",
+  "framing_note": "These are research selection steps, not investment conversion or app drop-offs.",
+  "steps": [
+    {
+      "step": 1,
+      "label": "Completed Mains survey stage (MAIN_COMP_STATUS)",
+      "entering": 109430,
+      "retained": 53357,
+      "excluded": 56073,
+      "unknown_or_ambiguous": 0,
+      "rule": "MAIN_COMP_STATUS == \u201cMain Complete\u201d",
+      "why": "Only Mains-completers were asked the detailed occupation, product-consideration and holdings questions this study depends on.",
+      "detail": null
+    },
+    {
+      "step": 2,
+      "label": "Gen Z (Life_Stage; age 18-28 per SEBI Main Report Annexure)",
+      "entering": 53357,
+      "retained": 24576,
+      "excluded": 28781,
+      "unknown_or_ambiguous": 0,
+      "rule": "Life_Stage == \u201cGen Z\u201d (ages 18\u201328 per the SEBI Main Report Annexure)",
+      "why": "The research question is specifically about Gen Z respondents.",
+      "detail": null
+    },
+    {
+      "step": 3,
+      "label": "Salaried occupation (Q14 in documented Salaried set)",
+      "entering": 24576,
+      "retained": 4346,
+      "excluded": 18892,
+      "unknown_or_ambiguous": 1338,
+      "rule": "Q14 (occupation) is one of the 9 values the SEBI Main Report Annexure documents as \u201cSalaried\u201d",
+      "why": "The research question is specifically about salaried respondents; classification follows SEBI's own published occupation buckets rather than an inferred reading of the label.",
+      "detail": {
+        "excluded_breakdown": "18,892 respondents fall into SEBI-documented non-salaried buckets (Business, Non-worker, Self Employed, Agriculture & Allied, Skilled Worker, Unskilled Worker) \u2014 see the occupation table below.",
+        "ambiguous_breakdown": [
+          {
+            "label": "Others (Specify) \u2014 free-text catch-all, not named in the SEBI Annexure",
+            "n": 1320
+          },
+          {
+            "label": "Service (Urban) & CWE Education 10 to Graduate \u2014 sibling Rural version is listed as Salaried, this Urban combination is not",
+            "n": 13
+          },
+          {
+            "label": "Service (Urban) & CWE Education illiterate to 9th standard \u2014 same reasoning",
+            "n": 5
+          }
+        ],
+        "ambiguous_note": "1,338 = 1,320 + 13 + 5. These 3 groups are kept distinct and are excluded from the confirmed Salaried group, not assumed either way."
+      }
+    },
+    {
+      "step": 4,
+      "label": "Considers mutual funds (Q23A contains MF token)",
+      "entering": 4346,
+      "retained": 553,
+      "excluded": 2901,
+      "unknown_or_ambiguous": 892,
+      "rule": "Q23A's tokenized answer contains the literal \u201cMutual Funds (One-time Lumpsum / SIP)\u201d option",
+      "why": "Identifies respondents who report considering mutual funds \u2014 the population the research question is about.",
+      "detail": {
+        "excluded_breakdown": "2,901 respondents answered Q23A but did not include the mutual-fund option \u2014 they reported considering other products instead.",
+        "unknown_breakdown": "892 respondents have a blank Q23A (not administered/not answered). Investigated directly: this 892 group's QFL Investor share (55.2%) and mutual-fund holding rate (32.6%) are close to the 3,454 respondents who did answer Q23A (56.7% and 32.9%) \u2014 so this blank group does not look systematically different on those two measures \u2014 but 891 of the 892 (99.9%) are also blank on the related Q25A field, consistent with a routing gap rather than a recorded \u2018no\u2019.",
+        "unknown_comparison": [
+          {
+            "group": "Q23A blank (unknown consideration)",
+            "n": 892,
+            "QFL_INVESTOR_pct": 55.2,
+            "holds_mf_pct": 32.6,
+            "Q25A_also_blank": 891,
+            "Q25A_also_blank_pct": 99.9
+          },
+          {
+            "group": "Q23A answered (known consideration)",
+            "n": 3454,
+            "QFL_INVESTOR_pct": 56.7,
+            "holds_mf_pct": 32.9,
+            "Q25A_also_blank": 449,
+            "Q25A_also_blank_pct": 13.0
+          }
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "label": "Interpretable holding status and does not hold MF (Q22A_All)",
+      "entering": 553,
+      "retained": 553,
+      "excluded": 0,
+      "unknown_or_ambiguous": 0,
+      "rule": "Q22A_All gives an interpretable answer (not blank, not the explicit \u201cNot Answered\u201d) that does not contain the MF option",
+      "why": "Confirms current non-holding of mutual funds specifically \u2014 an unclear Q22A_All response is treated as unknown, never assumed to mean non-holding.",
+      "detail": null
+    }
+  ],
+  "occupation_table": [
+    {
+      "class": "ambiguous_catchall",
+      "Q14": "Others (Specify)",
+      "n": 1320
+    },
+    {
+      "class": "ambiguous_documentation_gap",
+      "Q14": "Service (Urban) & CWE Education 10 to Graduate",
+      "n": 13
+    },
+    {
+      "class": "ambiguous_documentation_gap",
+      "Q14": "Service (Urban) & CWE Education illiterate to 9th standard",
+      "n": 5
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Owner Farmer",
+      "n": 973
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Agricultural Worker",
+      "n": 541
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Leased Farmer",
+      "n": 55
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Owner Of Poultry",
+      "n": 23
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Owner Of Fisheries",
+      "n": 18
+    },
+    {
+      "class": "excluded_agriculture",
+      "Q14": "Owner Of Livestock",
+      "n": 17
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Shop Owner- operate from a permanent establishment e.g. wholesalers, distributors etc.",
+      "n": 1662
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Petty trader- street vendor, drivers owning vehicles etc.",
+      "n": 1154
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Businessmen/Industrialist with no employees under him/her",
+      "n": 926
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Trader / Shopkeeper",
+      "n": 626
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Businessmen/Industrialist with 9 or less employees under him/her",
+      "n": 304
+    },
+    {
+      "class": "excluded_business",
+      "Q14": "Businessmen/Industrialist with 10 or more employees under him/her",
+      "n": 97
+    },
+    {
+      "class": "excluded_non_worker",
+      "Q14": "Student",
+      "n": 5473
+    },
+    {
+      "class": "excluded_non_worker",
+      "Q14": "Homemaker / Housewife",
+      "n": 1964
+    },
+    {
+      "class": "excluded_non_worker",
+      "Q14": "Unemployed",
+      "n": 1089
+    },
+    {
+      "class": "excluded_non_worker",
+      "Q14": "Retired",
+      "n": 9
+    },
+    {
+      "class": "excluded_self_employed",
+      "Q14": "Self-employed professional like Doctors, Lawyers etc.",
+      "n": 292
+    },
+    {
+      "class": "excluded_self_employed",
+      "Q14": "Self Employed Professional",
+      "n": 275
+    },
+    {
+      "class": "excluded_self_employed",
+      "Q14": "Teacher",
+      "n": 113
+    },
+    {
+      "class": "excluded_self_employed",
+      "Q14": "Doctor",
+      "n": 20
+    },
+    {
+      "class": "excluded_skilled_worker",
+      "Q14": "Skilled worker like electrician/Mechanic etc.",
+      "n": 1535
+    },
+    {
+      "class": "excluded_skilled_worker",
+      "Q14": "Artisan / Skilled Labourer",
+      "n": 844
+    },
+    {
+      "class": "excluded_unskilled_worker",
+      "Q14": "Unskilled worker like Cleaner/housemaids etc.",
+      "n": 534
+    },
+    {
+      "class": "excluded_unskilled_worker",
+      "Q14": "Unskilled Labourer (Other Than Agriculture)",
+      "n": 348
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Clerk / Salesman",
+      "n": 1684
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Officer / Executive - Junior",
+      "n": 1139
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Supervisory Level",
+      "n": 1136
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Officer / Executive - Middle /Senior",
+      "n": 290
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Service (Rural In any village) & CWE Education Grad/Post Grad Prof or Post Grad General",
+      "n": 38
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Service (Rural In any village) & CWE Education 10 to Graduate",
+      "n": 23
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Service (Urban) & CWE Education Grad/Post Grad Prof or Post Grad General",
+      "n": 20
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Service (Rural In any village) & CWE Education illiterate to 9th standard",
+      "n": 9
+    },
+    {
+      "class": "included_salaried_documented",
+      "Q14": "Postman",
+      "n": 7
+    }
+  ],
+  "broader_group_holding_status_note": {
+    "text": "Separately from this funnel: within the broader group (n = 4,346), 3 respondents have an unknown mutual-fund holding status (blank or explicit \u201cNot Answered\u201d on Q22A_All). This is a distinct measure \u2014 the current-MF-holding-share calculation for the broader group \u2014 not a step in the funnel above, since the focused group (step 5) is itself defined by requiring an interpretable Q22A_All.",
+    "data": [
+      {
+        "status": "holds",
+        "n": 1427,
+        "pct_of_known": 32.86,
+        "denominator_known_status": 4343,
+        "broader_group_size": 4346
+      },
+      {
+        "status": "does_not_hold",
+        "n": 2916,
+        "pct_of_known": 67.14,
+        "denominator_known_status": 4343,
+        "broader_group_size": 4346
+      },
+      {
+        "status": "unknown",
+        "n": 3,
+        "pct_of_known": null,
+        "denominator_known_status": 4343,
+        "broader_group_size": 4346
+      }
+    ]
+  }
+}

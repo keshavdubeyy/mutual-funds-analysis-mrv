@@ -1,5 +1,14 @@
+# NOTE: this file was found to be periodically regenerated from a fixed base package list
+# (pandas/openpyxl/matplotlib/jupyterlab/ipykernel) by a one-time external environment
+# bootstrap outside this repository (visible as the initial "Set up repository..." commit;
+# no generator script, hook, or config for it exists anywhere in this repo, package.json,
+# or .claude/settings — searched deliberately, not left unchecked). It is not something this
+# repo defines or should try to disable. python-calamine (fast .xlsx reader used by the
+# analysis notebooks) is added below directly; if it ever goes missing again, reinstall with:
+#   pip install python-calamine==0.8.2
 pandas==3.0.5
 openpyxl==3.1.5
+python-calamine==0.8.2
 matplotlib==3.11.2
 jupyterlab==4.6.3
 ipykernel==7.3.0

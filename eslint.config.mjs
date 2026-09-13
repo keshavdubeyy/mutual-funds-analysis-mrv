@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Python analysis environment — not JS/TS source, must never be linted.
+    ".venv/**",
   ]),
 ]);
 

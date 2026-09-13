@@ -1,0 +1,142 @@
+{
+  "focused_group_size": 553,
+  "note": "Being selected into the focused group does not mean answering every question \u2014 each field below has its own denominator. Coverage bars are shown separately per question; answer counts across different questions are never added together as if they were unique people.",
+  "fields": [
+    {
+      "field_code": "A11_D11",
+      "question_wording": "A11_D11:MF+ETF - Frequently you invest in MF/ETF.",
+      "focused_group_size": 553,
+      "n_substantive_answer": 4,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 549,
+      "denominator_used_for_pct": null,
+      "suitable_for_descriptive_analysis": false,
+      "intended_respondent_group": "Current Investors (SUPPORTED by exact base-count match, shares A13_D13 base)",
+      "routing_evidence": "SUPPORTED (exact base-count match), wrong population for this cohort (shares A13_D13 base; all 4 focused-group answers hold ETF)"
+    },
+    {
+      "field_code": "A12_D12",
+      "question_wording": "A12_D12: MF+ETF - What you think are the expected returns for Mutual Funds",
+      "focused_group_size": 553,
+      "n_substantive_answer": 4,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 549,
+      "denominator_used_for_pct": null,
+      "suitable_for_descriptive_analysis": false,
+      "intended_respondent_group": "Current Investors (SUPPORTED by exact base-count match, shares A13_D13 base)",
+      "routing_evidence": "SUPPORTED (exact base-count match), wrong population for this cohort (shares A13_D13 base)"
+    },
+    {
+      "field_code": "A13_D13",
+      "question_wording": "A13_D13:MF+ETF - What challenges do you face before/ while making fresh investment in MF/ETF",
+      "focused_group_size": 553,
+      "n_substantive_answer": 4,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 549,
+      "denominator_used_for_pct": null,
+      "suitable_for_descriptive_analysis": false,
+      "intended_respondent_group": "Current Investors (SUPPORTED by exact base-count match: Table 9.2)",
+      "routing_evidence": "SUPPORTED (exact base-count match), wrong population for this cohort (base-matched to Investor chapter; also shown directly: all 4 answers here hold ETF)"
+    },
+    {
+      "field_code": "A14_D14",
+      "question_wording": "A14_D14:  What challenges do you face after making investment in Mutual Funds",
+      "focused_group_size": 553,
+      "n_substantive_answer": 4,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 549,
+      "denominator_used_for_pct": null,
+      "suitable_for_descriptive_analysis": false,
+      "intended_respondent_group": "Current Investors (SUPPORTED by exact base-count match: Table 9.3)",
+      "routing_evidence": "SUPPORTED (exact base-count match), wrong population for this cohort (base-matched to Investor chapter)"
+    },
+    {
+      "field_code": "A15_D15",
+      "question_wording": "A15_D15: You have not invested in MF/ETF in the last 1 year. Top 3 Reasons are for not investing",
+      "focused_group_size": 553,
+      "n_substantive_answer": 1,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 552,
+      "denominator_used_for_pct": null,
+      "suitable_for_descriptive_analysis": false,
+      "intended_respondent_group": "Lapsers, conceptually (documented definition; base unmatched)",
+      "routing_evidence": "UNRESOLVED \u2014 base unmatched; near-zero overlap with known past-MF-investors (1 of 553); excluded from interpretation"
+    },
+    {
+      "field_code": "AA1_DD1",
+      "question_wording": "AA1_DD1:MF+ETF - Top 3 Primary reasons for considering investing in MF/ETFs.",
+      "focused_group_size": 553,
+      "n_substantive_answer": 240,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 313,
+      "denominator_used_for_pct": 240,
+      "suitable_for_descriptive_analysis": true,
+      "intended_respondent_group": "Likely Intenders (inferred; base unmatched)",
+      "routing_evidence": "SUPPORTED only \u2014 plausible Intenders population, base does not match any published table"
+    },
+    {
+      "field_code": "AA2_DD2",
+      "question_wording": "AA2_DD2:MF+ETF - Top 3 Reasons for not investing in MF/ETF",
+      "focused_group_size": 553,
+      "n_substantive_answer": 266,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 287,
+      "denominator_used_for_pct": 266,
+      "suitable_for_descriptive_analysis": true,
+      "intended_respondent_group": "Non-Investors (SUPPORTED by exact base-count match: Table 7.1)",
+      "routing_evidence": "SUPPORTED (exact base-count match) \u2014 base exactly matches Table 7.1 (Non-Investors); '2 products' sampling rule is documented in the report footnote (the field-to-table link itself is inferred from the match, not stated in the report)"
+    },
+    {
+      "field_code": "AA3_DD3",
+      "question_wording": "AA3_DD3:MF+EF - Factors would encourage you to consider investing in MF/ETF that you currently do not invest in",
+      "focused_group_size": 553,
+      "n_substantive_answer": 266,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 287,
+      "denominator_used_for_pct": 266,
+      "suitable_for_descriptive_analysis": true,
+      "intended_respondent_group": "Non-Investors (SUPPORTED by exact base-count match: Table 7.2)",
+      "routing_evidence": "SUPPORTED (exact base-count match) \u2014 base exactly matches Table 7.2 (Non-Investors); same '2 products' sampling rule (field-to-table link inferred from the match)"
+    },
+    {
+      "field_code": "AA4_DD4",
+      "question_wording": "AA4_DD4: What were the TOp 3 reasons you stopped investing in MF/ETF.",
+      "focused_group_size": 553,
+      "n_substantive_answer": 64,
+      "n_special_response": 0,
+      "n_blank_unrecorded": 489,
+      "denominator_used_for_pct": 64,
+      "suitable_for_descriptive_analysis": true,
+      "intended_respondent_group": "Likely Lapser-adjacent (inferred; base partially matched)",
+      "routing_evidence": "SUPPORTED only \u2014 base partially matches a by-product row near the lapsing discussion, not a titled table"
+    }
+  ],
+  "previous_investment_q24a": {
+    "question_wording": "Could you please tell me if you have ever invested in these products in the past",
+    "denominator": 553,
+    "n_blank": 0,
+    "categories": [
+      {
+        "category_fine": "explicit_no_prior_investment",
+        "n": 382,
+        "pct": 69.1,
+        "rollup": "'None of the above' on Q24A \u2014 no prior investment in any of the 7 securities-market products Q24A asks about (does not rule out FDs, insurance, EPF, gold, etc.)",
+        "denominator": 553
+      },
+      {
+        "category_fine": "past_mf_investor",
+        "n": 136,
+        "pct": 24.6,
+        "rollup": "Yes \u2014 reported previous MF investment",
+        "denominator": 553
+      },
+      {
+        "category_fine": "past_investor_other_product_only",
+        "n": 35,
+        "pct": 6.3,
+        "rollup": "Invested previously in another securities-market product, not MF",
+        "denominator": 553
+      }
+    ]
+  }
+}

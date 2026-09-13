@@ -1,0 +1,100 @@
+{
+  "field_code": "AA2_DD2",
+  "question_wording": "AA2_DD2:MF+ETF - Top 3 Reasons for not investing in MF/ETF",
+  "denominator": 266,
+  "focused_group_size": 553,
+  "intended_respondent_group": "Non-Investors (SUPPORTED by exact base-count match: Table 7.1)",
+  "routing_evidence": "SUPPORTED (exact base-count match) \u2014 base exactly matches Table 7.1 (Non-Investors); '2 products' sampling rule is documented in the report footnote (the field-to-table link itself is inferred from the match, not stated in the report)",
+  "options": [
+    {
+      "option": "Fear of losing money due to market risks",
+      "n": 81,
+      "pct_of_answered": 30.5
+    },
+    {
+      "option": "It\u2019s for long term investment",
+      "n": 68,
+      "pct_of_answered": 25.6
+    },
+    {
+      "option": "Lack of knowledge about how mutual funds work",
+      "n": 67,
+      "pct_of_answered": 25.2
+    },
+    {
+      "option": "I don't know how to start investing in Mutual funds",
+      "n": 65,
+      "pct_of_answered": 24.4
+    },
+    {
+      "option": "Confusion cause by information overload from different sources",
+      "n": 60,
+      "pct_of_answered": 22.6
+    },
+    {
+      "option": "Uncertainty about returns and performance",
+      "n": 59,
+      "pct_of_answered": 22.2
+    },
+    {
+      "option": "Lack of trust in fund managers",
+      "n": 58,
+      "pct_of_answered": 21.8
+    },
+    {
+      "option": "Lack of trust in the mutual funds",
+      "n": 56,
+      "pct_of_answered": 21.1
+    },
+    {
+      "option": "There are too many options",
+      "n": 56,
+      "pct_of_answered": 21.1
+    },
+    {
+      "option": "Regulatory or policy concerns affecting mutual funds",
+      "n": 53,
+      "pct_of_answered": 19.9
+    },
+    {
+      "option": "Better returns from other investment options",
+      "n": 50,
+      "pct_of_answered": 18.8
+    },
+    {
+      "option": "Requires large amount to start investing",
+      "n": 35,
+      "pct_of_answered": 13.2
+    },
+    {
+      "option": "High fees, charges and Management expenses",
+      "n": 25,
+      "pct_of_answered": 9.4
+    },
+    {
+      "option": "Advised by family, friends, or financial advisors not to invest",
+      "n": 20,
+      "pct_of_answered": 7.5
+    },
+    {
+      "option": "I don't have enough money to invest",
+      "n": 18,
+      "pct_of_answered": 6.8
+    },
+    {
+      "option": "Requires too many documents",
+      "n": 12,
+      "pct_of_answered": 4.5
+    },
+    {
+      "option": "Takes time to receive invested money after selling",
+      "n": 11,
+      "pct_of_answered": 4.1
+    },
+    {
+      "option": "Lack of availability of investment platform in local language",
+      "n": 4,
+      "pct_of_answered": 1.5
+    }
+  ]
+}

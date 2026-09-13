@@ -1,0 +1,29 @@
+{
+  "dataset_name": "SEBI Investor Survey 2025",
+  "publisher": "Securities and Exchange Board of India (SEBI), Research Department",
+  "source_url": "https://www.sebi.gov.in/reports-and-statistics/research/jan-2026/investor-survey-2025-_99170.html",
+  "survey_vs_publication_note": "The fielding is named \u201cInvestor Survey 2025\u201d; the publisher's own URL path is dated \u201cjan-2026\u201d (report/publication listing). This repository does not have a separately documented data-collection period distinct from the survey's name \u2014 the exact fielding dates are not established from the files available here.",
+  "what_it_investigates": "A national household survey of individual investment behaviour: awareness, current holdings, past investment, and \u2014 for the subset asked \u2014 reported barriers and encouragement factors across securities-market products (mutual funds, ETFs, stocks, F&O, REITs/InvITs, corporate bonds, AIFs).",
+  "not_indmoney_data": "This is a SEBI national survey, not INDmoney app-usage or conversion telemetry. It cannot establish anything about INDmoney's own users or product funnel.",
+  "record_definition": "A respondent record is one person who took part in the survey \u2014 not an \u201cautomatically completed survey,\u201d and every column is a workbook field, not automatically a \u201cquestion\u201d (see below).",
+  "workbooks": [
+    {
+      "file": "Respondent Data.XLSX",
+      "sheet": "RLD",
+      "records": 109430,
+      "columns": 448,
+      "used_in_this_study": true,
+      "description": "One row per individual survey respondent. Used for this entire study."
+    },
+    {
+      "file": "Intermediary Data.XLSX",
+      "sheet": "T1",
+      "records": 1313,
+      "columns": 70,
+      "used_in_this_study": false,
+      "description": "Surveys market intermediaries (RIAs, distributors, brokers) about their category, tenure, customer base, and their own perceived view of investors \u2014 a different unit of analysis (intermediary opinion, not respondent self-report). Its identifier column (INTNR) has 7 duplicate values out of 1,313 rows, noted but not investigated. Kept entirely separate from this study."
+    }
+  ],
+  "why_respondent_workbook_only": "The research question is about what individual (would-be) investors themselves report \u2014 their occupation, income, product consideration, holdings, and barriers. Only the respondent workbook asks respondents about themselves; the intermediary workbook records what intermediaries perceive about investors in general, a different population and a different question entirely.",
+  "header_structure": "Row 1 = short column codes, row 2 = full question wording, row 3 onward = one row per respondent record."
+}

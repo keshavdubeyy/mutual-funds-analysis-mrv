@@ -3,15 +3,16 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
-analysis/
-scripts/
+/analysis/
+/scripts/
 
-# Raw and local processed research data
-data/
+# Root research datasets (do NOT ignore public/data)
+/data/
+!/public/data/
 
 # Documentation & internal notes
-docs/
-.claude/
+/docs/
+/.claude/
 
 # Logs and OS files
 *.log

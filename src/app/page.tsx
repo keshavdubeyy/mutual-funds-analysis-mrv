@@ -12,10 +12,18 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AnalysisTab } from "@/components/findings/analysis-tab"
+import {
+  Empty,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+  EmptyDescription,
+} from "@/components/ui/empty"
 import { RespondentDataTab } from "@/components/findings/respondent-data-tab"
 import { WhoIsInSampleTab } from "@/components/findings/who-is-in-sample-tab"
 import { SampleOverviewSheet } from "@/components/findings/sample-overview-sheet"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ConstructionIcon } from "@hugeicons/core-free-icons"
 
 export const metadata = {
   title: "Findings — SEBI Investor Survey 2025",
@@ -75,7 +83,17 @@ export default function Home() {
                 <WhoIsInSampleTab filteringEnabled={respondentTabEnabled} />
               </TabsContent>
               <TabsContent value="analysis" className="pt-4">
-                <AnalysisTab />
+                <Empty>
+                  <EmptyHeader>
+                    <EmptyMedia variant="icon">
+                      <HugeiconsIcon icon={ConstructionIcon} strokeWidth={2} />
+                    </EmptyMedia>
+                    <EmptyTitle>Work in progress</EmptyTitle>
+                    <EmptyDescription>
+                      We&apos;re still working out the right KPIs for this analysis. Check back soon.
+                    </EmptyDescription>
+                  </EmptyHeader>
+                </Empty>
               </TabsContent>
               {respondentTabEnabled ? (
                 <TabsContent value="respondent-data" className="pt-4">

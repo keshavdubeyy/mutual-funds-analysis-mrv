@@ -4,9 +4,11 @@ import * as React from "react"
 
 import { NavMain } from "@/components/nav-main"
 import { NavTeam } from "@/components/nav-team"
+import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -33,6 +35,7 @@ const data = {
       ),
     },
   ],
+  githubRepoUrl: "https://github.com/keshavdubeyy/mutual-funds-analysis-mrv",
   team: {
     teamName: "Team 13",
     contributors: [
@@ -59,8 +62,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavTeam teamName={data.team.teamName} contributors={data.team.contributors} />
+        <NavTeam
+          teamName={data.team.teamName}
+          contributors={data.team.contributors}
+          githubRepoUrl={data.githubRepoUrl}
+        />
       </SidebarContent>
+      <SidebarFooter>
+        <ThemeToggle />
+      </SidebarFooter>
     </Sidebar>
   )
 }

@@ -1,0 +1,71 @@
+{
+  "note": "Share of the 553-respondent focused group who ranked each goal anywhere in their top 3 priorities (Q6_RANK_GRID) \u2014 not a rank-weighted score. All 553 answered at least one slot. \"Others (free text)\" is its own separate count, not a named goal.",
+  "focused_group_size": 553,
+  "goals": [
+    {
+      "goal": "Growing wealth",
+      "n_ranked_in_top3": 235,
+      "pct_of_553": 42.5
+    },
+    {
+      "goal": "Supporting family members",
+      "n_ranked_in_top3": 206,
+      "pct_of_553": 37.3
+    },
+    {
+      "goal": "Building an emergency fund",
+      "n_ranked_in_top3": 196,
+      "pct_of_553": 35.4
+    },
+    {
+      "goal": "Buying a house",
+      "n_ranked_in_top3": 194,
+      "pct_of_553": 35.1
+    },
+    {
+      "goal": "Achieving financial independence",
+      "n_ranked_in_top3": 159,
+      "pct_of_553": 28.8
+    },
+    {
+      "goal": "Saving for a major expense",
+      "n_ranked_in_top3": 128,
+      "pct_of_553": 23.1
+    },
+    {
+      "goal": "Children's education",
+      "n_ranked_in_top3": 127,
+      "pct_of_553": 23.0
+    },
+    {
+      "goal": "Planning for retirement",
+      "n_ranked_in_top3": 108,
+      "pct_of_553": 19.5
+    },
+    {
+      "goal": "Earning money actively on a daily basis",
+      "n_ranked_in_top3": 97,
+      "pct_of_553": 17.5
+    },
+    {
+      "goal": "Generating passive income",
+      "n_ranked_in_top3": 86,
+      "pct_of_553": 15.6
+    },
+    {
+      "goal": "My child's marriage",
+      "n_ranked_in_top3": 73,
+      "pct_of_553": 13.2
+    },
+    {
+      "goal": "Optimizing tax savings and benefits",
+      "n_ranked_in_top3": 50,
+      "pct_of_553": 9.0
+    },
+    {
+      "goal": "Others (free text)",
+      "n_ranked_in_top3": 0,
+      "pct_of_553": 0.0
+    }
+  ]
+}

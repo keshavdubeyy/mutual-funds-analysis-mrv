@@ -1,0 +1,256 @@
+{
+  "note": "Recomputed from the raw Q1MXGrid percentage field, not the derived Q1M_DP field \u2014 Q1M_DP silently converts \"not administered\" into a \"0%\" category. Each category is its own independent distribution; these five are not validated as a joint budget and should not be summed into a disposable-income figure.",
+  "focused_group_size": 553,
+  "categories": [
+    {
+      "slot": 1,
+      "category": "Monthly expenses",
+      "denominator": 534,
+      "n_blank": 19,
+      "focused_group_size": 553,
+      "options": [
+        {
+          "option": "11-20%",
+          "n": 132,
+          "pct_of_answered": 24.7
+        },
+        {
+          "option": "31-40%",
+          "n": 111,
+          "pct_of_answered": 20.8
+        },
+        {
+          "option": "21-30%",
+          "n": 110,
+          "pct_of_answered": 20.6
+        },
+        {
+          "option": "41-50%",
+          "n": 80,
+          "pct_of_answered": 15.0
+        },
+        {
+          "option": "51-60%",
+          "n": 42,
+          "pct_of_answered": 7.9
+        },
+        {
+          "option": "61-70%",
+          "n": 29,
+          "pct_of_answered": 5.4
+        },
+        {
+          "option": "1-10%",
+          "n": 14,
+          "pct_of_answered": 2.6
+        },
+        {
+          "option": "71-80%",
+          "n": 11,
+          "pct_of_answered": 2.1
+        },
+        {
+          "option": "0%",
+          "n": 2,
+          "pct_of_answered": 0.4
+        },
+        {
+          "option": "81-90%",
+          "n": 2,
+          "pct_of_answered": 0.4
+        },
+        {
+          "option": "91-100%",
+          "n": 1,
+          "pct_of_answered": 0.2
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "category": "Savings",
+      "denominator": 532,
+      "n_blank": 21,
+      "focused_group_size": 553,
+      "options": [
+        {
+          "option": "11-20%",
+          "n": 253,
+          "pct_of_answered": 47.6
+        },
+        {
+          "option": "1-10%",
+          "n": 151,
+          "pct_of_answered": 28.4
+        },
+        {
+          "option": "21-30%",
+          "n": 94,
+          "pct_of_answered": 17.7
+        },
+        {
+          "option": "31-40%",
+          "n": 13,
+          "pct_of_answered": 2.4
+        },
+        {
+          "option": "0%",
+          "n": 11,
+          "pct_of_answered": 2.1
+        },
+        {
+          "option": "41-50%",
+          "n": 8,
+          "pct_of_answered": 1.5
+        },
+        {
+          "option": "61-70%",
+          "n": 2,
+          "pct_of_answered": 0.4
+        }
+      ]
+    },
+    {
+      "slot": 3,
+      "category": "Loan repayments",
+      "denominator": 517,
+      "n_blank": 36,
+      "focused_group_size": 553,
+      "options": [
+        {
+          "option": "11-20%",
+          "n": 173,
+          "pct_of_answered": 33.5
+        },
+        {
+          "option": "1-10%",
+          "n": 161,
+          "pct_of_answered": 31.1
+        },
+        {
+          "option": "0%",
+          "n": 146,
+          "pct_of_answered": 28.2
+        },
+        {
+          "option": "21-30%",
+          "n": 28,
+          "pct_of_answered": 5.4
+        },
+        {
+          "option": "41-50%",
+          "n": 4,
+          "pct_of_answered": 0.8
+        },
+        {
+          "option": "31-40%",
+          "n": 3,
+          "pct_of_answered": 0.6
+        },
+        {
+          "option": "51-60%",
+          "n": 2,
+          "pct_of_answered": 0.4
+        }
+      ]
+    },
+    {
+      "slot": 4,
+      "category": "Investments",
+      "denominator": 521,
+      "n_blank": 32,
+      "focused_group_size": 553,
+      "options": [
+        {
+          "option": "1-10%",
+          "n": 221,
+          "pct_of_answered": 42.4
+        },
+        {
+          "option": "11-20%",
+          "n": 205,
+          "pct_of_answered": 39.3
+        },
+        {
+          "option": "0%",
+          "n": 43,
+          "pct_of_answered": 8.3
+        },
+        {
+          "option": "21-30%",
+          "n": 42,
+          "pct_of_answered": 8.1
+        },
+        {
+          "option": "31-40%",
+          "n": 6,
+          "pct_of_answered": 1.2
+        },
+        {
+          "option": "41-50%",
+          "n": 4,
+          "pct_of_answered": 0.8
+        }
+      ]
+    },
+    {
+      "slot": 5,
+      "category": "Other expenses",
+      "denominator": 527,
+      "n_blank": 26,
+      "focused_group_size": 553,
+      "options": [
+        {
+          "option": "11-20%",
+          "n": 234,
+          "pct_of_answered": 44.4
+        },
+        {
+          "option": "1-10%",
+          "n": 148,
+          "pct_of_answered": 28.1
+        },
+        {
+          "option": "21-30%",
+          "n": 77,
+          "pct_of_answered": 14.6
+        },
+        {
+          "option": "31-40%",
+          "n": 21,
+          "pct_of_answered": 4.0
+        },
+        {
+          "option": "41-50%",
+          "n": 18,
+          "pct_of_answered": 3.4
+        },
+        {
+          "option": "0%",
+          "n": 14,
+          "pct_of_answered": 2.7
+        },
+        {
+          "option": "51-60%",
+          "n": 9,
+          "pct_of_answered": 1.7
+        },
+        {
+          "option": "61-70%",
+          "n": 3,
+          "pct_of_answered": 0.6
+        },
+        {
+          "option": "71-80%",
+          "n": 2,
+          "pct_of_answered": 0.4
+        },
+        {
+          "option": "91-100%",
+          "n": 1,
+          "pct_of_answered": 0.2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "note": "Focused group, restricted to the 266 respondents who substantively answered AA2_DD2 \u2014 verified to be the identical answer base for this field. Multi-select, percentages sum to more than 100%. Only a combined MF+ETF slot exists for this population (no MF-only slot) \u2014 a property of the survey, not a scope choice made here. Reports where respondents say they heard about these products, not whether that source caused them to invest.",
+  "denominator": 266,
+  "focused_group_size": 553,
+  "sources": [
+    {
+      "option": "Friends, Family, and Colleagues",
+      "n": 154,
+      "pct_of_answered": 57.9
+    },
+    {
+      "option": "Financial Influencers on social media (YouTube, Instagram, Facebook, LinkedIn, Twitter)",
+      "n": 144,
+      "pct_of_answered": 54.1
+    },
+    {
+      "option": "Online Investment Communities (Telegram groups, WhatsApp groups, Reddit, Facebook groups)",
+      "n": 79,
+      "pct_of_answered": 29.7
+    },
+    {
+      "option": "Financial Professionals - Financial advisors/planners, bank representatives",
+      "n": 70,
+      "pct_of_answered": 26.3
+    },
+    {
+      "option": "Advertisements on investment products",
+      "n": 70,
+      "pct_of_answered": 26.3
+    },
+    {
+      "option": "Investor Education Programmes run by prominent institutions/industry associations (SEBI, NISM, Exchanges, Depositories, AMFI/Mutual fund sahi hai etc)",
+      "n": 65,
+      "pct_of_answered": 24.4
+    },
+    {
+      "option": "Market or company analysis reports (Brokerage firm reports, industry whitepapers, company financial reports)",
+      "n": 59,
+      "pct_of_answered": 22.2
+    },
+    {
+      "option": "Financial News & Blogs",
+      "n": 50,
+      "pct_of_answered": 18.8
+    },
+    {
+      "option": "Educational Resources (Investment webinars, courses, books, podcasts, financial literacy workshops)",
+      "n": 44,
+      "pct_of_answered": 16.5
+    },
+    {
+      "option": "Investor Education Programmes run by different investment companies (broking houses etc.)",
+      "n": 36,
+      "pct_of_answered": 13.5
+    },
+    {
+      "option": "None of the above",
+      "n": 9,
+      "pct_of_answered": 3.4
+    },
+    {
+      "option": "Others (please specify)",
+      "n": 2,
+      "pct_of_answered": 0.8
+    }
+  ],
+  "media": [
+    {
+      "option": "Social media (YouTube videos, Instagram reels, Twitter/X posts)",
+      "n": 153,
+      "pct_of_answered": 57.5
+    },
+    {
+      "option": "Television",
+      "n": 112,
+      "pct_of_answered": 42.1
+    },
+    {
+      "option": "Messaging apps (WhatsApp, telegram, etc.)",
+      "n": 68,
+      "pct_of_answered": 25.6
+    },
+    {
+      "option": "Online Search Engines",
+      "n": 58,
+      "pct_of_answered": 21.8
+    },
+    {
+      "option": "Online Newspapers/Magazines/Publications",
+      "n": 57,
+      "pct_of_answered": 21.4
+    },
+    {
+      "option": "Physical Newspapers/Magazines/Publications",
+      "n": 56,
+      "pct_of_answered": 21.1
+    },
+    {
+      "option": "Other online media",
+      "n": 50,
+      "pct_of_answered": 18.8
+    },
+    {
+      "option": "Websites/Apps of regulators (like AMFI, SEBI , etc.)",
+      "n": 39,
+      "pct_of_answered": 14.7
+    },
+    {
+      "option": "Phone calls / SMS",
+      "n": 36,
+      "pct_of_answered": 13.5
+    },
+    {
+      "option": "In person Consultations / Meetings",
+      "n": 33,
+      "pct_of_answered": 12.4
+    },
+    {
+      "option": "Fin-Tech Apps & Investment Platforms",
+      "n": 32,
+      "pct_of_answered": 12.0
+    },
+    {
+      "option": "Seminars, Webinars, and Workshops",
+      "n": 24,
+      "pct_of_answered": 9.0
+    },
+    {
+      "option": "Radio",
+      "n": 13,
+      "pct_of_answered": 4.9
+    },
+    {
+      "option": "Others (please specify)",
+      "n": 3,
+      "pct_of_answered": 1.1
+    }
+  ]
+}

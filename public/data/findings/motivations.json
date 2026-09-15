@@ -1,0 +1,110 @@
+{
+  "field_code": "AA1_DD1",
+  "question_wording": "AA1_DD1:MF+ETF - Top 3 Primary reasons for considering investing in MF/ETFs.",
+  "denominator": 240,
+  "focused_group_size": 553,
+  "intended_respondent_group": "Likely Intenders (inferred; base unmatched)",
+  "routing_evidence": "SUPPORTED only \u2014 plausible Intenders population, base does not match any published table",
+  "options": [
+    {
+      "option": "Long-term growth (building wealth over time)",
+      "n": 62,
+      "pct_of_answered": 25.8
+    },
+    {
+      "option": "Good for short term investments",
+      "n": 60,
+      "pct_of_answered": 25.0
+    },
+    {
+      "option": "Potential for higher returns",
+      "n": 52,
+      "pct_of_answered": 21.7
+    },
+    {
+      "option": "Lower risk of losing money",
+      "n": 51,
+      "pct_of_answered": 21.2
+    },
+    {
+      "option": "Quick gains with small investments",
+      "n": 49,
+      "pct_of_answered": 20.4
+    },
+    {
+      "option": "Investment strategy based on financial goals and risk appetite",
+      "n": 48,
+      "pct_of_answered": 20.0
+    },
+    {
+      "option": "Protection against inflation",
+      "n": 45,
+      "pct_of_answered": 18.8
+    },
+    {
+      "option": "Convenience and ease of investment",
+      "n": 41,
+      "pct_of_answered": 17.1
+    },
+    {
+      "option": "Diversifying my portfolio",
+      "n": 39,
+      "pct_of_answered": 16.2
+    },
+    {
+      "option": "Tax benefits or savings",
+      "n": 38,
+      "pct_of_answered": 15.8
+    },
+    {
+      "option": "Professional fund management by experts",
+      "n": 37,
+      "pct_of_answered": 15.4
+    },
+    {
+      "option": "To build additional sources of income",
+      "n": 37,
+      "pct_of_answered": 15.4
+    },
+    {
+      "option": "Clear and immediate information about actual returns",
+      "n": 33,
+      "pct_of_answered": 13.8
+    },
+    {
+      "option": "Lower fees and expenses compared to other investments",
+      "n": 32,
+      "pct_of_answered": 13.3
+    },
+    {
+      "option": "Zero account opening charges/Ease of onboarding process",
+      "n": 27,
+      "pct_of_answered": 11.2
+    },
+    {
+      "option": "My friends/acquaintances are currently investing in ETFs",
+      "n": 24,
+      "pct_of_answered": 10.0
+    },
+    {
+      "option": "Interest in investing in ETFs",
+      "n": 18,
+      "pct_of_answered": 7.5
+    },
+    {
+      "option": "To learn how this investment product works",
+      "n": 14,
+      "pct_of_answered": 5.8
+    },
+    {
+      "option": "Had extra funds to invest",
+      "n": 12,
+      "pct_of_answered": 5.0
+    },
+    {
+      "option": "Other (please specify):",
+      "n": 1,
+      "pct_of_answered": 0.4
+    }
+  ]
+}

@@ -9,11 +9,17 @@
  * the Dataset and Method page, per instructions to treat existing exports as the
  * source of truth rather than re-deriving them.
  */
+import motivationsData from "../../public/data/findings/motivations.json"
 import barriersData from "../../public/data/findings/barriers.json"
 import encouragementData from "../../public/data/findings/encouragement.json"
+import stoppingReasonsData from "../../public/data/findings/stopping_reasons.json"
 import comparisonByExperienceData from "../../public/data/findings/comparison_by_experience.json"
 import comparisonByIncomeData from "../../public/data/findings/comparison_by_income.json"
 import demographicsData from "../../public/data/findings/demographics.json"
+import awarenessSourcesData from "../../public/data/findings/awareness_sources.json"
+import incomeAllocationData from "../../public/data/findings/income_allocation.json"
+import financialGoalsData from "../../public/data/findings/financial_goals.json"
+import relationshipsData from "../../public/data/findings/relationships.json"
 
 export interface BarrierField {
   field_code: string
@@ -28,6 +34,7 @@ export interface BarrierField {
 export interface ComparisonByExperience {
   note: string
   group_sizes: Record<string, number>
+  coverage: { group: string; n_group: number; n_answered: number; coverage_pct: number; meets_small_group_min: boolean }[]
   barriers_AA2_DD2: Record<string, string | number | null>[]
   encouragement_AA3_DD3: Record<string, string | number | null>[]
 }
@@ -56,8 +63,81 @@ export interface Demographics {
   fields: DemographicField[]
 }
 
+export interface OptionCount {
+  option: string
+  n: number
+  pct_of_answered: number
+}
+
+export interface AwarenessSources {
+  note: string
+  denominator: number
+  focused_group_size: number
+  sources: OptionCount[]
+  media: OptionCount[]
+}
+
+export interface IncomeAllocationCategory {
+  slot: number
+  category: string
+  denominator: number
+  n_blank: number
+  focused_group_size: number
+  options: OptionCount[]
+}
+
+export interface IncomeAllocation {
+  note: string
+  focused_group_size: number
+  categories: IncomeAllocationCategory[]
+}
+
+export interface FinancialGoalRow {
+  goal: string
+  n_ranked_in_top3: number
+  pct_of_553: number
+}
+
+export interface FinancialGoals {
+  note: string
+  focused_group_size: number
+  goals: FinancialGoalRow[]
+}
+
+export interface RelationshipRow {
+  category: string
+  n: number
+  /** Raw count selecting the target option within this category — use this (never the
+   * already-rounded pct_selecting) to compute an unrounded percentage-point difference. */
+  n_selecting: number
+  meets_small_group_min: boolean
+  pct_selecting: number | null
+}
+
+export interface RelationshipBlock {
+  group_label: string
+  target_option: string
+  denominator: number
+  overall_pct: number
+  rows: RelationshipRow[]
+}
+
+export interface Relationships {
+  note: string
+  small_group_min_n: number
+  qrt_fear_of_loss: RelationshipBlock
+  knowledge_item1_education: RelationshipBlock
+  kyc_simple_process: RelationshipBlock
+}
+
+export const motivations = motivationsData as BarrierField
 export const barriers = barriersData as BarrierField
 export const encouragement = encouragementData as BarrierField
+export const stoppingReasons = stoppingReasonsData as BarrierField
 export const comparisonByExperience = comparisonByExperienceData as ComparisonByExperience
 export const comparisonByIncome = comparisonByIncomeData as ComparisonByIncome
 export const demographics = demographicsData as Demographics
+export const awarenessSources = awarenessSourcesData as AwarenessSources
+export const incomeAllocation = incomeAllocationData as IncomeAllocation
+export const financialGoals = financialGoalsData as FinancialGoals
+export const relationships = relationshipsData as Relationships

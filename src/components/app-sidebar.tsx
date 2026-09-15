@@ -15,7 +15,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Database02Icon, Analytics01Icon } from "@hugeicons/core-free-icons"
+import { Database02Icon, Analytics01Icon, Task02Icon } from "@hugeicons/core-free-icons"
 
 const data = {
   navMain: [
@@ -28,11 +28,26 @@ const data = {
       isActive: true,
     },
     {
+      title: "Research Plan",
+      url: "/research-plan",
+      icon: (
+        <HugeiconsIcon icon={Task02Icon} strokeWidth={2} />
+      ),
+    },
+    {
       title: "Findings",
-      url: "/",
+      url: "/findings/who-is-in-sample",
       icon: (
         <HugeiconsIcon icon={Analytics01Icon} strokeWidth={2} />
       ),
+      isActive: true,
+      items: [
+        { title: "Who is in our sample?", url: "/findings/who-is-in-sample" },
+        { title: "Analysis", url: "/findings/analysis" },
+        ...(process.env.NODE_ENV !== "production"
+          ? [{ title: "Respondent data", url: "/findings/respondent-data" }]
+          : []),
+      ],
     },
   ],
   githubRepoUrl: "https://github.com/keshavdubeyy/mutual-funds-analysis-mrv",

@@ -167,3 +167,13 @@ body {
     text-decoration: none;
   }
 }
+
+/* Print / "show all sections" mode: the Findings page keeps its Tabs panels mounted
+   (keepMounted) precisely so this rule can force every inactive panel visible when
+   printing — a base-ui Tabs.Panel hides via the native `hidden` attribute, and `inert`
+   only affects interaction/focus, not layout, so overriding `display` here is sufficient. */
+@media print {
+  [data-slot="tabs-content"][hidden] {
+    display: block !important;
+  }
+}

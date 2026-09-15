@@ -1,0 +1,90 @@
+{
+  "field_code": "AA4_DD4",
+  "question_wording": "AA4_DD4: What were the TOp 3 reasons you stopped investing in MF/ETF.",
+  "denominator": 64,
+  "focused_group_size": 553,
+  "intended_respondent_group": "Likely Lapser-adjacent (inferred; base partially matched)",
+  "routing_evidence": "SUPPORTED only \u2014 base partially matches a by-product row near the lapsing discussion, not a titled table",
+  "options": [
+    {
+      "option": "News of geopolitical uncertainty and fear of market fall",
+      "n": 22,
+      "pct_of_answered": 34.4
+    },
+    {
+      "option": "Lower than expected returns",
+      "n": 22,
+      "pct_of_answered": 34.4
+    },
+    {
+      "option": "I needed money for other purposes (urgent requirement of funds)",
+      "n": 20,
+      "pct_of_answered": 31.2
+    },
+    {
+      "option": "Changes in personal financial goals",
+      "n": 18,
+      "pct_of_answered": 28.1
+    },
+    {
+      "option": "High volatility and unpredictable performance",
+      "n": 17,
+      "pct_of_answered": 26.6
+    },
+    {
+      "option": "Better returns from other investment options",
+      "n": 17,
+      "pct_of_answered": 26.6
+    },
+    {
+      "option": "High fees, charges and Management expenses",
+      "n": 13,
+      "pct_of_answered": 20.3
+    },
+    {
+      "option": "Experienced significant financial losses",
+      "n": 12,
+      "pct_of_answered": 18.8
+    },
+    {
+      "option": "Negative experiences shared by friends or family",
+      "n": 11,
+      "pct_of_answered": 17.2
+    },
+    {
+      "option": "Lack of sufficient knowledge or market insights",
+      "n": 11,
+      "pct_of_answered": 17.2
+    },
+    {
+      "option": "Takes time to receive invested money after selling",
+      "n": 9,
+      "pct_of_answered": 14.1
+    },
+    {
+      "option": "Limited availability of unbiased expert advice or recommendations",
+      "n": 7,
+      "pct_of_answered": 10.9
+    },
+    {
+      "option": "Hidden or unexpected transaction costs",
+      "n": 7,
+      "pct_of_answered": 10.9
+    },
+    {
+      "option": "Complications in calculating tax liability/ filing Income Tax returns",
+      "n": 3,
+      "pct_of_answered": 4.7
+    },
+    {
+      "option": "Difficult to access channel/platform from where I had done investments",
+      "n": 2,
+      "pct_of_answered": 3.1
+    },
+    {
+      "option": "Difficulty in managing or tracking investments",
+      "n": 1,
+      "pct_of_answered": 1.6
+    }
+  ]
+}

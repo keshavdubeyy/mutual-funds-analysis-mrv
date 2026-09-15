@@ -5,6 +5,29 @@
     "past_mf_investor": 136,
     "past_investor_other_product_only": 35
   },
+  "coverage": [
+    {
+      "group": "explicit_no_prior_investment",
+      "n_group": 382,
+      "n_answered": 188,
+      "coverage_pct": 49.2,
+      "meets_small_group_min": true
+    },
+    {
+      "group": "past_investor_other_product_only",
+      "n_group": 35,
+      "n_answered": 17,
+      "coverage_pct": 48.6,
+      "meets_small_group_min": false
+    },
+    {
+      "group": "past_mf_investor",
+      "n_group": 136,
+      "n_answered": 61,
+      "coverage_pct": 44.9,
+      "meets_small_group_min": true
+    }
+  ],
   "barriers_AA2_DD2": [
     {
       "option": "Lack of trust in fund managers",

@@ -1,0 +1,98 @@
+{
+  "note": "Each relationship uses actual joint answers from the same 266 respondents (a genuine respondent-level join, not derived from separate marginal totals). Percentages are shown only for categories with at least 30 respondents (the same small-group rule used elsewhere in this project); smaller categories are counts only. These describe observed associations in this sample, not causes, and no significance test is applied.",
+  "small_group_min_n": 30,
+  "qrt_fear_of_loss": {
+    "group_label": "Risk / return preference (QRT)",
+    "target_option": "Fear of losing money due to market risks",
+    "denominator": 266,
+    "overall_pct": 30.5,
+    "rows": [
+      {
+        "category": "I need to have good but stable and reliable returns with minimal losses",
+        "n": 100,
+        "n_selecting": 28,
+        "meets_small_group_min": true,
+        "pct_selecting": 28.0
+      },
+      {
+        "category": "Preservation of capital (amount invested) is more important to me than returns.",
+        "n": 96,
+        "n_selecting": 27,
+        "meets_small_group_min": true,
+        "pct_selecting": 28.1
+      },
+      {
+        "category": "I aim for better, higher returns and realize that there will be some ups and downs in my investment, but I wouldn't be able to accept significant losses",
+        "n": 48,
+        "n_selecting": 17,
+        "meets_small_group_min": true,
+        "pct_selecting": 35.4
+      },
+      {
+        "category": "I would like high returns and am not too concerned with risk. I am prepared for significant short-term losses to achieve better long-term returns",
+        "n": 22,
+        "n_selecting": 9,
+        "meets_small_group_min": false,
+        "pct_selecting": null
+      }
+    ]
+  },
+  "knowledge_item1_education": {
+    "group_label": "Response to \"Direct plans in mutual funds have a lower expense ratio than regular plans\"",
+    "target_option": "Better education on how mutual funds work",
+    "denominator": 266,
+    "overall_pct": 36.5,
+    "rows": [
+      {
+        "category": "TRUE",
+        "n": 172,
+        "n_selecting": 65,
+        "meets_small_group_min": true,
+        "pct_selecting": 37.8
+      },
+      {
+        "category": "Not Aware",
+        "n": 55,
+        "n_selecting": 22,
+        "meets_small_group_min": true,
+        "pct_selecting": 40.0
+      },
+      {
+        "category": "FALSE",
+        "n": 39,
+        "n_selecting": 10,
+        "meets_small_group_min": true,
+        "pct_selecting": 25.6
+      }
+    ]
+  },
+  "kyc_simple_process": {
+    "group_label": "Response to \"KYC can be completed online\"",
+    "target_option": "Simple and easy process for investing",
+    "denominator": 266,
+    "overall_pct": 44.0,
+    "rows": [
+      {
+        "category": "TRUE",
+        "n": 208,
+        "n_selecting": 94,
+        "meets_small_group_min": true,
+        "pct_selecting": 45.2
+      },
+      {
+        "category": "FALSE",
+        "n": 30,
+        "n_selecting": 13,
+        "meets_small_group_min": true,
+        "pct_selecting": 43.3
+      },
+      {
+        "category": "Not Aware",
+        "n": 28,
+        "n_selecting": 10,
+        "meets_small_group_min": false,
+        "pct_selecting": null
+      }
+    ]
+  }
+}

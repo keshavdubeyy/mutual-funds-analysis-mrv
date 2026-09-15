@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import * as RechartsPrimitive from "recharts"
 import {
   Card,
   CardAction,
@@ -12,16 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ChartContainer } from "@/components/ui/chart"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Table,
@@ -42,11 +32,36 @@ import {
   ZONE_LABELS,
   type WhoIsInSampleData,
   type WhoField,
-  type KnowledgeItem,
   type Zone,
 } from "@/lib/who-is-in-sample-data"
 import { FieldBarCard, SectionEmptyState } from "@/components/findings/who-field-card"
 import { IndiaStateMap } from "@/components/findings/india-state-map"
+import { demographics, awarenessSources, incomeAllocation, financialGoals } from "@/lib/findings-data"
+
+/** Adapts this project's various `{option/label, n, pct_of_answered/pct}` result shapes into
+ * the WhoField shape FieldBarCard already knows how to render, so new measures reuse the same
+ * bar/pie/table card instead of a bespoke one. */
+function toWhoField(params: {
+  code: string
+  label: string
+  question_wording: string
+  denominator: number
+  n_answered: number
+  n_blank: number
+  options: { label: string; n: number; pct: number }[]
+}): WhoField {
+  return {
+    field_code: params.code,
+    label: params.label,
+    question_wording: params.question_wording,
+    section: "knowledge",
+    kind: "single",
+    denominator: params.denominator,
+    n_answered: params.n_answered,
+    n_blank: params.n_blank,
+    options: params.options,
+  }
+}
 
 interface Filters {
   state: string | null
@@ -191,47 +206,57 @@ function GeographyCard({
   )
 }
 
-// Q12M states its own numbers (5% return vs. 6% inflation), so the correct
-// answer follows from arithmetic in the question itself — real value falls,
-// making "Less than today" the only correct option. This is not an external
-// answer key being invented (unlike the undocumented GRIDxQ15AM battery,
-// which is deliberately never scored — see scripts/export_who_is_in_sample.py).
-// "Do not know" and "Refuse to answer" are folded into Incorrect here (a
-// simple correct/not-correct binary), rather than shown as their own rows.
+// Q12M states its own numbers (5% return vs. 6% inflation), so the correct answer follows
+// from arithmetic in the question itself — real value falls, making "Less than today" the
+// only correct option. This is not an external answer key being invented (unlike the
+// undocumented GRIDxQ15AM battery, which is deliberately never scored — see
+// scripts/export_who_is_in_sample.py). "Wrong numeric answer," "Do not know" and "Refuse to
+// answer" all count as incorrect for the numeracy score, but are kept as their own rows —
+// never folded together — so a reader can see they aren't the same kind of response.
 const Q12M_CORRECT_LABEL = "Less than today"
+const Q12M_DONT_KNOW_LABEL = "Do not know"
+const Q12M_REFUSE_LABEL = "Refuse to answer"
 
 function Q12MCorrectnessCard({ field }: { field: WhoField }) {
   let correct = 0
-  let incorrect = 0
+  let wrongNumeric = 0
+  let dontKnow = 0
+  let refused = 0
   for (const o of field.options) {
     if (o.label === Q12M_CORRECT_LABEL) correct += o.n
-    else incorrect += o.n
+    else if (o.label === Q12M_DONT_KNOW_LABEL) dontKnow += o.n
+    else if (o.label === Q12M_REFUSE_LABEL) refused += o.n
+    else wrongNumeric += o.n
   }
   const total = field.n_answered
   const pct = (n: number) => (total > 0 ? `${Math.round((n / total) * 1000) / 10}%` : "—")
 
   const rows = [
-    { label: "Correct", n: correct, emphasize: true },
-    { label: "Incorrect", n: incorrect, emphasize: false },
+    { label: "Correct", n: correct, scoredIncorrect: false, emphasize: true },
+    { label: "Wrong numeric answer", n: wrongNumeric, scoredIncorrect: true, emphasize: false },
+    { label: "Do not know", n: dontKnow, scoredIncorrect: true, emphasize: false },
+    { label: "Refuse to answer", n: refused, scoredIncorrect: true, emphasize: false },
   ].filter((r) => r.n > 0)
 
   return (
     <Card size="sm">
       <CardHeader>
-        <CardTitle className="text-sm">Financial literacy: correct vs. incorrect</CardTitle>
+        <CardTitle className="text-sm">Financial literacy: response breakdown</CardTitle>
         <CardDescription>
           The question states a 5% return against 6% inflation, so real value falls — &ldquo;Less than
-          today&rdquo; is the only arithmetically correct answer. Every other answer (including &ldquo;Do not
-          know&rdquo; and &ldquo;Refuse to answer&rdquo;) is scored incorrect.
+          today&rdquo; is the only arithmetically correct answer. &ldquo;Wrong numeric answer,&rdquo; &ldquo;Do not
+          know&rdquo; and &ldquo;Refuse to answer&rdquo; are all scored incorrect for the numeracy check, but are
+          shown as separate rows since they are not the same kind of response.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Result</TableHead>
+              <TableHead>Response</TableHead>
               <TableHead className="text-right">Count</TableHead>
               <TableHead className="text-right">Percent</TableHead>
+              <TableHead className="text-right">Scored</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -240,6 +265,9 @@ function Q12MCorrectnessCard({ field }: { field: WhoField }) {
                 <TableCell className={r.emphasize ? "font-medium text-foreground" : undefined}>{r.label}</TableCell>
                 <TableCell className="text-right tabular-nums">{formatN(r.n)}</TableCell>
                 <TableCell className="text-right tabular-nums">{pct(r.n)}</TableCell>
+                <TableCell className="text-right text-xs text-muted-foreground">
+                  {r.scoredIncorrect ? "Incorrect" : "Correct"}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -248,235 +276,6 @@ function Q12MCorrectnessCard({ field }: { field: WhoField }) {
           Answered {formatN(total)} / {formatN(field.denominator)} in current selection · {formatN(field.n_blank)}{" "}
           missing/unknown
         </p>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Short axis/topic labels for the GRIDxQ15AM battery, keyed by field_code —
-// presentation only. The full original statement is never replaced by this
-// label: it stays available via the chart's tooltip and the "full wording"
-// disclosure below it.
-const BATTERY_TOPIC_LABELS: Record<string, string> = {
-  "GRIDxQ15AM[{_1}].Q15AM": "expense ratio (direct plans)",
-  "GRIDxQ15AM[{_2}].Q15AM": "PF in stock market",
-  "GRIDxQ15AM[{_3}].Q15AM": "compounding (short-term)",
-  "GRIDxQ15AM[{_4}].Q15AM": "online KYC",
-  "GRIDxQ15AM[{_5}].Q15AM": "demat requirement",
-  "GRIDxQ15AM[{_6}].Q15AM": "risk vs. return",
-  "GRIDxQ15AM[{_7}].Q15AM": "diversification",
-  "GRIDxQ15AM[{_8}].Q15AM": "CAS statement",
-  "GRIDxQ15AM[{_9}].Q15AM": "BSDA",
-}
-
-function capitalize(s: string) {
-  return s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s
-}
-
-interface BatteryRow {
-  code: string
-  topic: string
-  statement: string
-  answered: number
-  TRUE_pct: number
-  FALSE_pct: number
-  NOT_AWARE_pct: number
-  TRUE_n: number
-  FALSE_n: number
-  NOT_AWARE_n: number
-}
-
-// Sorted by "Not Aware" share, highest first — the one ordering rule the
-// battery supports without inventing a correct/incorrect score.
-function buildBatteryRows(items: KnowledgeItem[]): BatteryRow[] {
-  return items
-    .map((item) => {
-      const byLabel = new Map(item.options.map((o) => [o.label, o]))
-      return {
-        code: item.field_code,
-        topic: BATTERY_TOPIC_LABELS[item.field_code] ?? item.label,
-        statement: item.label,
-        answered: item.n_answered,
-        TRUE_pct: byLabel.get("TRUE")?.pct ?? 0,
-        FALSE_pct: byLabel.get("FALSE")?.pct ?? 0,
-        NOT_AWARE_pct: byLabel.get("Not Aware")?.pct ?? 0,
-        TRUE_n: byLabel.get("TRUE")?.n ?? 0,
-        FALSE_n: byLabel.get("FALSE")?.n ?? 0,
-        NOT_AWARE_n: byLabel.get("Not Aware")?.n ?? 0,
-      }
-    })
-    .sort((a, b) => b.NOT_AWARE_pct - a.NOT_AWARE_pct)
-}
-
-function BatteryTooltip({ active, payload }: { active?: boolean; payload?: { payload: BatteryRow }[] }) {
-  if (!active || !payload?.length) return null
-  const row = payload[0].payload
-  return (
-    <div className="max-w-xs rounded-xl border border-border bg-popover px-3 py-2 text-xs shadow-lg">
-      <p className="mb-1.5 font-medium text-foreground">&ldquo;{row.statement}&rdquo;</p>
-      <div className="space-y-0.5 text-muted-foreground">
-        <div className="flex justify-between gap-3">
-          <span>True</span>
-          <span>
-            {formatN(row.TRUE_n)} ({row.TRUE_pct}%)
-          </span>
-        </div>
-        <div className="flex justify-between gap-3">
-          <span>False</span>
-          <span>
-            {formatN(row.FALSE_n)} ({row.FALSE_pct}%)
-          </span>
-        </div>
-        <div className="flex justify-between gap-3">
-          <span>Not Aware</span>
-          <span>
-            {formatN(row.NOT_AWARE_n)} ({row.NOT_AWARE_pct}%)
-          </span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function LegendDot({ color, label }: { color: string; label: string }) {
-  return (
-    <span className="flex items-center gap-1.5">
-      <span className="size-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-      {label}
-    </span>
-  )
-}
-
-/**
- * One chart for all 9 GRIDxQ15AM items — replaces a grid of 9 separate
- * mini-charts (hard to compare across items) with a single stacked bar per
- * item, sorted by "Not Aware" share so the pattern across topics reads at a
- * glance. True/False/Not Aware keep the same colors and order in every row.
- */
-function KnowledgeBatteryChart({ items }: { items: KnowledgeItem[] }) {
-  const rows = React.useMemo(() => buildBatteryRows(items), [items])
-  const commonAnswered = rows[0]?.answered ?? 0
-
-  return (
-    <div className="space-y-3">
-      <ChartContainer
-        config={{
-          TRUE_pct: { label: "True", color: "var(--primary)" },
-          FALSE_pct: { label: "False", color: "var(--chart-4)" },
-          NOT_AWARE_pct: { label: "Not Aware", color: "var(--muted-foreground)" },
-        }}
-        className="aspect-auto h-[380px] w-full"
-      >
-        <RechartsPrimitive.BarChart data={rows} layout="vertical" margin={{ left: 8, right: 16, top: 4, bottom: 4 }}>
-          <RechartsPrimitive.XAxis type="number" domain={[0, 100]} tickFormatter={(v) => `${v}%`} />
-          <RechartsPrimitive.YAxis type="category" dataKey="topic" width={140} tick={{ fontSize: 11 }} />
-          <RechartsPrimitive.Tooltip content={<BatteryTooltip />} cursor={{ fill: "var(--muted)" }} />
-          <RechartsPrimitive.Bar dataKey="TRUE_pct" stackId="a" fill="var(--primary)" name="True" />
-          <RechartsPrimitive.Bar dataKey="FALSE_pct" stackId="a" fill="var(--chart-4)" name="False" />
-          <RechartsPrimitive.Bar dataKey="NOT_AWARE_pct" stackId="a" fill="var(--muted-foreground)" name="Not Aware" />
-        </RechartsPrimitive.BarChart>
-      </ChartContainer>
-      <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-        <LegendDot color="var(--primary)" label="True" />
-        <LegendDot color="var(--chart-4)" label="False" />
-        <LegendDot color="var(--muted-foreground)" label="Not Aware" />
-      </div>
-      <p className="text-xs text-muted-foreground">
-        {formatN(commonAnswered)} respondents answered each item. &ldquo;Not Aware&rdquo; is an explicit response,
-        not missing data.
-      </p>
-    </div>
-  )
-}
-
-function KnowledgeWordingSheet({ items }: { items: KnowledgeItem[] }) {
-  const rows = React.useMemo(() => buildBatteryRows(items), [items])
-
-  return (
-    <Sheet>
-      <SheetTrigger render={<Button variant="outline" size="sm" />}>Show full statement wording</SheetTrigger>
-      <SheetContent side="right" className="w-full sm:max-w-md">
-        <SheetHeader>
-          <SheetTitle>Full statement wording</SheetTitle>
-          <SheetDescription>The exact statement behind each short topic label above.</SheetDescription>
-        </SheetHeader>
-        <div className="flex-1 space-y-4 overflow-y-auto px-6 pb-6 text-sm">
-          {rows.map((r) => (
-            <div key={r.code}>
-              <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{r.topic}</p>
-              <p className="mt-1 text-foreground/90">&ldquo;{r.statement}&rdquo;</p>
-            </div>
-          ))}
-        </div>
-      </SheetContent>
-    </Sheet>
-  )
-}
-
-/**
- * "Not Aware" is a selected response, not a direct measure of confidence —
- * choosing True or False doesn't establish understanding either. What the
- * data does support is a ranking of reported uncertainty by topic; this
- * section states that distinction plainly rather than overclaiming it.
- */
-function KnowledgeTakeaway({ items }: { items: KnowledgeItem[] }) {
-  const rows = buildBatteryRows(items)
-  const highest = rows.slice(0, 3)
-  const lowest = [...rows].reverse().slice(0, 3)
-  const bottom = lowest[0]
-
-  return (
-    <Card size="sm" className="lg:col-span-2">
-      <CardHeader>
-        <CardTitle className="text-sm">Reported uncertainty by topic</CardTitle>
-        <CardDescription>
-          &ldquo;Not Aware&rdquo; is a selected response, not a direct measure of confidence or accuracy — it
-          cannot tell us respondents&apos; overall financial knowledge or why they haven&apos;t invested. What it
-          does show is which topics carry the most reported uncertainty, and that varies sharply.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <p className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-              Highest share selecting &ldquo;Not Aware&rdquo;
-            </p>
-            <ol className="space-y-1.5 text-sm">
-              {highest.map((r, i) => (
-                <li key={r.code} className="flex items-baseline gap-2">
-                  <span className="tabular-nums text-muted-foreground">{i + 1}.</span>
-                  <span className="flex-1 text-foreground/90">{r.topic}</span>
-                  <span className="shrink-0 tabular-nums text-muted-foreground">{r.NOT_AWARE_pct}%</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div>
-            <p className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-              Lowest share selecting &ldquo;Not Aware&rdquo;
-            </p>
-            <ol className="space-y-1.5 text-sm">
-              {lowest.map((r, i) => (
-                <li key={r.code} className="flex items-baseline gap-2">
-                  <span className="tabular-nums text-muted-foreground">{i + 1}.</span>
-                  <span className="flex-1 text-foreground/90">{r.topic}</span>
-                  <span className="shrink-0 tabular-nums text-muted-foreground">{r.NOT_AWARE_pct}%</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-
-        {highest.length === 3 && bottom ? (
-          <div className="rounded-2xl border border-border bg-muted/30 p-4 text-sm text-foreground/90">
-            <span className="font-medium text-foreground">Reported uncertainty differs by topic.</span> The
-            largest share selected &ldquo;Not Aware&rdquo; for the statement about {highest[0].topic} (
-            {highest[0].NOT_AWARE_pct}%), followed by {highest[1].topic} ({highest[1].NOT_AWARE_pct}%) and{" "}
-            {highest[2].topic} ({highest[2].NOT_AWARE_pct}%). {capitalize(bottom.topic)} had the lowest share (
-            {bottom.NOT_AWARE_pct}%). These responses identify topics for further investigation; they do not
-            establish knowledge accuracy or explain non-investment.
-          </div>
-        ) : null}
       </CardContent>
     </Card>
   )
@@ -741,31 +540,127 @@ export function WhoIsInSampleTab({ filteringEnabled }: { filteringEnabled: boole
               ) : null}
               {getField(data, "Q12M") ? <Q12MCorrectnessCard field={getField(data, "Q12M")!} /> : null}
 
-              <Card size="sm" className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="text-sm">{data.knowledge_grid.field_family} — financial-knowledge battery</CardTitle>
-                  <CardDescription>{data.knowledge_grid.note}</CardDescription>
-                  <CardAction>
-                    <KnowledgeWordingSheet items={data.knowledge_grid.items} />
-                  </CardAction>
-                </CardHeader>
-                <CardContent>
-                  <KnowledgeBatteryChart items={data.knowledge_grid.items} />
-                </CardContent>
-              </Card>
-
-              <KnowledgeTakeaway items={data.knowledge_grid.items} />
-
               {["Q20CM", "Q20DM", "Q20E", "Q20F"].map((code) => {
                 const f = getField(data, code)
                 return f ? <FieldBarCard key={code} field={f} /> : null
               })}
+              {(() => {
+                const q20am = demographics.fields.find((f) => f.field_code === "Q20AM")
+                if (!q20am) return null
+                return (
+                  <FieldBarCard
+                    field={toWhoField({
+                      code: "Q20AM",
+                      label: "Attended an investor education program",
+                      question_wording: q20am.question_wording,
+                      denominator: q20am.denominator,
+                      n_answered: q20am.n_answered,
+                      n_blank: q20am.n_blank,
+                      options: q20am.options.map((o) => ({ label: o.label, n: o.n, pct: o.pct })),
+                    })}
+                    defaultView="bar"
+                    showViewToggle={false}
+                  />
+                )
+              })()}
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
               Preferred medium, format and topics are multi-select (top 3) — percentages can add up to more than 100%.
               &ldquo;Not aware&rdquo;, &ldquo;Don&apos;t know&rdquo;, missing, and explicit negative answers are kept
-              as separate categories, never folded together.
+              as separate categories, never folded together. The 9-item financial-knowledge battery
+              (&ldquo;Not Aware&rdquo; response distribution) is analyzed on the <span className="font-medium text-foreground">Analysis</span> tab.
             </p>
+          </div>
+
+          {/* 6. Financial goals */}
+          <div>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Financial goals</h3>
+            <p className="mb-3 text-xs text-muted-foreground">
+              Share of the 553-respondent focused group who ranked each goal anywhere in their top 3 priorities — not
+              a rank-weighted score. Multi-select (top 3), percentages add up to more than 100%.
+            </p>
+            <FieldBarCard
+              field={toWhoField({
+                code: "Q6_RANK_GRID",
+                label: "Goals ranked in top 3",
+                question_wording: "Which of these are among your top 3 financial goals?",
+                denominator: 553,
+                n_answered: 553,
+                n_blank: 0,
+                options: financialGoals.goals.map((g) => ({ label: g.goal, n: g.n_ranked_in_top3, pct: g.pct_of_553 })),
+              })}
+              defaultView="bar"
+              showViewToggle={false}
+            />
+          </div>
+
+          {/* 7. Income allocation */}
+          <div>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Income allocation</h3>
+            <p className="mb-3 text-xs text-muted-foreground">
+              Recomputed from the raw percentage field, not the derived field that silently converted
+              &ldquo;not administered&rdquo; into a &ldquo;0%&rdquo; category — blank is kept as blank here. Each
+              category is its own independent distribution; these five are not validated as a joint budget and
+              are not summed into a disposable-income figure.
+            </p>
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              {incomeAllocation.categories.map((cat) => (
+                <FieldBarCard
+                  key={cat.slot}
+                  field={toWhoField({
+                    code: `Q1MXGrid_${cat.slot}`,
+                    label: `Income allocation: ${cat.category.toLowerCase()}`,
+                    question_wording: `What share of your monthly income goes to ${cat.category.toLowerCase()}?`,
+                    denominator: cat.focused_group_size,
+                    n_answered: cat.denominator,
+                    n_blank: cat.n_blank,
+                    options: cat.options.map((o) => ({ label: o.option, n: o.n, pct: o.pct_of_answered })),
+                  })}
+                  defaultView="bar"
+                  showViewToggle={false}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 8. Awareness sources and media */}
+          <div>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Reported awareness sources and media</h3>
+            <p className="mb-3 text-xs text-muted-foreground">
+              Restricted to the {formatN(awarenessSources.denominator)} of {formatN(awarenessSources.focused_group_size)}{" "}
+              respondents who also answered the &ldquo;reasons for not investing&rdquo; question — the same answer
+              base as that question, not the full 553. Multi-select, percentages add up to more than 100%. This shows
+              where respondents report hearing about mutual funds and ETFs — it does not show whether that source
+              caused them to invest.
+            </p>
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              <FieldBarCard
+                field={toWhoField({
+                  code: "Q4M",
+                  label: "Sources of awareness",
+                  question_wording: "Where did you hear about mutual funds / ETFs?",
+                  denominator: awarenessSources.denominator,
+                  n_answered: awarenessSources.denominator,
+                  n_blank: 0,
+                  options: awarenessSources.sources.map((o) => ({ label: o.option, n: o.n, pct: o.pct_of_answered })),
+                })}
+                defaultView="bar"
+                showViewToggle={false}
+              />
+              <FieldBarCard
+                field={toWhoField({
+                  code: "Q5M",
+                  label: "Media of awareness",
+                  question_wording: "Through what media did you hear about mutual funds / ETFs?",
+                  denominator: awarenessSources.denominator,
+                  n_answered: awarenessSources.denominator,
+                  n_blank: 0,
+                  options: awarenessSources.media.map((o) => ({ label: o.option, n: o.n, pct: o.pct_of_answered })),
+                })}
+                defaultView="bar"
+                showViewToggle={false}
+              />
+            </div>
           </div>
         </>
       )}

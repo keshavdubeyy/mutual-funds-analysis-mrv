@@ -51,6 +51,10 @@ def main():
     cmp_aa2_income = pd.read_csv(ANALYSIS_DIR / "comparison_AA2_DD2_by_income_tier.csv")
     coverage_income = pd.read_csv(ANALYSIS_DIR / "coverage_AA2_DD2_by_income_tier.csv")
     income_tier_def = pd.read_csv(ANALYSIS_DIR / "income_tier_definition.csv")
+    # AA3_DD3 is answered by the identical 266 respondents who answer AA2_DD2 (verified
+    # directly, docs/segment_findings.md §4) — this coverage-by-previous-investment table
+    # therefore applies identically to both AA2_DD2 and AA3_DD3, not just AA3_DD3.
+    coverage_prev = pd.read_csv(ANALYSIS_DIR / "coverage_AA3_DD3_by_prev_investment.csv")
 
     # Previous investment experience (Q24A, 382/136/35) is already exported at
     # public/data/dataset-method/coverage.json -> previous_investment_q24a — reused
@@ -70,14 +74,17 @@ def main():
             "options": options.to_dict(orient="records"),
         }
 
+    dump_json(field_block("AA1_DD1"), OUT_DIR / "motivations.json")
     dump_json(field_block("AA2_DD2"), OUT_DIR / "barriers.json")
     dump_json(field_block("AA3_DD3"), OUT_DIR / "encouragement.json")
+    dump_json(field_block("AA4_DD4"), OUT_DIR / "stopping_reasons.json")
 
     # --- Comparison by previous investment experience ---
     prev_group_sizes = {row["category_fine"]: int(row["n"]) for _, row in prev_investment.iterrows()}
     comparison_by_experience = {
         "note": "Descriptive only — no significance test, no causal claim. MF+ETF combined scope.",
         "group_sizes": prev_group_sizes,
+        "coverage": coverage_prev.to_dict(orient="records"),
         "barriers_AA2_DD2": cmp_aa2_prev.rename(columns={cmp_aa2_prev.columns[0]: "option"}).to_dict(
             orient="records"
         ),

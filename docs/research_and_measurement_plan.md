@@ -30,7 +30,7 @@ Both counts were re-verified after the holding-status correction in §2 below an
 ### Mutual funds vs. MF+ETF
 
 - **Product-holding/consideration fields** (`Q21A`, `Q22A_All`, `Q23A`, `Q24A`, `Q25A`) list *"Mutual Funds (One-time Lumpsum / SIP)"* and *"Exchange Trade Funds (ETF) / Gold Exchange Trade Funds (Gold ETF)"* as **separate, distinguishable options**, plus a combined `MF_ETF`/`MF+ETF` tag whenever either is chosen. This study's consideration/holding definitions use the literal MF token, never the bare tag (a meaningful share of tagged rows hold/consider ETF only).
-- **Every barrier and encouragement field** (`A11_D11`–`A15_D15`, `AA1_DD1`–`AA4_DD4`) is asked **only at the combined MF+ETF level**. No field reports barriers/encouragement for mutual funds in isolation from ETFs.
+- **Every barrier and encouragement field** (`A11_D11`–`A15_D15`, `AA1_DD1`–`AA4_DD4`) is asked **only at the combined MF+ETF level**. No field reports barriers/encouragement for mutual funds in isolation from ETFs. This MF+ETF-combined restriction does **not** apply to the holding/consideration fields (`Q21A`, `Q22A_All`, `Q23A`, `Q24A`, `Q25A`) — those distinguish MF from ETF directly, per the bullet above. The awareness-source fields (`Q4_Q5_Inv_Filt`/`Q4_Q5_NONInv_Filt`) share the same MF+ETF-combined constraint for the non-holder population specifically — verified directly: `Q4_Q5_NONInv_Filt[{_1_2}]` only has a combined slot, no MF-only slot exists for non-holders. This is a property of the survey design, not a scope choice made in this analysis.
 - **`Q24A` (previous investment) has its own, narrower product list** — verified directly against the raw data, not assumed: it offers only 7 securities-market products (Mutual Funds, ETF/Gold ETF, Futures & Options, Stocks/Shares, REITs/InvIT, Corporate Bonds, Alternate Investment Fund), the same 7 the SEBI report's own Annexure calls "Securities products." It does **not** offer Fixed Deposits, insurance, EPF, PPF, NPS, post office schemes, physical gold, chit funds, or crypto — all of which `Q22A_All` (current holdings) does ask about. **`Q24A`'s `"None of the above"` therefore means "none of these 7 securities-market products," not "no prior investment in any financial product."** Earlier drafts of this plan and `docs/descriptive_findings.md` described this category as "no prior investment in anything" — that wording is corrected here and should be read as superseded wherever it appears in earlier documents.
 
 ### Inclusion of previous investors
@@ -184,9 +184,9 @@ No chi-square, t-test, or other significance test is used for any comparison abo
 
 ---
 
-## 5. Future company KPIs (not calculable here — definitions only)
+## 5. Company-side outcomes — out of scope by design, not a pending task
 
-Proposed for INDmoney's own product analytics team to define, instrument, and agree — **explicitly marked unavailable in SEBI data**, not estimated or benchmarked from this survey.
+**Note (later revision):** this project is defined around what the SEBI survey data supports. INDmoney's own product/activity data (the definitions below) is out of scope for this project by design — documented here as background for whoever eventually instruments it, and stated as a plain limitation on the dashboard (`docs/analysis_coverage_checklist.md` item 15; the Research Plan page's "Limitations" section) rather than tracked as unfinished project work. The definitions below are **not** calculable from SEBI data and are not estimated or benchmarked from this survey.
 
 ### First-SIP order placement vs. first-SIP payment completion — kept as two separate events
 
@@ -215,6 +215,63 @@ Both KPIs require INDmoney's own event data and internal sign-off before they ca
 
 ---
 
+## 6. Supplementary measures (computed in `analysis/05_supplementary_measures.ipynb`)
+
+Documented with the same rigor as §2 — source fields, numerator/denominator, eligible group, missing-response handling, and limitations. All are unweighted and descriptive only, per the standing scope statement in §1.
+
+### 6.1 Awareness-source and media distributions
+
+| | |
+|---|---|
+| **Answers** | Where does the focused group (specifically, the subset who answered the barriers question) report hearing about MF/ETF? |
+| **Source fields** | `Q4_Q5_NONInv_Filt[{_1_2}].Q4M` (sources), `.Q5M` (media) — multi-select, several option labels contain internal commas |
+| **Numerator** | Respondents selecting a given source/medium |
+| **Denominator** | 266 of 553 — verified by exact respondent-ID-set comparison to be identical to the `AA2_DD2` answer base |
+| **Eligible group** | Focused group, restricted to `AA2_DD2` substantive answerers; only a combined MF+ETF slot exists for this population (no MF-only slot) — a survey-design property, not a scope choice |
+| **Missing/special** | 287 blank = not part of this answer base, same routing as `AA2_DD2` |
+| **Interpretation/limitations** | Shows where respondents report hearing about these products, not whether that source caused them to invest. Cannot separate mutual funds from ETFs for this population — the survey doesn't offer that split here |
+
+### 6.2 Corrected income-allocation distributions
+
+| | |
+|---|---|
+| **Answers** | How does the focused group report allocating income across 5 categories (expenses, savings, loans, investments, other)? |
+| **Source fields** | `Q1MXGrid[{_1..5}].Q1M` — the true raw numeric field, **not** the derived `Q1M_DP[{_1..5}].Q1M` used previously |
+| **Correction** | `Q1M_DP` silently converts a blank raw value into a `"0%"` category (confirmed directly: e.g. the investments category shows 32 genuinely blank raw values vs. 75 shown as `"0%"` in the derived field). Recomputed here from raw, with blank kept as blank |
+| **Denominator** | 534 / 532 / 517 / 521 / 527 of 553, one per category (19–36 blank per category) |
+| **Eligible group** | Full focused group |
+| **Missing/special** | Blank kept distinct from a genuine `0.0` raw answer |
+| **Interpretation/limitations** | Each category's distribution is now individually reliable. The five are **not** validated as a single consistent budget and are never summed into a disposable-income figure |
+
+### 6.3 Financial-goal ranking
+
+| | |
+|---|---|
+| **Answers** | Which financial goals does the focused group rank in its top 3 priorities? |
+| **Source fields** | `Q6_RANK_GRID[{_1..13}].Q6_RANK` (12 named goals + one free-text "Others" slot) |
+| **Eligibility and rank meaning, verified before computing** | All 553 focused-group respondents have at least one non-blank slot; every respondent's non-blank pattern is exactly `{1.0, 2.0, 3.0}` (occasionally a 4-slot variant when the free-text "Others" item is also used) — i.e. a top-3 priority ranking, not an open scale |
+| **Denominator** | 553 |
+| **Missing/special** | 0 focused-group respondents used the free-text "Others" slot — reported as its own separate 0% row, not folded into a named goal |
+| **Interpretation/limitations** | Reports "selected in top 3" (any non-blank rank) per goal — not a rank-weighted score. Does not test whether a respondent's ranked goals connect to their reported MF-consideration motivations (`AA1_DD1`) — that comparison wasn't run |
+
+### 6.4 `Q12M` — distinct from the `GRIDxQ15AM` battery
+
+`Q12M` (inflation/real-returns numeracy) has one arithmetically correct answer stated in the question itself ("Less than today," given a 5% return against 6% inflation) — 245 of 553 (44.3%) answer correctly. This is fundamentally different from the 9-item `GRIDxQ15AM` battery (§2.x / `docs/analysis_coverage_checklist.md` item 5), which has **no** documented answer key anywhere in this project's sources and is therefore never scored correct/incorrect. The two should never be conflated into one "knowledge" figure.
+
+### 6.5 Three planned relationships
+
+Each restricted to the substantive answerers of the relevant question (266, for both `AA2_DD2` and `AA3_DD3`), joined at the respondent level (not derived from separate marginal totals), and gated by the existing small-group rule (`SMALL_GROUP_MIN_N = 30`, `docs/segment_findings.md`).
+
+- **(a) `QRT` (risk/return preference) × selecting "fear of losing money due to market risks" on `AA2_DD2`.** Result: 28.0% / 28.1% / 35.4% across the three reportable risk-preference categories (one category, n=22, below the reporting minimum). No clear gradient — the group expressing some risk tolerance selects this barrier slightly *more* than the two more risk-averse groups, the opposite of a simple risk-aversion story. Reported as a weak, non-monotonic association, not a trend.
+- **(b) `GRIDxQ15AM[{_1}]`** ("Direct plans in mutual funds have a lower expense ratio than regular plans") **× selecting "Better education on how mutual funds work" on `AA3_DD3`.** This specific item was chosen *before* looking at any result, as the one item among the 9 most directly about mutual-fund product mechanics (as opposed to generic financial concepts or account/KYC mechanics) — not chosen post hoc from whichever showed the largest gap. Result: 37.8% (True) / 40.0% (Not Aware) / 25.6% (False). Weak and mixed — not a consistent knowledge-gap pattern.
+- **(c) `GRIDxQ15AM[{_4}]`** ("KYC can be completed online") **× selecting "Simple and easy process for investing" on `AA3_DD3`.** Result: 45.2% (True) vs. 43.3% (False) — a 1.9pp gap (the "Not Aware" category, n=28, is below the reporting minimum). Essentially no difference.
+
+All three describe associations observed in this specific sample, not causes. No significance test is applied to any of them.
+
+**Reused, not re-derived:** the `AA2_DD2`/`AA3_DD3` reason-field tokenizer vocabulary was loaded directly from the already-verified `data/processed/analysis/barrier_option_counts.csv` rather than re-running the vocabulary-discovery step (which is not perfectly deterministic across re-runs when fragments recur an equal number of times — a scratch re-run produced 19/11 options instead of the verified 18/10).
+
+---
+
 ## Prioritized analysis checklist
 
 This checklist is scoped to what this **unweighted, academic** analysis needs next. It does not treat applying survey weights, contacting INDmoney, or resolving every open cohort-definition item as blocking prerequisites — those are separate tracks, noted where relevant, that can proceed in parallel or later without holding up this stage's descriptive work.
@@ -225,7 +282,8 @@ This checklist is scoped to what this **unweighted, academic** analysis needs ne
 4. ~~Decide and document the `Q10A` income re-grouping, then check coverage per tier~~ — done; see `docs/segment_findings.md` for the fixed tiers and the small-group rule applied.
 5. ~~Run comparison C (barriers by income tier)~~ — done, with thin tiers reported as counts only per the fixed rule.
 6. When (not before) a statistical test is wanted for a future comparison, assess coverage/missingness and respondent-independence separately (§3) — an open item, not a blocker for descriptive work.
-7. Survey weighting (`WeightMainM2`, `Weight_to_Sample`) remains a deliberate, separate track for whenever a population-representative (rather than sample-descriptive) result is needed — not required before further descriptive analysis in this repository.
-8. The two still-open cohort-definition items (the 18 ambiguous "Service (Urban)" occupation records; `A15_D15`'s unresolved routing) remain documented limitations of this sample — noted, not blocking.
+7. Survey weighting (`WeightMainM2`, `Weight_to_Sample`) remains a deliberate, separate track for whenever a population-representative (rather than sample-descriptive) result is needed — not required before further descriptive analysis in this repository. Applying these weights alone would not, by itself, guarantee a population-representative result — that depends on the full survey design (sampling frame, response patterns, clustering), not on weighting in isolation. This is not attempted or implied anywhere in this repository.
+8. The two still-open cohort-definition items (the 1,338 ambiguous occupation records — 1,320 "Others (Specify)" plus 18 undocumented "Service (Urban)" — excluded at the salaried-occupation selection step, see `docs/cohort_definition.md` §2; `A15_D15`'s unresolved routing) remain documented limitations of this sample — noted, not blocking.
 9. The §4 worked examples (and any new ones from comparisons B/C) are ready whenever INDmoney stakeholder discussion is scheduled — that conversation is not a prerequisite for continuing this repository's own analysis.
 10. Before anything moves into `public/data/` or a dashboard: review definitions and denominators established here and in `docs/segment_findings.md` against what the dashboard will actually display.
+11. ~~Compute the three planned relationships (§3), awareness-source/media distributions, corrected income-allocation distributions, and financial-goal ranking~~ — done, see §6.

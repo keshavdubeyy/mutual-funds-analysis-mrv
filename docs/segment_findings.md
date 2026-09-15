@@ -72,7 +72,23 @@ Full option table (all 19 options): `data/processed/analysis/comparison_AA2_DD2_
 - No significance test was run for any comparison; none is warranted yet without first assessing survey design (coverage/missingness and respondent-independence, treated as two separate questions — see the plan §3).
 - Comparable coverage rates (comparison B) do not prove the answering respondents are representative of their subgroup; differing coverage rates (comparison C) make that concern more visible but do not resolve it either way.
 - MF+ETF combined scope applies to every barrier/encouragement finding above — none of it isolates mutual funds from ETF/Gold ETF.
-- The three "unknown" broader-group holding statuses, and the two open cohort-definition items (18 ambiguous "Service (Urban)" occupation records; `A15_D15`'s unresolved routing), remain documented limitations, not blockers.
+- The three "unknown" broader-group holding statuses, and the two open cohort-definition items (1,338 ambiguous occupation records — 1,320 "Others (Specify)" plus 18 undocumented "Service (Urban)"; `A15_D15`'s unresolved routing), remain documented limitations, not blockers.
 - The two new comparisons here are new observations in this specific unweighted sample, not generalizable claims, and not evidence that any product change would affect completion.
 
-**Stops here.** No dashboard, no `public/data/` publishing.
+## 8. Supplementary measures (new pass, `analysis/05_supplementary_measures.ipynb`)
+
+Headline results for the newly-computed measures — full definitions in `docs/research_and_measurement_plan.md` §6.
+
+- **Awareness sources/media**: among the 266 who answered the barriers question, "Friends, Family, and Colleagues" (57.9%) and "Financial Influencers on social media" (54.1%) are the top-reported sources; "Social media" (57.5%) and "Television" (42.1%) the top media.
+- **Corrected income allocation**: recomputed from the raw `Q1MXGrid` field; real blank rates now visible per category (19–36 of 553), no longer masked as "0%" by the derived `Q1M_DP` field.
+- **Financial-goal ranking**: "Growing wealth" (42.5%) and "Supporting family members" (37.3%) are the two most commonly top-3-ranked goals of 553; 0 respondents used the free-text "Others" slot.
+
+### Weak or inconclusive relationships
+
+- **Risk preference (`QRT`) and fear of losing money**: no clear gradient — 28.0% / 28.1% / 35.4% across the three reportable `QRT` categories. The group expressing some risk tolerance selects this barrier slightly *more* than the two more risk-averse groups, the opposite of what a simple risk-aversion story would predict.
+- **Fund-fee knowledge (`GRIDxQ15AM[{_1}]`) and demand for "better education"**: weak and mixed — 37.8% (selected True) vs. 40.0% ("Not Aware") vs. 25.6% (selected False). Not a consistent knowledge-gap pattern; the group who selected False asks for education *least*, not most. This battery has no documented answer key, so "True"/"False" describe only what was selected, never whether it was correct.
+- **Online-KYC knowledge and preference for a "simple process"**: essentially no difference — 45.2% (selected True) vs. 43.3% (selected False), a 1.9pp gap.
+
+All three describe associations observed in this sample, not causes; no significance test is applied to any of them, consistent with §7 above.
+
+Unlike comparisons A–C above (analysis-only at the time this document was first written), the §8 measures were subsequently published: `scripts/export_supplementary_measures.py` exports them to `public/data/findings/` (`awareness_sources.json`, `income_allocation.json`, `financial_goals.json`, `relationships.json`), and they render on the Findings dashboard's "Who is in our sample?" tab and Analysis tab respectively — see `docs/analysis_coverage_checklist.md` items 11–13 and 16–18.

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import Link from "next/link"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -16,6 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import { SectionHeading } from "@/components/dataset-method/section-heading"
 import { KpiMappingSection } from "@/components/deliverables/kpi-mapping-section"
+import { FindingsMappingTable } from "@/components/deliverables/findings-mapping-table"
 
 export const metadata = {
   title: "Deliverables — SEBI Investor Survey 2025",
@@ -45,7 +47,22 @@ const DELIVERABLES: DeliverableSection[] = [
       "Groups 1–6 (industry KPIs) cover how the segment behaves. Groups 7–9 (marketing-relevant metrics) cover how to reach and persuade it. Note: groups 7–9 aren't marketing metrics in the standard sense (CAC, conversion rate, ROI) — we have no data on actual marketing activity. Click a KPI name to open its tab on the Analysis page, or a specific question to jump straight to that chart — in either view below.",
     content: <KpiMappingSection />,
   },
-  { label: "4", title: "Analysis and visual representations" },
+  {
+    label: "4",
+    title: "Analysis and visual representations",
+    body: "Every chart, table, and written finding for each KPI and marketing metric lives on the Analysis page. Click a finding below to jump straight to the chart it's based on.",
+    content: (
+      <div className="flex flex-col gap-4">
+        <Link
+          href="/findings/analysis"
+          className="mt-3 inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
+        >
+          To view analysis, click here →
+        </Link>
+        <FindingsMappingTable />
+      </div>
+    ),
+  },
   { label: "5", title: "Propositions" },
 ]
 

@@ -57,10 +57,44 @@ function ChartContainer({
 }) {
   const uniqueId = React.useId()
   const chartId = `chart-${id ?? uniqueId.replace(/:/g, "")}`
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  // Charts can mount inside a `hidden` (display:none) tab panel kept alive for deep-linking
+  // and print (see analysis-tab.tsx) — measuring a 0×0 container is what triggers Recharts'
+  // "width/height should be greater than 0" console warning. Deferring the actual
+  // ResponsiveContainer mount until the container is visible (or printing starts) avoids that
+  // spurious measurement without changing anything once the chart is actually shown.
+  const [canRenderChart, setCanRenderChart] = React.useState(false)
+
+  React.useEffect(() => {
+    if (canRenderChart) return
+    const el = containerRef.current
+    if (!el) return
+
+    if (el.getClientRects().length > 0) {
+      setCanRenderChart(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) setCanRenderChart(true)
+    })
+    observer.observe(el)
+
+    function handleBeforePrint() {
+      setCanRenderChart(true)
+    }
+    window.addEventListener("beforeprint", handleBeforePrint)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("beforeprint", handleBeforePrint)
+    }
+  }, [canRenderChart])
 
   return (
     <ChartContext.Provider value={{ config }}>
       <div
+        ref={containerRef}
         data-slot="chart"
         data-chart={chartId}
         className={cn(
@@ -70,11 +104,13 @@ function ChartContainer({
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer
-          initialDimension={initialDimension}
-        >
-          {children}
-        </RechartsPrimitive.ResponsiveContainer>
+        {canRenderChart ? (
+          <RechartsPrimitive.ResponsiveContainer
+            initialDimension={initialDimension}
+          >
+            {children}
+          </RechartsPrimitive.ResponsiveContainer>
+        ) : null}
       </div>
     </ChartContext.Provider>
   )

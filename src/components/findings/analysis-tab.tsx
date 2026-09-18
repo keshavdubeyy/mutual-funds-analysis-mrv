@@ -12,8 +12,10 @@ import { GroupDifferencesTab } from "@/components/analysis/group-differences-tab
 import { AwarenessMediaTab } from "@/components/analysis/awareness-media-tab"
 import { EncouragementFactorsTab } from "@/components/analysis/encouragement-factors-tab"
 import { LearningPreferencesTab } from "@/components/analysis/learning-preferences-tab"
+import { GroupDifferencesNavContext } from "@/components/analysis/group-differences-nav-context"
 import { formatN } from "@/lib/dataset-method-data"
 import { demographics } from "@/lib/findings-data"
+import { goToEvidenceElement } from "@/lib/dom-highlight"
 
 const DEFAULT_TOPIC = "motivations-financial-goals"
 
@@ -49,19 +51,6 @@ function edgeFadeMask(canScrollLeft: boolean, canScrollRight: boolean): string |
     return "linear-gradient(to right, transparent, black 24px)"
   }
   return undefined
-}
-
-/** Briefly rings a chart card in the primary color via an inline box-shadow — not Tailwind's
- * `ring-*` classes, which would collide with the Card component's own permanent `ring-1`
- * (added via classList, not through `cn()`, so nothing would merge the two) — so a reader
- * who clicked a specific measure (from the Deliverables table, or any other deep link) can
- * immediately see which card that was, not just that the page scrolled somewhere. */
-function flashHighlight(el: HTMLElement) {
-  el.style.transition = "box-shadow 200ms ease-out"
-  el.style.boxShadow = "0 0 0 2px var(--primary), 0 0 0 5px var(--background)"
-  window.setTimeout(() => {
-    el.style.boxShadow = ""
-  }, 2200)
 }
 
 /**
@@ -135,68 +124,78 @@ export function AnalysisTab() {
     const hash = window.location.hash.replace(/^#/, "")
     if (!hash) return
     requestAnimationFrame(() => {
-      const el = document.getElementById(hash)
-      el?.scrollIntoView({ block: "center" })
-      if (el) flashHighlight(el)
+      goToEvidenceElement(hash)
     })
     window.history.replaceState(null, "", window.location.pathname + window.location.search)
   }, [topic])
 
-  return (
-    <div className="space-y-6">
-      <div className="max-w-3xl space-y-1">
-        <h2 className="text-xl font-semibold text-foreground md:text-2xl">Investment research overview</h2>
-        <p className="text-xs text-muted-foreground">
-          {formatN(demographics.focused_group_size)} selected respondents · Unweighted survey · Answer counts vary
-        </p>
-      </div>
+  // Group Differences renders only one comparison card at a time (a select, not a tab set),
+  // so a Findings evidence link that targets a specific comparison needs to ask that tab to
+  // switch to it before the scroll/highlight above can find the target element. Shared via
+  // context because the request originates from FindingsSection, several components away.
+  const [gdRequestedKey, setGdRequestedKey] = React.useState<string | null>(null)
+  const groupDifferencesNav = React.useMemo(
+    () => ({ selectComparison: setGdRequestedKey, requestedKey: gdRequestedKey }),
+    [gdRequestedKey]
+  )
 
-      <Tabs value={topic} onValueChange={(v) => handleTopicChange(v as string)} className="min-w-0">
-        <div
-          ref={tabScrollRef}
-          className="w-full max-w-full min-w-0 overflow-x-auto overscroll-x-contain"
-          style={{
-            maskImage: edgeFadeMask(canScrollLeft, canScrollRight),
-            WebkitMaskImage: edgeFadeMask(canScrollLeft, canScrollRight),
-          }}
-        >
-          <TabsList className="w-max justify-start">
-            {TOPICS.map((t) => (
-              <TabsTrigger key={t.key} value={t.key} data-tab-id={t.key} className="flex-none shrink-0 whitespace-nowrap">
-                {t.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+  return (
+    <GroupDifferencesNavContext.Provider value={groupDifferencesNav}>
+      <div className="space-y-6">
+        <div className="max-w-3xl space-y-1">
+          <h2 className="text-xl font-semibold text-foreground md:text-2xl">Investment research overview</h2>
+          <p className="text-xs text-muted-foreground">
+            {formatN(demographics.focused_group_size)} selected respondents · Unweighted survey · Answer counts vary
+          </p>
         </div>
 
-        <TabsContent value="motivations-financial-goals" className="pt-4" keepMounted>
-          <MotivationsFinancialGoalsTab />
-        </TabsContent>
-        <TabsContent value="reported-barriers" className="pt-4" keepMounted>
-          <ReportedBarriersTab />
-        </TabsContent>
-        <TabsContent value="previous-investment" className="pt-4" keepMounted>
-          <PreviousInvestmentTab />
-        </TabsContent>
-        <TabsContent value="risk-preferences" className="pt-4" keepMounted>
-          <RiskPreferencesTab />
-        </TabsContent>
-        <TabsContent value="reported-uncertainty" className="pt-4" keepMounted>
-          <ReportedUncertaintyTab />
-        </TabsContent>
-        <TabsContent value="group-differences" className="pt-4" keepMounted>
-          <GroupDifferencesTab />
-        </TabsContent>
-        <TabsContent value="awareness-media" className="pt-4" keepMounted>
-          <AwarenessMediaTab />
-        </TabsContent>
-        <TabsContent value="encouragement-factors" className="pt-4" keepMounted>
-          <EncouragementFactorsTab />
-        </TabsContent>
-        <TabsContent value="learning-preferences" className="pt-4" keepMounted>
-          <LearningPreferencesTab />
-        </TabsContent>
-      </Tabs>
-    </div>
+        <Tabs value={topic} onValueChange={(v) => handleTopicChange(v as string)} className="min-w-0">
+          <div
+            ref={tabScrollRef}
+            className="w-full max-w-full min-w-0 overflow-x-auto overscroll-x-contain"
+            style={{
+              maskImage: edgeFadeMask(canScrollLeft, canScrollRight),
+              WebkitMaskImage: edgeFadeMask(canScrollLeft, canScrollRight),
+            }}
+          >
+            <TabsList className="w-max justify-start">
+              {TOPICS.map((t) => (
+                <TabsTrigger key={t.key} value={t.key} data-tab-id={t.key} className="flex-none shrink-0 whitespace-nowrap">
+                  {t.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+
+          <TabsContent value="motivations-financial-goals" className="pt-4" keepMounted>
+            <MotivationsFinancialGoalsTab />
+          </TabsContent>
+          <TabsContent value="reported-barriers" className="pt-4" keepMounted>
+            <ReportedBarriersTab />
+          </TabsContent>
+          <TabsContent value="previous-investment" className="pt-4" keepMounted>
+            <PreviousInvestmentTab />
+          </TabsContent>
+          <TabsContent value="risk-preferences" className="pt-4" keepMounted>
+            <RiskPreferencesTab />
+          </TabsContent>
+          <TabsContent value="reported-uncertainty" className="pt-4" keepMounted>
+            <ReportedUncertaintyTab />
+          </TabsContent>
+          <TabsContent value="group-differences" className="pt-4" keepMounted>
+            <GroupDifferencesTab />
+          </TabsContent>
+          <TabsContent value="awareness-media" className="pt-4" keepMounted>
+            <AwarenessMediaTab />
+          </TabsContent>
+          <TabsContent value="encouragement-factors" className="pt-4" keepMounted>
+            <EncouragementFactorsTab />
+          </TabsContent>
+          <TabsContent value="learning-preferences" className="pt-4" keepMounted>
+            <LearningPreferencesTab />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </GroupDifferencesNavContext.Provider>
   )
 }

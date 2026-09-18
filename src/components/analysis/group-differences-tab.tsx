@@ -16,6 +16,8 @@ import {
 import { getMeasureById } from "@/lib/research-plan-data"
 import { AnalysisChartCard } from "./analysis-chart-card"
 import { ComparisonRowsCard, ComparisonRowsTable } from "./comparison-rows"
+import { useGroupDifferencesNav } from "./group-differences-nav-context"
+import { FindingsSection } from "./findings-section"
 
 interface ComparisonOption {
   key: string
@@ -89,6 +91,7 @@ function buildComparisons(): ComparisonOption[] {
 export function GroupDifferencesTab() {
   const comparisons = React.useMemo(() => buildComparisons(), [])
   const [key, setKey] = React.useState(comparisons[0].key)
+  const nav = useGroupDifferencesNav()
 
   // Only the selected comparison's chart card is in the DOM at any time (this is a select,
   // not a set of tabs), so a deep link like #group-differences-kyc-simple-process needs to
@@ -102,6 +105,16 @@ export function GroupDifferencesTab() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount only
   }, [])
+
+  // A findings click after mount asks for a specific comparison via context rather than the
+  // hash effect above (which only runs once). Sync during render, not in an effect, so the
+  // requested comparison is selected in the same commit the click is handled in — no lag.
+  const requestedKey = nav?.requestedKey ?? null
+  const [lastAppliedRequest, setLastAppliedRequest] = React.useState<string | null>(null)
+  if (requestedKey && requestedKey !== lastAppliedRequest && comparisons.some((c) => c.key === requestedKey)) {
+    setLastAppliedRequest(requestedKey)
+    setKey(requestedKey)
+  }
 
   const selected = comparisons.find((c) => c.key === key) ?? comparisons[0]
   const measure = getMeasureById(selected.measureId)
@@ -137,6 +150,8 @@ export function GroupDifferencesTab() {
         chart={<ComparisonRowsCard rows={selected.rows} groupMeta={selected.groupMeta} />}
         table={<ComparisonRowsTable rows={selected.rows} groupMeta={selected.groupMeta} />}
       />
+
+      <FindingsSection themeId="group-differences" />
     </div>
   )
 }

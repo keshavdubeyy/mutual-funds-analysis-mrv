@@ -4,6 +4,7 @@ import { getMeasureById } from "@/lib/research-plan-data"
 import { answeredLine } from "@/lib/format-pct"
 import { AnalysisChartCard } from "./analysis-chart-card"
 import { QuestionBarChart, QuestionAnswersTable } from "./question-answers-card"
+import { FindingsSection } from "./findings-section"
 
 const MF_ETF_BADGE = (
   <Badge variant="secondary" className="font-normal">
@@ -31,6 +32,8 @@ export function ReportedBarriersTab() {
           table={<QuestionAnswersTable options={barriers.options} />}
         />
       </div>
+
+      <FindingsSection themeId="reported-barriers" />
     </div>
   )
 }

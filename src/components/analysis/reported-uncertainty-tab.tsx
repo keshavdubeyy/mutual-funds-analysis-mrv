@@ -15,6 +15,7 @@ import {
   KnowledgeFilterToggle,
   type BatteryFilter,
 } from "./knowledge-battery-card"
+import { FindingsSection } from "./findings-section"
 
 function field(code: string): WhoField {
   const f = whoIsInSampleBase.fields.find((d) => d.field_code === code)
@@ -83,6 +84,8 @@ export function ReportedUncertaintyTab() {
           <FieldCard id="stock-market-familiarity" title="How familiar does the focused group say it is with stock markets?" code="Q11M" measureId="stock-market-familiarity" />
         </EqualHeightChartsProvider>
       </div>
+
+      <FindingsSection themeId="reported-uncertainty" />
     </div>
   )
 }

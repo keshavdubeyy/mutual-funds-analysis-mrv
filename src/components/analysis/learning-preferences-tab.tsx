@@ -4,6 +4,7 @@ import { answeredLine } from "@/lib/format-pct"
 import { AnalysisChartCard } from "./analysis-chart-card"
 import { EqualHeightChartsProvider } from "./equal-height-context"
 import { OptionBarChart, OptionsTable } from "./option-bar-chart"
+import { FindingsSection } from "./findings-section"
 
 function field(code: string): DemographicField {
   const f = demographics.fields.find((d) => d.field_code === code)
@@ -58,6 +59,8 @@ export function LearningPreferencesTab() {
           table={<OptionsTable options={q20am.options} />}
         />
       </div>
+
+      <FindingsSection themeId="learning-preferences" />
     </div>
   )
 }

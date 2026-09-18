@@ -1,117 +1,407 @@
-# Research Synthesis — Salaried Gen Z, Mutual Fund Barriers and Encouragement Factors
+# Analysis and Visual Representations — Full Register
 
-Synthesizes `docs/research_and_measurement_plan.md`, `docs/descriptive_findings.md`, `docs/segment_findings.md`, `analysis/03_descriptive_analysis.ipynb`, and `analysis/04_segment_comparisons.ipynb`. **Unweighted, descriptive only.** No respondent-level data appears below.
-
-## The original INDmoney question, and the narrower question this data can answer
-
-**Original business question:** how can INDmoney increase first-SIP completion — getting more prospective investors from showing intent to actually completing their first mutual-fund SIP?
-
-**INDmoney's own product data (signups, onboarding steps, order placement, payment success) does not exist in this project.** This project uses the SEBI Investor Survey 2025, a national household survey — a different population, collected for a different purpose, with no link to INDmoney whatsoever. The question this data *can* answer is narrower:
-
-> *What barriers and encouragement factors are reported by salaried Gen Z respondents who have considered mutual funds but do not currently hold them, and how do these differ by income and previous investment experience?*
-
-Everything below describes this SEBI sample. It supports *hypotheses* worth investigating in INDmoney's own product and user research — it does not measure or predict INDmoney outcomes.
-
-## The two respondent groups
-
-- **Broader group, n = 4,346** — Mains-complete, `Life_Stage == "Gen Z"` (SEBI Main Report Annexure: ages 18–28), and `Q14` occupation in the SEBI-documented "Salaried" set. No requirement on MF awareness, consideration, or holding.
-- **Focused group, n = 553** — the subset of the broader group who report considering mutual funds (`Q23A`) and have an interpretable, MF-free current-holdings response (`Q22A_All`). Full derivation: `docs/cohort_definition.md`.
-
-Both groups' membership was re-verified after the holding-status field correction (`docs/segment_findings.md` §1) and is unchanged.
+Every KPI theme and every metric currently shown on the live Analysis page (`/findings/analysis`), transcribed tab by tab, in the same order as the page. No new analysis, no interpretation added beyond what each tab already states — this is the text and numbers already on the dashboard. All figures are **unweighted, descriptive, self-reported**, from the 553-person focused group (salaried Gen Z, considered mutual funds, don't currently hold one) unless a table says otherwise.
 
 ---
 
-## Findings
+## 1. Motivations and financial goals
 
-Five findings, selected for relevance to the INDmoney question above — not for which showed the largest gap.
+### Reasons for considering investing — `AA1_DD1`
+- **Wording:** "Top 3 Primary reasons for considering investing in MF/ETFs."
+- **Scope:** MF+ETF combined.
+- **Base:** 240 of 553 answered (313 blank = missing/unknown, never "no reason").
+- **Full results (20 options including "Other," multi-select, percentages sum to ~300%):**
 
-### Finding 1 — A quarter of the focused group are past mutual-fund investors; only some report no prior securities-market investment
+| Reason | n | % of 240 |
+|---|---|---|
+| Long-term growth (building wealth over time) | 62 | 25.8% |
+| Good for short term investments | 60 | 25.0% |
+| Potential for higher returns | 52 | 21.7% |
+| Lower risk of losing money | 51 | 21.2% |
+| Quick gains with small investments | 49 | 20.4% |
+| Investment strategy based on financial goals and risk appetite | 48 | 20.0% |
+| Protection against inflation | 45 | 18.8% |
+| Convenience and ease of investment | 41 | 17.1% |
+| Diversifying my portfolio | 39 | 16.2% |
+| Tax benefits or savings | 38 | 15.8% |
+| Professional fund management by experts | 37 | 15.4% |
+| To build additional sources of income | 37 | 15.4% |
+| Clear and immediate information about actual returns | 33 | 13.8% |
+| Lower fees and expenses compared to other investments | 32 | 13.3% |
+| Zero account opening charges/Ease of onboarding process | 27 | 11.2% |
+| My friends/acquaintances are currently investing in ETFs | 24 | 10.0% |
+| Interest in investing in ETFs | 18 | 7.5% |
+| To learn how this investment product works | 14 | 5.8% |
+| Had extra funds to invest | 12 | 5.0% |
+| Other (please specify) | 1 | 0.4% |
 
-- **Counts/denominator:** of the full focused group (n = 553, 0 missing): 136 (24.6%) report previous mutual-fund investment; 382 (69.1%) selected `"None of the above"` on `Q24A`; 35 (6.3%) report prior investment in another securities-market product but not MF.
-- **Question wording and scope:** `Q24A` — *"Could you please tell me if you have ever invested in these products in the past"*. Verified directly against the raw data: `Q24A` offers only 7 securities-market products (Mutual Funds, ETF/Gold ETF, Futures & Options, Stocks/Shares, REITs/InvIT, Corporate Bonds, Alternate Investment Fund — the same 7 the SEBI report itself calls "Securities products"). It does **not** ask about Fixed Deposits, insurance, EPF, PPF, NPS, post office schemes, physical gold, or crypto.
-- **Which group:** focused group (553).
-- **What this supports:** the 382 respondents in the `"None of the above"` category should be described as having **reported none of the seven listed securities-market products** — not as "never invested" or "first-time investors" in any general sense. The focused group as a whole is not a first-time-SIP-user sample; it mixes past MF investors, respondents with no prior securities-market investment (by this narrower definition), and respondents experienced with other securities products but not MF.
-- **Alternative explanations / limitations:** none needed for the count itself — this is a direct tabulation of what respondents reported, not an inference. The main risk is *reader* misinterpretation (treating "None of the above" as "financially inexperienced"), which is why the wording above is used throughout this document.
-- **Additional evidence that would help:** a question (not present in this workbook) covering the fuller set of financial products would establish whether the 382 have any financial product experience at all, not just securities-market experience.
+- **Meaning:** shows which reasons this group reports most often for considering MF/ETF.
 
-### Finding 2 — About a third of salaried Gen Z respondents already hold mutual funds
+### Financial goals — `Q6_RANK_GRID`
+- **Wording:** 13 ranked goal items; each respondent ranks up to 3.
+- **Base:** 553 of 553 answered at least one slot (0 used the free-text "Others" 13th slot).
+- **Scope note:** general financial-priority context, not a motivation specific to MF/ETF.
+- **Full results (share ranked anywhere in the respondent's top 3):**
 
-- **Counts/denominator:** 1,427 of 4,343 broader-group respondents with a *known* holding status hold mutual funds = **32.86%**. 2,916 (67.14%) have a known status and do not hold MF. 3 respondents have an unknown status (blank or explicit `"Not Answered"` on `Q22A_All`) and are excluded from the percentage.
-- **Question wording and scope:** `Q22A_All` — *"Which of the following financial products do you currently hold investments in"*. This measure isolates **mutual funds specifically** (the literal MF token), not the combined MF+ETF tag.
-- **Which group:** broader group (4,346), restricted to the 4,343 with known status (99.9% coverage).
-- **What this supports:** mutual fund holding is already fairly common in this specific salaried-Gen-Z sample — useful context for sizing the "non-holder but considering" population (553) against the group it's drawn from, and a reminder that the focused group is a minority, not the typical case.
-- **Alternative explanations / limitations:** this is a plain descriptive share of a specific unweighted sample; it is not a market penetration estimate. No claim is made about *why* the other ~67% don't hold MF from this number alone.
-- **Additional evidence that would help:** applying `WeightMainM2`/`Weight_to_Sample` (not done in this stage) would show whether this share shifts once population weighting is considered.
-
-### Finding 3 — "Fear of losing money due to market risks" is the most-cited reported barrier
-
-- **Counts/denominator:** 81 of 266 focused-group respondents who answered `AA2_DD2` selected it — **30.5%**.
-- **Question wording and scope:** `AA2_DD2` — *"Top 3 Reasons for not investing in MF/ETF"* — **MF+ETF combined scope; cannot isolate mutual funds from ETF/Gold ETF.** Multi-select (each respondent selects exactly 3); percentages are of the 266 who answered, and sum to ~300% across all options, not 100%.
-- **Which group:** focused group, restricted to the 266 (48%) who gave a substantive answer to this specific question — the field's base count exactly matches SEBI Main Report Table 7.1 (Non-Investors), which is **SUPPORTED by an exact base-count match**, not confirmed by an explicit named linkage in the report.
-- **What this supports:** among focused-group respondents who were asked and answered, concern about losing money is the single most commonly selected reason for not currently investing in MF+ETF.
-- **Alternative explanations / limitations:** the 52% who did not answer are excluded from the denominator, not assumed to lack this concern — their views on this question are simply unknown. The reason may reflect general risk aversion, specific market conditions around the survey period, unfamiliarity with risk-mitigation features of MF investing, or something else — this single number cannot distinguish between those.
-- **Additional evidence that would help:** a follow-up question on *what specifically* respondents fear (volatility, total loss, lack of guarantees) would help separate a general risk-aversion story from a knowledge-gap story.
-
-### Finding 4 — The top encouragement factor is the same for both past investors and those reporting no prior securities-market investment, but a specific gap exists around financial education
-
-- **Counts/denominators:** `AA3_DD3` (*"Factors would encourage you to consider investing in MF/ETF that you currently do not invest in"* — MF+ETF combined scope) is answered by the same 266 respondents who answer `AA2_DD2` (verified directly: identical respondent sets, not merely equal counts). "Simple and easy process for investing (e.g. account opening, documentation, etc.)" is the top-ranked option for **both** previous-experience groups: 30 of 61 (49.2%) past MF investors, and 79 of 188 (42.0%) respondents reporting none of `Q24A`'s 7 products. The largest gap between these two groups is **"Better education on how mutual funds work"**: 76 of 188 (**40.4%**) of the no-prior-investment group vs. 15 of 61 (**24.6%**) of past MF investors — verified directly against `data/processed/analysis/comparison_AA3_DD3_by_prev_investment.csv` (columns `explicit_no_prior_investment_pct`=40.4/n=76/denominator=188 and `past_mf_investor_pct`=24.6/n=15/denominator=61).
-- **Which group:** focused group, split by `Q24A`-based previous-experience category; both subgroups clear the 30-answer reporting minimum used in this analysis (see note below).
-- **What this supports:** a simpler onboarding/account-opening process is the most commonly selected encouragement factor regardless of prior experience; wanting more education on how mutual funds work is more commonly selected among those reporting no prior securities-market investment than among past MF investors.
-- **Alternative explanations / limitations:** past MF investors may find "education" less relevant simply because they've already been through the product once, not because education wouldn't help them in some other way; conversely, the no-prior-investment group's higher education interest could reflect genuine knowledge gaps or could reflect this group containing relatively more younger/newer earners (not tested here). No significance test was run. Coverage for this comparison (44.9%–49.2%) is similar across groups, but a similar *coverage rate* does not prove the respondents who answered are a representative, unbiased subset of each group — it is a necessary check, not proof of comparability.
-- **Additional evidence that would help:** a direct question asking *what kind* of education/process simplification would help (content format, specific steps) would make this actionable; without it, both findings describe *that* something matters more, not *what specifically* to change.
-
-### Finding 5 — "Fear of losing money" is reported more often at higher income tiers, an observed pattern in this sample, not a proven income effect
-
-- **Counts/denominators:** `AA2_DD2`, income tiers built from adjacent `Q10A` brackets, boundaries preserved, decided before any barrier result was examined: **Up to ₹20,000/month** (31/120 = 25.8%), **₹20,001–₹40,000/month** (24/74 = 32.4%), **Above ₹40,000/month** (17/40 = 42.5%). `Q10A` = *"Monthly Personal Income from all sources before tax"* — an individual, all-sources, pre-tax figure; **not** "salary," and not household income.
-- **Which group:** focused group, split by income tier. **Question coverage is uneven across these tiers** — 55.0% (120/218) for the lowest tier, 40.7% (74/182) for the middle tier, 39.2% (40/102) for the highest tier — noticeably more uneven than the previous-experience split in Finding 4 (44.9%–49.2%). All three numeric tiers clear the 30-answer reporting minimum used here; `"Do not wish to disclose"` (20/33 answered) and `"No current income"` (12/18 answered) do not, and are reported as counts only, not percentages.
-- **What this supports:** within this sample, and only among the ~39–55% of each income tier who answered this specific question, reported fear of losing money rises as income tier rises. Most other `AA2_DD2` options do **not** show a similar gradient by income tier (e.g. "Lack of knowledge about how mutual funds work" is highest in the top tier and lowest in the middle one — not ordered by income at all).
-- **Alternative explanations / limitations:** **this is an observed pattern across the three chosen income tiers, not a proven income effect.** Only one option out of nineteen shows anything like a consistent gradient; the uneven coverage across tiers (fewer than half of the two higher tiers answered at all) means the pattern could partly reflect differences in who answered, not just differences in what was felt; no significance test was run, and the tiering itself (adjacent-bracket grouping around round numbers) is one reasonable choice among others. Higher earners may have more to lose in absolute terms, may be more exposed to market-linked products already (see Finding 2), or the pattern could be sensitive to exactly how the tiers were drawn.
-- **Additional evidence that would help:** repeating this check with a different (but still principled, pre-registered) income cut would show whether the gradient is robust to tier choice; weighting would show whether it survives population adjustment; a larger, higher-coverage follow-up on this specific question would reduce the uneven-coverage concern.
-
-**Note on the 30-answer minimum used throughout:** this is a **reporting convention** adopted for this analysis to avoid displaying volatile percentages from very small samples — it is **not** a statistical reliability or significance threshold, and clearing it does not mean a result is statistically robust. No significance testing has been performed on any finding above.
-
----
-
-## Research-backed proposals
-
-Structure: **Observed finding → tentative explanation → proposed investigation or change → how to evaluate it.** Every proposal is conditional on further evidence INDmoney would need to gather — none of this SEBI data can confirm an INDmoney interface problem or predict a conversion improvement.
-
-### Proposal 1 — Investigate onboarding friction before designing a fix
-
-- **Observed finding:** "Simple and easy process for investing" is the top-selected encouragement factor for both previous-experience groups (Finding 4); it is also the top-selected option overall in the broader barrier/encouragement analysis (`docs/descriptive_findings.md`).
-- **Tentative explanation:** perceived account-opening/documentation friction may be a consideration for this population when thinking about investing in MF+ETF. This is a survey response about a general product process, not a diagnosis of anything specific in INDmoney's own flow.
-- **Proposed investigation:** **before any A/B test**, review INDmoney's own onboarding funnel data (step-by-step drop-off, time-on-step) and support-ticket themes for new users attempting a first MF purchase, and/or run a small moderated usability study with prospective non-holding users attempting onboarding. The actual friction point (if any) in INDmoney's product is unknown from this SEBI data and must be established first.
-- **How to evaluate:** if a specific friction point is identified, test a targeted fix, evaluated using the three-part outcome structure below (order placement, first payment, continued payments) rather than a single "conversion" number — plus a brief user-outcome check (e.g. a short comprehension question on what a SIP is and what happens if a payment fails) to confirm users understand what they signed up for, not just that they completed a form faster.
-
-### Proposal 2 — Investigate whether financial-education content changes anything, segmented by prior experience
-
-- **Observed finding:** "Better education on how mutual funds work" is selected notably more by respondents reporting no prior securities-market investment (40.4%) than by past MF investors (24.6%) (Finding 4).
-- **Tentative explanation:** users with no prior securities-market experience may benefit from more foundational content than those who have already invested before, though the survey does not say what content or format would help.
-- **Proposed investigation:** review whether INDmoney already has educational content in its onboarding flow and, if so, whether usage/completion of that content differs for users who self-identify (via any existing signup question) as new to investing vs. experienced; if no such segmentation exists today, consider a lightweight addition before building new content.
-- **How to evaluate:** if a gap is confirmed, test specific educational content (not assumed in advance to be effective) against the three-part completion outcomes below, plus a pre/post comprehension check on a small number of core concepts (e.g. what a SIP is, what an expense ratio is) — the goal is confirming understanding increased, not just that a screen was viewed.
-
-### Proposal 3 — Treat lapsed investors, no-prior-investment respondents, and other-product investors as potentially different segments, not one "non-holder" group
-
-- **Observed finding:** the focused group mixes three meaningfully different histories (Finding 1): past MF investors (24.6%), respondents reporting none of `Q24A`'s 7 securities-market products (69.1%), and respondents experienced with other securities products but not MF (6.3%). Comparison A (`docs/descriptive_findings.md` §5) already shows these groups report somewhat different top barriers (e.g. "Lack of trust in fund managers" ranks higher among past investors).
-- **Tentative explanation:** a lapsed investor's concerns (e.g. trust in fund managers, past experience) may differ systematically from a genuinely new investor's concerns (e.g. education, process simplicity) — but this is inferred from a small, unweighted subgroup difference and not confirmed.
-- **Proposed investigation:** check whether INDmoney's own signup/KYC flow already captures any prior-investment signal (e.g. existing Demat/MF folio detection) that could be used to segment messaging; if not, evaluate whether adding a single lightweight onboarding question is feasible before building segment-specific flows.
-- **How to evaluate:** if segmentation is feasible, compare the three completion outcomes below across segments (not pooled into one "non-holder" number), watching specifically for whether a one-size-fits-all message underperforms a segment-tailored one for any group.
-
-### Outcome measures for evaluating any of the above (kept separate, per `docs/research_and_measurement_plan.md` §5)
-
-1. **First-SIP order placement** — a user sets up/submits a SIP mandate.
-2. **First successful SIP payment** — the first scheduled debit under that mandate actually succeeds (distinct from placement; an order can be placed and still fail here).
-3. **Continued scheduled payments** — among users whose first payment succeeded, the share who also complete later scheduled payments, counted only once the relevant payment's due date has passed, with cancellations and failed payments kept in the denominator (not dropped).
-
-Alongside completion, include a **user-outcome check** appropriate to the proposal (e.g. a brief comprehension check on investment risk or on what a SIP is) — confirming that faster or higher completion isn't coming at the cost of understanding what was purchased. None of these three measures, or the comprehension check, can be calculated from the SEBI data used in this project; they require INDmoney's own event instrumentation and sign-off, as detailed in `docs/research_and_measurement_plan.md` §5.
+| Goal | n | % of 553 |
+|---|---|---|
+| Growing wealth | 235 | 42.5% |
+| Supporting family members | 206 | 37.3% |
+| Building an emergency fund | 196 | 35.4% |
+| Buying a house | 194 | 35.1% |
+| Achieving financial independence | 159 | 28.8% |
+| Saving for a major expense | 128 | 23.1% |
+| Children's education | 127 | 23.0% |
+| Planning for retirement | 108 | 19.5% |
+| Earning money actively on a daily basis | 97 | 17.5% |
+| Generating passive income | 86 | 15.6% |
+| My child's marriage | 73 | 13.2% |
+| Optimizing tax savings and benefits | 50 | 9.0% |
+| Others (free text) | 0 | 0.0% |
 
 ---
 
-## Sources
+## 2. Reported barriers
 
-- `docs/cohort_definition.md`, `docs/barrier_coverage.md` — cohort and field-routing definitions.
-- `docs/descriptive_findings.md`, `docs/segment_findings.md` — the descriptive and segment-comparison analyses this synthesis draws from.
-- `docs/research_and_measurement_plan.md` — measurement definitions, KPI structure, and the corrections carried forward here.
-- `data/processed/analysis/*.csv` — the verified aggregate tables cited above.
+### Reasons for not investing — `AA2_DD2`
+- **Wording:** "Top 3 Reasons for not investing in MF/ETF."
+- **Scope:** MF+ETF combined.
+- **Base:** 266 of 553 answered (287 blank = missing/unknown).
+- **Full results (18 options, multi-select, percentages sum to ~300%):**
 
-**Stops here.** No dashboard components built in this step.
+| Reason | n | % of 266 |
+|---|---|---|
+| Fear of losing money due to market risks | 81 | 30.5% |
+| It's for long term investment | 68 | 25.6% |
+| Lack of knowledge about how mutual funds work | 67 | 25.2% |
+| I don't know how to start investing in Mutual funds | 65 | 24.4% |
+| Confusion caused by information overload from different sources | 60 | 22.6% |
+| Uncertainty about returns and performance | 59 | 22.2% |
+| Lack of trust in fund managers | 58 | 21.8% |
+| Lack of trust in the mutual funds | 56 | 21.1% |
+| There are too many options | 56 | 21.1% |
+| Regulatory or policy concerns affecting mutual funds | 53 | 19.9% |
+| Better returns from other investment options | 50 | 18.8% |
+| Requires large amount to start investing | 35 | 13.2% |
+| High fees, charges and Management expenses | 25 | 9.4% |
+| Advised by family, friends, or financial advisors not to invest | 20 | 7.5% |
+| I don't have enough money to invest | 18 | 6.8% |
+| Requires too many documents | 12 | 4.5% |
+| Takes time to receive invested money after selling | 11 | 4.1% |
+| Lack of availability of investment platform in local language | 4 | 1.5% |
+
+- **Meaning:** shows which barriers this group reports most often.
+
+---
+
+## 3. Previous investment and stopping reasons
+
+### Previous investment experience — `Q24A`
+- **Base:** all 553 of 553.
+- **Full 3-way split:**
+
+| Category | n | % of 553 |
+|---|---|---|
+| None of the 7 listed securities-market products | 382 | 69.1% |
+| Past MF investor | 136 | 24.6% |
+| Other listed product only (not MF) | 35 | 6.3% |
+
+- **Meaning:** the focused group mixes three different investment histories; not a single undifferentiated "non-holder" group. This is not a "first-time SIP users" sample.
+
+### Reasons for stopping investment — `AA4_DD4`
+- **Wording:** "What were the Top 3 reasons you stopped investing in MF/ETF."
+- **Scope:** MF+ETF combined.
+- **Base:** 64 of 553 answered — a small answer base. 62 of these 64 are confirmed past MF investors (2 held another product, 0 held none of the 7 listed products) — a verified respondent-level check, not a documented survey routing rule.
+- **Full results (16 options, multi-select):**
+
+| Reason | n | % of 64 |
+|---|---|---|
+| News of geopolitical uncertainty and fear of market fall | 22 | 34.4% |
+| Lower than expected returns | 22 | 34.4% |
+| I needed money for other purposes (urgent requirement of funds) | 20 | 31.2% |
+| Changes in personal financial goals | 18 | 28.1% |
+| High volatility and unpredictable performance | 17 | 26.6% |
+| Better returns from other investment options | 17 | 26.6% |
+| High fees, charges and Management expenses | 13 | 20.3% |
+| Experienced significant financial losses | 12 | 18.8% |
+| Negative experiences shared by friends or family | 11 | 17.2% |
+| Lack of sufficient knowledge or market insights | 11 | 17.2% |
+| Takes time to receive invested money after selling | 9 | 14.1% |
+| Limited availability of unbiased expert advice or recommendations | 7 | 10.9% |
+| Hidden or unexpected transaction costs | 7 | 10.9% |
+| Complications in calculating tax liability/filing Income Tax returns | 3 | 4.7% |
+| Difficult to access channel/platform from where I had done investments | 2 | 3.1% |
+| Difficulty in managing or tracking investments | 1 | 1.6% |
+
+---
+
+## 4. Risk preferences and reactions
+
+### Risk/return preference — `QRT`
+- **Base:** 553 of 553 (0 blank).
+
+| Preference | n | % |
+|---|---|---|
+| Preservation of capital is more important to me than returns | 211 | 38.2% |
+| I need good but stable and reliable returns with minimal losses | 192 | 34.7% |
+| I aim for better, higher returns and accept some ups/downs, but couldn't accept significant losses | 103 | 18.6% |
+| I would like high returns, not too concerned with risk, prepared for significant short-term losses | 47 | 8.5% |
+
+- **Meaning:** context on how this sample describes its own risk appetite — self-described, not observed investing behavior.
+
+### Reaction to a market downturn — `Q10M`
+- **Base:** 553 of 553 (0 blank).
+
+| Reaction | n | % |
+|---|---|---|
+| Keep money invested and wait for recovery | 200 | 36.2% |
+| A bit worried, may take out some money | 175 | 31.6% |
+| Very worried, might stop investing and move to safer options (FDs) | 126 | 22.8% |
+| Invest more now to earn better returns later | 52 | 9.4% |
+
+- **Meaning:** a stated hypothetical reaction, not observed behavior during an actual downturn.
+
+---
+
+## 5. Reported uncertainty
+
+### Financial-knowledge battery — `GRIDxQ15AM` (9 items)
+- **Base:** 553 of 553 for every item (0 blank). No documented answer key exists for this battery — no item is scored correct/incorrect. "Not Aware" is a selected response category, not a knowledge failure.
+- **Sorted by highest share selecting "Not Aware" first:**
+
+| # | Topic | True | False | Not Aware |
+|---|---|---|---|---|
+| 1 | Investments across different asset classes increase risk | 110 (19.9%) | 182 (32.9%) | 261 (47.2%) |
+| 2 | CAS provides overview of investments in securities/stock market | 258 (46.7%) | 79 (14.3%) | 216 (39.1%) |
+| 3 | BSDA allows nil/negligible-charge demat account below a threshold | 255 (46.1%) | 99 (17.9%) | 199 (36.0%) |
+| 4 | The concept of compounding is beneficial in the short term | 129 (23.3%) | 250 (45.2%) | 174 (31.5%) |
+| 5 | A portion of pension/provident-fund investments is in the stock market | 374 (67.6%) | 80 (14.5%) | 99 (17.9%) |
+| 6 | Direct plans have a lower expense ratio than regular plans | 393 (71.1%) | 78 (14.1%) | 82 (14.8%) |
+| 7 | Need a demat account (in addition to trading account) to invest | 396 (71.6%) | 82 (14.8%) | 75 (13.6%) |
+| 8 | High-return investment options are also associated with high risk | 403 (72.9%) | 90 (16.3%) | 60 (10.8%) |
+| 9 | KYC can be completed online | 448 (81.0%) | 60 (10.8%) | 45 (8.1%) |
+
+### Inflation numeracy check — `Q12M`
+- **Wording:** "Suppose the rate of return on your savings is 5% per year and inflation is 6% per year — after a year, will you be able to buy more, less, or the same as today?"
+- **Base:** 553 of 553 (0 blank). Only "Less than today" is arithmetically correct.
+
+| Response | n | % |
+|---|---|---|
+| Less than today (correct) | 245 | 44.3% |
+| Exactly as today | 130 | 23.5% |
+| More than today | 94 | 17.0% |
+| Do not know | 69 | 12.5% |
+| Refuse to answer | 15 | 2.7% |
+
+### Self-reported stock-market familiarity — `Q11M`
+- **Base:** 553 of 553 (0 blank).
+
+| Response | n | % |
+|---|---|---|
+| Familiar, update myself periodically | 227 | 41.0% |
+| Very familiar, follow regularly | 172 | 31.1% |
+| Know a little, follow broader trends | 109 | 19.7% |
+| Don't Know | 45 | 8.1% |
+
+---
+
+## 6. Group differences
+
+One selector on the live tab, one comparison shown at a time. A group needs at least 30 respondents who *answered that specific question* to get a percentage — not 30 people in the group overall; below that, counts only.
+
+### Barriers by previous MF experience (`AA2_DD2` × `Q24A`)
+- **Groups and coverage:** Past MF investor 61/136 answered (44.9%); No prior investment in the 7 products 188/382 (49.2%); Other product only 17/35 (48.6%, below reporting minimum — counts only).
+- **Headline:** "Lack of trust in fund managers" ranks top among past MF investors (19/61 = 31.1%) but mid-ranked among no-prior-investment respondents (39/188 = 20.7%). "Fear of losing money" ranks near the top in both (18/61 = 29.5% vs. 59/188 = 31.4%).
+- Full 18-option breakdown, per group, is on the live page via the Chart/Table toggle.
+
+### Encouragement by previous MF experience (`AA3_DD3` × `Q24A`)
+- **Headline / largest gap:** "Better education on how mutual funds work" — 76/188 (40.4%) no-prior-investment vs. 15/61 (24.6%) past MF investors → **+15.8 pp**.
+- **Same direction as the headline:** "Friendly and easy to use trading platforms and tools" — higher among no-prior-investment respondents (74/188 = 39.4% vs. 20/61 = 32.8%, +6.6 pp).
+- **Opposite direction:** "Simple and easy process for investing" — the most-selected factor for both groups, but more so among past MF investors (30/61 = 49.2% vs. 79/188 = 42.0%, −7.2 pp no-prior-minus-past).
+
+### Barriers by income tier (`AA2_DD2` × `Q10A`)
+- **Tiers and coverage:** Up to ₹20,000 — 120/218 (55.0%); ₹20,001–₹40,000 — 74/182 (40.7%); Above ₹40,000 — 40/102 (39.2%). "Do not wish to disclose" (20/33) and "No current income" (12/18) fall below the reporting minimum — counts only.
+- **Headline:** "Fear of losing money due to market risks" is the one option with a clear, step-by-step gap across all three income tiers: **25.8% → 32.4% → 42.5%**. Most other options show no such gradient (e.g. "Lack of knowledge about how mutual funds work" is highest in the top tier at 30.0% but lowest in the middle tier at 20.3%).
+
+### Percentage-point differences
+Computed and shown for every comparison above, wherever both sides clear the 30-respondent reporting minimum — e.g. the 15.8 pp education gap and the 16.7 pp fear-of-loss income gradient (Above-₹40,000 minus Up-to-₹20,000). Never computed against a counts-only group.
+
+### Relationship — Risk preference and fear of losing money
+- **Method:** a respondent-level join among the 266 `AA2_DD2` answerers, split by their own `QRT` risk-preference answer.
+
+| Risk preference | n | selecting "fear of losing money" | % |
+|---|---|---|---|
+| Stable/reliable returns, minimal losses | 100 | 28 | 28.0% |
+| Preservation of capital more important than returns | 96 | 27 | 28.1% |
+| Higher returns, accepts some ups/downs, not significant losses | 48 | 17 | 35.4% |
+| High returns, not risk-concerned | 22 | 9 | below reporting minimum — counts only |
+
+- **Finding:** the two more risk-averse groups reported almost the same share (28.0%, 28.1%); the one group expressing some risk tolerance reported a higher share (35.4%). No consistent rise or fall from more to less risk-averse groups.
+
+### Relationship — Fund-fee knowledge and demand for education
+- **Method:** among the 266 `AA3_DD3` answerers, split by response to "Direct plans in mutual funds have a lower expense ratio than regular plans."
+
+| Response | n | selecting "better education" | % |
+|---|---|---|---|
+| True | 172 | 65 | 37.8% |
+| Not Aware | 55 | 22 | 40.0% |
+| False | 39 | 10 | 25.6% |
+
+- **Finding:** 40.0% (Not Aware), 37.8% (True), 25.6% (False). Does not establish a knowledge gap — the battery has no answer key, so these are reported responses, not correctness levels.
+
+### Relationship — Online-KYC knowledge and a simpler process
+- **Method:** among the same 266 `AA3_DD3` answerers, split by response to "KYC can be completed online."
+
+| Response | n | selecting "simple and easy process" | % |
+|---|---|---|---|
+| True | 208 | 94 | 45.2% |
+| False | 30 | 13 | 43.3% |
+| Not Aware | 28 | 10 | below reporting minimum — counts only |
+
+- **Finding:** 1.9 percentage-point difference (45.2% vs. 43.3%) between True and False — does not establish the two groups' preferences are equivalent, only that this sample didn't show a larger gap on this specific pairing.
+
+---
+
+## 7. Awareness sources and media
+
+### Awareness sources and media — `Q4M`/`Q5M`
+- **Base:** 266 of 553 — the identical 266 who answer `AA2_DD2`/`AA3_DD3`.
+- **Scope:** MF+ETF combined — the only slot the survey offers for this population.
+
+**Sources (12 options, multi-select):**
+
+| Source | n | % of 266 |
+|---|---|---|
+| Friends, Family, and Colleagues | 154 | 57.9% |
+| Financial influencers on social media | 144 | 54.1% |
+| Online investment communities (Telegram, WhatsApp, Reddit, Facebook groups) | 79 | 29.7% |
+| Financial professionals (advisors/planners, bank reps) | 70 | 26.3% |
+| Advertisements on investment products | 70 | 26.3% |
+| Investor education programmes (institutions/industry associations) | 65 | 24.4% |
+| Market or company analysis reports | 59 | 22.2% |
+| Financial news & blogs | 50 | 18.8% |
+| Educational resources (webinars, courses, books, podcasts) | 44 | 16.5% |
+| Investor education programmes (investment companies) | 36 | 13.5% |
+| None of the above | 9 | 3.4% |
+| Others (please specify) | 2 | 0.8% |
+
+**Media (14 options including "Others," multi-select):**
+
+| Medium | n | % of 266 |
+|---|---|---|
+| Social media (YouTube, Instagram reels, X posts) | 153 | 57.5% |
+| Television | 112 | 42.1% |
+| Messaging apps (WhatsApp, Telegram) | 68 | 25.6% |
+| Online search engines | 58 | 21.8% |
+| Online newspapers/magazines/publications | 57 | 21.4% |
+| Physical newspapers/magazines/publications | 56 | 21.1% |
+| Other online media | 50 | 18.8% |
+| Websites/apps of regulators (AMFI, SEBI, etc.) | 39 | 14.7% |
+| Phone calls/SMS | 36 | 13.5% |
+| In-person consultations/meetings | 33 | 12.4% |
+| Fin-tech apps & investment platforms | 32 | 12.0% |
+| Seminars, webinars, and workshops | 24 | 9.0% |
+| Radio | 13 | 4.9% |
+| Others (please specify) | 3 | 1.1% |
+
+- **Limitation stated on the page:** reports where respondents say they heard about these products, not whether that source caused them to invest; cannot separate mutual funds from ETFs for this population.
+
+---
+
+## 8. Encouragement factors
+
+### Encouragement factors — `AA3_DD3`
+- **Wording:** "Factors would encourage you to consider investing in MF/ETF that you currently do not invest in."
+- **Base:** 266 of 553 — the identical respondent set that answers `AA2_DD2`.
+- **Full results (10 options, multi-select, percentages sum to ~300%):**
+
+| Factor | n | % of 266 |
+|---|---|---|
+| Simple and easy process for investing (e.g. account opening, documentation, etc.) | 117 | 44.0% |
+| Reducing the minimum investment requirement | 106 | 39.8% |
+| Better education on how mutual funds work | 97 | 36.5% |
+| Friendly and easy to use trading platforms and tools | 97 | 36.5% |
+| Success stories or positive media coverage about funds' investments | 92 | 34.6% |
+| Reducing the fees and charges (transaction, management) | 81 | 30.5% |
+| Positive recommendations from family, friends, or financial advisors | 66 | 24.8% |
+| Availability of trusted financial advice and guidance | 53 | 19.9% |
+| Assurance of lower risk | 53 | 19.9% |
+| Improved economic conditions and positive market outlook | 36 | 13.5% |
+
+- **Meaning:** stated preference only — doesn't show whether building any one of these would change completion.
+
+---
+
+## 9. Learning preferences
+
+### Investor-education attendance — `Q20AM`
+- **Base:** 553 of 553 (0 blank).
+
+| Response | n | % |
+|---|---|---|
+| Have not attended any investor education program | 527 | 95.3% |
+| Yes, attended it online (webinars / virtual training) | 20 | 3.6% |
+| Yes, attended it in-person (seminars / workshops) | 6 | 1.1% |
+
+### Preferred format — `Q20DM`
+- **Base:** 553 of 553. Capped at exactly 3 selections per respondent (total selections = 1,659 = 553 × 3).
+
+| Format | n | % |
+|---|---|---|
+| Videos | 401 | 72.5% |
+| Social media post | 331 | 59.9% |
+| Online courses | 280 | 50.6% |
+| Article/blogs/newsletters/whitepapers | 236 | 42.7% |
+| Audio books | 223 | 40.3% |
+| Podcast | 187 | 33.8% |
+| Others (please specify) | 1 | 0.2% |
+
+### Preferred topics — `Q20F`
+- **Base:** 553 of 553. **Not** capped at 3 — total selections (1,836) exceed the 1,659 a 3-cap would allow.
+
+| Topic | n | % |
+|---|---|---|
+| How to identify financial frauds & scams | 332 | 60.0% |
+| Investor rights & SEBI regulations | 311 | 56.2% |
+| Risk management & portfolio diversification | 286 | 51.7% |
+| Information on various investment options | 265 | 47.9% |
+| Retirement & long-term financial planning | 262 | 47.4% |
+| Using digital investment platforms safely | 238 | 43.0% |
+| Understanding fact sheets of mutual funds and other financial reports | 139 | 25.1% |
+| Others (please specify) | 3 | 0.5% |
+
+### Preferred medium — `Q20CM`
+- **Base:** 553 of 553. Capped at exactly 3 selections per respondent (total selections = 1,659).
+
+| Medium | n | % |
+|---|---|---|
+| Information on social media (YouTube, Instagram, etc.) | 355 | 64.2% |
+| Mobile apps | 332 | 60.0% |
+| Advertisements on TV, digital or other mediums | 244 | 44.1% |
+| In-person seminars or workshops | 175 | 31.6% |
+| Online webinars and virtual training sessions | 169 | 30.6% |
+| Websites/online portal | 161 | 29.1% |
+| Email | 133 | 24.1% |
+| Expert opinion/interview/panel discussion | 90 | 16.3% |
+| Others (please specify) | 0 | 0.0% |
+
+### Preferred language — `Q20E`
+- **Base:** 553 of 553 (0 blank). Single-select.
+
+| Language | n | % |
+|---|---|---|
+| Hindi | 188 | 34.0% |
+| English | 141 | 25.5% |
+| Tamil | 76 | 13.7% |
+| Telugu | 36 | 6.5% |
+| Malayalam | 31 | 5.6% |
+| Gujarati | 23 | 4.2% |
+| Marathi | 20 | 3.6% |
+| Kannada | 16 | 2.9% |
+| Bengali | 8 | 1.4% |
+| Odia | 6 | 1.1% |
+| Punjabi | 3 | 0.5% |
+| No preference, comfortable with any language | 2 | 0.4% |
+| Assamese | 1 | 0.2% |
+| Urdu | 1 | 0.2% |
+| Others (please specify) | 1 | 0.2% |

@@ -6,6 +6,7 @@ import { AnalysisChartCard } from "./analysis-chart-card"
 import { EqualHeightChartsProvider } from "./equal-height-context"
 import { QuestionBarChart, QuestionAnswersTable } from "./question-answers-card"
 import { OptionBarChart, OptionsTable } from "./option-bar-chart"
+import { FindingsSection } from "./findings-section"
 
 const MF_ETF_BADGE = (
   <Badge variant="secondary" className="font-normal">
@@ -47,6 +48,8 @@ export function MotivationsFinancialGoalsTab() {
           />
         </EqualHeightChartsProvider>
       </div>
+
+      <FindingsSection themeId="motivations-financial-goals" />
     </div>
   )
 }

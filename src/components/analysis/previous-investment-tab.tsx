@@ -6,6 +6,7 @@ import { AnalysisChartCard } from "./analysis-chart-card"
 import { EqualHeightChartsProvider } from "./equal-height-context"
 import { QuestionBarChart, QuestionAnswersTable } from "./question-answers-card"
 import { OptionBarChart, OptionsTable } from "./option-bar-chart"
+import { FindingsSection } from "./findings-section"
 
 const MF_ETF_BADGE = (
   <Badge variant="secondary" className="font-normal">
@@ -55,8 +56,8 @@ export function PreviousInvestmentTab() {
             observation={getMeasureById("stopping-reasons-selection-pct")?.meaning}
             extraCaveat={
               <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs text-foreground/90">
-                These 64 people aren&apos;t confirmed to be part of the 136 past MF investors above — treat this as
-                its own small group.
+                62 of these 64 are confirmed past MF investors (2 held another product, 0 held none of the 7
+                listed products) — a verified respondent-level check, not a documented survey routing rule.
               </div>
             }
             chart={<QuestionBarChart options={stoppingReasons.options} denominator={stoppingReasons.denominator} />}
@@ -64,6 +65,8 @@ export function PreviousInvestmentTab() {
           />
         </EqualHeightChartsProvider>
       </div>
+
+      <FindingsSection themeId="previous-investment" />
     </div>
   )
 }

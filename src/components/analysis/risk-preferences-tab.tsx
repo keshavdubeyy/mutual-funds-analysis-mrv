@@ -4,6 +4,7 @@ import { answeredLine } from "@/lib/format-pct"
 import { AnalysisChartCard } from "./analysis-chart-card"
 import { EqualHeightChartsProvider } from "./equal-height-context"
 import { OptionBarChart, OptionsTable } from "./option-bar-chart"
+import { FindingsSection } from "./findings-section"
 
 function field(code: string): WhoField {
   const f = whoIsInSampleBase.fields.find((d) => d.field_code === code)
@@ -40,6 +41,8 @@ export function RiskPreferencesTab() {
           <FieldCard id="downturn-reaction-distribution" title="How does the focused group say it would react to a downturn?" code="Q10M" measureId="downturn-reaction-distribution" />
         </EqualHeightChartsProvider>
       </div>
+
+      <FindingsSection themeId="risk-preferences" />
     </div>
   )
 }

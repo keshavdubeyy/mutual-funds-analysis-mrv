@@ -75,7 +75,7 @@ Every KPI theme and every metric currently shown on the live Analysis page (`/fi
 | It's for long term investment | 68 | 25.6% |
 | Lack of knowledge about how mutual funds work | 67 | 25.2% |
 | I don't know how to start investing in Mutual funds | 65 | 24.4% |
-| Confusion caused by information overload from different sources | 60 | 22.6% |
+| Confusion cause by information overload from different sources | 60 | 22.6% |
 | Uncertainty about returns and performance | 59 | 22.2% |
 | Lack of trust in fund managers | 58 | 21.8% |
 | Lack of trust in the mutual funds | 56 | 21.1% |

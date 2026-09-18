@@ -4,7 +4,7 @@ The five items this project is being assessed against. Mirrors the `/deliverable
 
 ## 1. Business problem statement
 
-INDmoney faces a problem where salaried young adults aged 22–26 (early-career users) consider starting a mutual-fund SIP but do not complete their first SIP.
+INDmoney faces a problem where salaried young adults aged 18–28 (early-career users) consider starting a mutual-fund SIP but do not complete their first SIP.
 
 ## 2–3. Industry KPIs and Marketing metrics
 

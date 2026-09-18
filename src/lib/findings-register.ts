@@ -32,6 +32,7 @@ import {
   normalizeBarriersByIncome,
   type NormalizedComparisonRow,
 } from "./analysis-comparisons"
+import { buildBatteryRows } from "./knowledge-battery"
 
 // ---------------------------------------------------------------------------
 // Generic option lookup — every dataset shape normalized to the same
@@ -91,6 +92,18 @@ function fmtGroup(rows: NormalizedComparisonRow[], optionLabel: string, groupKey
   if (!g) throw new Error(`findings-register: comparison group not found — "${groupKey}"`)
   if (g.countOnly || g.pct === null) return `${groupLabelPrefix}: ${g.n} of ${g.denominator} (below reporting minimum — count only)`
   return `${groupLabelPrefix}: ${g.n} of ${g.denominator} (${g.pct.toFixed(1)}%)`
+}
+
+/** Same lookup as `fmtGroup`, but returns the raw numbers instead of a formatted string — for
+ * callers (like the reported-problems stats below) that build their own sentence around the
+ * figure instead of using this file's "Label: N of D (X%)" phrasing. */
+function groupStat(rows: NormalizedComparisonRow[], optionLabel: string, groupKey: string): ReportedProblemStat {
+  const row = rows.find((r) => r.option === optionLabel)
+  if (!row) throw new Error(`findings-register: comparison option not found — "${optionLabel}"`)
+  const g = row.groups.find((x) => x.key === groupKey)
+  if (!g) throw new Error(`findings-register: comparison group not found — "${groupKey}"`)
+  if (g.countOnly || g.pct === null) throw new Error(`findings-register: group "${groupKey}" is below the reporting minimum`)
+  return { n: g.n, denominator: g.denominator, pct: g.pct }
 }
 
 function fmtPpDiff(rows: NormalizedComparisonRow[], optionLabel: string): string {
@@ -642,3 +655,62 @@ export const FINDINGS: Finding[] = [
 export function findingsForTheme(themeId: string): Finding[] {
   return FINDINGS.filter((f) => f.themeId === themeId)
 }
+
+// ---------------------------------------------------------------------------
+// Reported problems — a plain-language "problems, not preferences" summary for the
+// Deliverables page's "Analysis and visual representations" section
+// (src/components/deliverables/reported-problems-sheet.tsx). A different framing of the
+// same barrier/stopping-reason/encouragement/knowledge-battery data above, so every number
+// here reads through the same verified option lookups as the Findings above it, rather than
+// being retyped as a literal string.
+// ---------------------------------------------------------------------------
+
+export interface ReportedProblemStat {
+  n: number
+  denominator: number
+  pct: number
+}
+
+const diversificationBatteryRow = buildBatteryRows(whoIsInSampleBase.knowledge_grid.items).find(
+  (r) => r.topic === "diversification"
+)
+if (!diversificationBatteryRow) throw new Error("findings-register: diversification battery row not found")
+
+/** Every number used in reported-problems-sheet.tsx, named for where each is used there. */
+export const REPORTED_PROBLEMS_STATS = {
+  fearOfLoss: findOpt(barriersOpts, "Fear of losing money due to market risks"),
+  lackOfKnowledge: findOpt(barriersOpts, "Lack of knowledge about how mutual funds work"),
+  dontKnowHowToStart: findOpt(barriersOpts, "I don't know how to start investing in Mutual funds"),
+  infoOverload: findOpt(barriersOpts, "Confusion cause by information overload from different sources"),
+  tooManyOptions: findOpt(barriersOpts, "There are too many options"),
+  distrustFundManagers: findOpt(barriersOpts, "Lack of trust in fund managers"),
+  distrustMutualFunds: findOpt(barriersOpts, "Lack of trust in the mutual funds"),
+  longTermPerception: findOpt(barriersOpts, "It’s for long term investment"),
+  uncertainReturns: findOpt(barriersOpts, "Uncertainty about returns and performance"),
+  largeStartingAmount: findOpt(barriersOpts, "Requires large amount to start investing"),
+  notEnoughMoney: findOpt(barriersOpts, "I don't have enough money to invest"),
+  lowerThanExpectedReturns: findOpt(stoppingOpts, "Lower than expected returns"),
+  urgentNeedForMoney: findOpt(stoppingOpts, "I needed money for other purposes (urgent requirement of funds)"),
+  changingFinancialGoals: findOpt(stoppingOpts, "Changes in personal financial goals"),
+  diversificationNotAware: {
+    n: diversificationBatteryRow.NOT_AWARE_n,
+    denominator: diversificationBatteryRow.answered,
+    pct: diversificationBatteryRow.NOT_AWARE_pct,
+  },
+  inflationCorrect: findOpt(inflationOpts, "Less than today"),
+  simplerProcessEncouragement: findOpt(
+    encouragementOpts,
+    "Simple and easy process for investing (e.g. account opening, documentation, etc.)"
+  ),
+  lowerMinimumEncouragement: findOpt(encouragementOpts, "Reducing the minimum investment requirement"),
+  educationNoPriorInvestment: groupStat(
+    encouragementByExperience,
+    "Better education on how mutual funds work",
+    "explicit_no_prior_investment"
+  ),
+  educationPastMfInvestor: groupStat(
+    encouragementByExperience,
+    "Better education on how mutual funds work",
+    "past_mf_investor"
+  ),
+} satisfies Record<string, ReportedProblemStat>

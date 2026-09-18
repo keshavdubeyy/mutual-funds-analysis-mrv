@@ -18,6 +18,7 @@ import {
 import { SectionHeading } from "@/components/dataset-method/section-heading"
 import { KpiMappingSection } from "@/components/deliverables/kpi-mapping-section"
 import { FindingsMappingTable } from "@/components/deliverables/findings-mapping-table"
+import { ReportedProblemsSheet } from "@/components/deliverables/reported-problems-sheet"
 
 export const metadata = {
   title: "Deliverables — SEBI Investor Survey 2025",
@@ -31,6 +32,9 @@ interface DeliverableSection {
   title: string
   body?: string
   content?: ReactNode
+  /** Rendered to the right of the heading, on the same row — for a section-level action
+   * (e.g. a sheet trigger) rather than something that belongs in the flow of `content`. */
+  headerAction?: ReactNode
 }
 
 const DELIVERABLES: DeliverableSection[] = [
@@ -38,7 +42,7 @@ const DELIVERABLES: DeliverableSection[] = [
     label: "1",
     title: "Business problem statement",
     body:
-      "INDmoney faces a problem where salaried young adults aged 22–26 (early-career users) consider starting a mutual-fund SIP but do not complete their first SIP.",
+      "INDmoney faces a problem where salaried young adults aged 18–28 (early-career users) consider starting a mutual-fund SIP but do not complete their first SIP.",
   },
   {
     label: "2–3",
@@ -51,11 +55,12 @@ const DELIVERABLES: DeliverableSection[] = [
     label: "4",
     title: "Analysis and visual representations",
     body: "Every chart, table, and written finding for each KPI and marketing metric lives on the Analysis page. Click a finding below to jump straight to the chart it's based on.",
+    headerAction: <ReportedProblemsSheet />,
     content: (
-      <div className="flex flex-col gap-4">
+      <div className="mt-4 flex flex-col gap-4">
         <Link
           href="/findings/analysis"
-          className="mt-3 inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
+          className="inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
         >
           To view analysis, click here →
         </Link>
@@ -63,7 +68,11 @@ const DELIVERABLES: DeliverableSection[] = [
       </div>
     ),
   },
-  { label: "5", title: "Propositions" },
+  {
+    label: "5",
+    title: "Propositions",
+    body: "We propose a guided investing experience for young salaried adults that combines simple explanations, clear comparisons, transparent fund information and an understandable payment commitment. It would help users assess risk, resolve questions and complete SIP setup when they choose to invest, while allowing them to wait or reconsider. The proposal is informed by reported survey concerns and requires testing with users of INDmoney.",
+  },
 ]
 
 export default function DeliverablesPage() {
@@ -108,10 +117,15 @@ export default function DeliverablesPage() {
                 const id = `deliverable-${deliverable.label}`
                 return (
                   <section key={deliverable.title} id={id} className="scroll-mt-20">
-                    <SectionHeading
-                      id={`${id}-heading`}
-                      title={`${deliverable.label}. ${deliverable.title}`}
-                    />
+                    <div className="flex w-full items-start justify-between gap-4">
+                      <SectionHeading
+                        id={`${id}-heading`}
+                        title={`${deliverable.label}. ${deliverable.title}`}
+                      />
+                      {deliverable.headerAction ? (
+                        <div className="shrink-0">{deliverable.headerAction}</div>
+                      ) : null}
+                    </div>
 
                     {deliverable.body ? (
                       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

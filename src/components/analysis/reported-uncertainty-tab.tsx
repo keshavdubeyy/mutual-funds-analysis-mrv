@@ -37,7 +37,7 @@ function FieldCard({ id, title, code, measureId }: { id: string; title: string; 
   )
 }
 
-export function RiskKnowledgeTab() {
+export function ReportedUncertaintyTab() {
   const [batteryFilter, setBatteryFilter] = React.useState<BatteryFilter>("all")
   const { knowledge_grid, focused_group_size } = whoIsInSampleBase
   const batteryRows = React.useMemo(() => buildBatteryRows(knowledge_grid.items), [knowledge_grid.items])
@@ -46,20 +46,10 @@ export function RiskKnowledgeTab() {
   return (
     <div className="space-y-6">
       <p className="max-w-3xl text-sm text-muted-foreground">
-        Self-reported risk preference and reactions, then reported knowledge and numeracy — shown as context, not as
-        a literacy score.
+        Reported knowledge and numeracy — shown as context, not as a literacy score.
       </p>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        {/* Each row pair gets its own height-matching group — EqualHeightChartsProvider
-            renders no DOM element of its own, so pairing cards like this doesn't affect the
-            grid's 2-column CSS layout. Only the taller card in a given row ever gets
-            capped/scrolls; the row's shorter card stays completely untouched. */}
-        <EqualHeightChartsProvider expectedCount={2}>
-          <FieldCard id="risk-preference-distribution" title="What risk/return preference does the focused group report?" code="QRT" measureId="risk-preference-distribution" />
-          <FieldCard id="downturn-reaction-distribution" title="How does the focused group say it would react to a downturn?" code="Q10M" measureId="downturn-reaction-distribution" />
-        </EqualHeightChartsProvider>
-
         {/* Spans the full row — the 9-item battery chart plus its filter/wording controls
             needs the extra width, and isn't part of any row-pairing height match. */}
         <AnalysisChartCard

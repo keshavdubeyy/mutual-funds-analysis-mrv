@@ -16,7 +16,6 @@ import {
 import { getMeasureById } from "@/lib/research-plan-data"
 import { AnalysisChartCard } from "./analysis-chart-card"
 import { ComparisonRowsCard, ComparisonRowsTable } from "./comparison-rows"
-import { useAnalysisNav } from "./analysis-nav-context"
 
 interface ComparisonOption {
   key: string
@@ -88,7 +87,6 @@ function buildComparisons(): ComparisonOption[] {
 }
 
 export function GroupDifferencesTab() {
-  const nav = useAnalysisNav()
   const comparisons = React.useMemo(() => buildComparisons(), [])
   const [key, setKey] = React.useState(comparisons[0].key)
 
@@ -104,27 +102,6 @@ export function GroupDifferencesTab() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount only
   }, [])
-
-  // Catches the other case: a `goTo("group-differences", "group-differences-...")` call from
-  // elsewhere on the page (e.g. Overview's "Compare experience groups" link) after this tab
-  // has already mounted, where a mount-only effect can't help (`keepMounted` means this
-  // component never remounts, and `history.replaceState` never fires `hashchange`). Adjusting
-  // state during render (comparing against the last-seen target, same as React's own
-  // recommended "reset state when a prop changes" pattern) reacts immediately, without a
-  // render's worth of lag and without the extra effect the lint rule above flags.
-  const targetKeyFromNav =
-    nav.target?.topic === "group-differences" && nav.target.chartId
-      ? nav.target.chartId.replace(/^group-differences-/, "")
-      : null
-  const [lastAppliedTarget, setLastAppliedTarget] = React.useState<string | null>(null)
-  if (
-    targetKeyFromNav &&
-    targetKeyFromNav !== lastAppliedTarget &&
-    comparisons.some((c) => c.key === targetKeyFromNav)
-  ) {
-    setLastAppliedTarget(targetKeyFromNav)
-    setKey(targetKeyFromNav)
-  }
 
   const selected = comparisons.find((c) => c.key === key) ?? comparisons[0]
   const measure = getMeasureById(selected.measureId)

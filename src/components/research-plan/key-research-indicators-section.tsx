@@ -11,9 +11,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowDown01Icon, ArrowUp01Icon } from "@hugeicons/core-free-icons"
+import { ArrowDown01Icon, ArrowUp01Icon, TableIcon, MapsIcon } from "@hugeicons/core-free-icons"
 import { SectionHeading } from "@/components/dataset-method/section-heading"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { MeasureDetailSheet } from "./measure-detail-sheet"
+import { ResearchMap } from "./research-map/research-map"
+import { RESEARCH_MAP_KPI_THEMES } from "@/lib/research-map-data"
 import {
   MEASURES,
   KEY_RESEARCH_INDICATORS,
@@ -64,6 +67,12 @@ export function KeyResearchIndicatorsSection() {
 
   const [activeTab, setActiveTab] = React.useState<string | undefined>(GROUPS[0]?.id)
   const tabScrollRef = React.useRef<HTMLDivElement>(null)
+  const [view, setView] = React.useState<"table" | "map">("table")
+
+  function handleViewChange(values: string[]) {
+    const newest = values.find((v) => v !== view) ?? values[0]
+    if (newest) setView(newest as "table" | "map")
+  }
 
   // Existing "Metric definition →" links elsewhere on the dashboard point straight at a
   // measure's row id (e.g. /research-plan#relationship-risk-fear-of-loss). Since a measure
@@ -94,55 +103,71 @@ export function KeyResearchIndicatorsSection() {
 
   return (
     <section id="research-plan-indicators" className="min-w-0 scroll-mt-20 space-y-6">
-      <SectionHeading
-        id="research-plan-indicators-heading"
-        title="Key research indicators"
-        description={HOW_TO_READ_RESULTS}
-      />
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <SectionHeading
+          id="research-plan-indicators-heading"
+          title="Key research indicators"
+          description={HOW_TO_READ_RESULTS}
+        />
+        <ToggleGroup value={[view]} onValueChange={handleViewChange} variant="outline" size="sm" spacing={0}>
+          <ToggleGroupItem value="table" aria-label="Table view">
+            <HugeiconsIcon icon={TableIcon} strokeWidth={2} data-icon="inline-start" />
+            Table
+          </ToggleGroupItem>
+          <ToggleGroupItem value="map" aria-label="Map view">
+            <HugeiconsIcon icon={MapsIcon} strokeWidth={2} data-icon="inline-start" />
+            Map
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
 
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as string)} className="min-w-0">
-        <div
-          ref={tabScrollRef}
-          className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          <TabsList className="w-max justify-start">
-            {GROUPS.map((g) => (
-              <TabsTrigger
-                key={g.id}
-                value={g.id}
-                data-tab-id={g.id}
-                className="flex-none shrink-0 whitespace-nowrap"
-              >
-                {g.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </div>
-        {GROUPS.map((g) => (
-          <TabsContent key={g.id} value={g.id} className="pt-4">
-            <p className="mb-3 text-xs text-muted-foreground">
-              {g.description} {g.measures.length} measure{g.measures.length === 1 ? "" : "s"}.
-            </p>
-            <div className="rounded-2xl border border-border">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-40">Key research measure</TableHead>
-                    <TableHead className="hidden min-w-56 md:table-cell">What it tells us</TableHead>
-                    <TableHead className="hidden min-w-56 md:table-cell">Why it matters</TableHead>
-                    <TableHead className="w-1 whitespace-nowrap">&nbsp;</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {g.measures.map((m) => (
-                    <MeasureRow key={m.id} measure={m} />
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </TabsContent>
-        ))}
-      </Tabs>
+      {view === "map" ? (
+        <ResearchMap themes={RESEARCH_MAP_KPI_THEMES} rootLabel="Investment research measures" />
+      ) : (
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as string)} className="min-w-0">
+          <div
+            ref={tabScrollRef}
+            className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            <TabsList className="w-max justify-start">
+              {GROUPS.map((g) => (
+                <TabsTrigger
+                  key={g.id}
+                  value={g.id}
+                  data-tab-id={g.id}
+                  className="flex-none shrink-0 whitespace-nowrap"
+                >
+                  {g.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+          {GROUPS.map((g) => (
+            <TabsContent key={g.id} value={g.id} className="pt-4">
+              <p className="mb-3 text-xs text-muted-foreground">
+                {g.description} {g.measures.length} measure{g.measures.length === 1 ? "" : "s"}.
+              </p>
+              <div className="rounded-2xl border border-border">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="min-w-40">Key research measure</TableHead>
+                      <TableHead className="hidden min-w-56 md:table-cell">What it tells us</TableHead>
+                      <TableHead className="hidden min-w-56 md:table-cell">Why it matters</TableHead>
+                      <TableHead className="w-1 whitespace-nowrap">&nbsp;</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {g.measures.map((m) => (
+                      <MeasureRow key={m.id} measure={m} />
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      )}
     </section>
   )
 }

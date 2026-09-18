@@ -195,8 +195,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "See chart — 19 reasons, ranked by how often selected.", isMultiAnswer: true, denominatorLabel: "240 of 553 answered" },
     meaning: "Shows which reasons this group reports most often for considering MF/ETF.",
-    analysisHref: "/findings/analysis?topic=motivations-barriers#motivations-selection-pct",
-    analysisLocation: "Findings → Analysis → Motivations, barriers & encouragement → “Reasons for considering investing.”",
+    analysisHref: "/findings/analysis?topic=motivations-financial-goals#motivations-selection-pct",
+    analysisLocation: "Findings → Analysis → Motivations and financial goals → “Reasons for considering investing.”",
     details: {
       fields: ["AA1_DD1"],
       fieldWordings: [{ code: "AA1_DD1", wording: "Top 3 Primary reasons for considering investing in MF/ETFs" }],
@@ -223,8 +223,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "Fear of losing money due to market risks: 81 of 266 (30.5%), the single most-cited reason.", count: 81, denominatorLabel: "266" },
     meaning: "Shows which barriers this group reports most often.",
-    analysisHref: "/findings/analysis?topic=motivations-barriers#barriers-selection-pct",
-    analysisLocation: "Findings → Analysis → Motivations, barriers & encouragement → “Reasons for not investing.”",
+    analysisHref: "/findings/analysis?topic=reported-barriers#barriers-selection-pct",
+    analysisLocation: "Findings → Analysis → Reported barriers → “Reasons for not investing.”",
     details: {
       fields: ["AA2_DD2"],
       fieldWordings: [{ code: "AA2_DD2", wording: "Top 3 Reasons for not investing in MF/ETF" }],
@@ -251,8 +251,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "“Simple and easy process for investing”: 117 of 266 (44.0%), the top-ranked factor.", count: 117, denominatorLabel: "266" },
     meaning: "Shows which encouragement themes this group reports most often.",
-    analysisHref: "/findings/analysis?topic=what-could-help#encouragement-selection-pct",
-    analysisLocation: "Findings → Analysis → Motivations, barriers & encouragement → “Encouragement factors.”",
+    analysisHref: "/findings/analysis?topic=encouragement-factors#encouragement-selection-pct",
+    analysisLocation: "Findings → Analysis → Encouragement factors.",
     details: {
       fields: ["AA3_DD3"],
       fieldWordings: [{ code: "AA3_DD3", wording: "Factors would encourage you to consider investing in MF/ETF that you currently do not invest in" }],
@@ -279,8 +279,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "136 of 553 (24.6%) are past mutual-fund investors — this is not a “first-time SIP users” sample.", count: 136, denominatorLabel: "553" },
     meaning: "The focused group mixes three different investment histories; not a single undifferentiated “non-holder” group.",
-    analysisHref: "/findings/analysis?topic=motivations-barriers#previous-investment-shares",
-    analysisLocation: "Findings → Analysis → Overview and Motivations & barriers.",
+    analysisHref: "/findings/analysis?topic=previous-investment#previous-investment-shares",
+    analysisLocation: "Findings → Analysis → Previous investment and stopping reasons.",
     details: {
       fields: ["Q24A"],
       fieldWordings: [{ code: "Q24A", wording: "Could you please tell me if you have ever invested in these products in the past" }],
@@ -305,8 +305,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "See chart — a small group of 64 respondents, 16 reasons.", isMultiAnswer: true, denominatorLabel: "64 of 553 answered" },
     meaning: "The 64 counts themselves are verified; it's who exactly was asked this question that's uncertain, not the counts.",
-    analysisHref: "/findings/analysis?topic=motivations-barriers#stopping-reasons-selection-pct",
-    analysisLocation: "Findings → Analysis → Motivations, barriers & encouragement → “Reasons for stopping investment.”",
+    analysisHref: "/findings/analysis?topic=previous-investment#stopping-reasons-selection-pct",
+    analysisLocation: "Findings → Analysis → Previous investment and stopping reasons → “Reasons for stopping investment.”",
     details: {
       fields: ["AA4_DD4"],
       fieldWordings: [{ code: "AA4_DD4", wording: "What were the Top 3 reasons you stopped investing in MF/ETF" }],
@@ -351,8 +351,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "38.2% say “preservation of capital is more important to me than returns.”", count: 211, denominatorLabel: "553" },
     meaning: "Context on how this sample describes its own risk appetite.",
-    analysisHref: "/findings/analysis?topic=risk-knowledge#risk-preference-distribution",
-    analysisLocation: "Findings → Analysis → Risk & knowledge — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=risk-preferences#risk-preference-distribution",
+    analysisLocation: "Findings → Analysis → Risk preferences and reactions — also on the “Who is in our sample?” page.",
     details: {
       fields: ["QRT"],
       fieldWordings: [{ code: "QRT", wording: "Which of the following best describes your preference when considering returns from investments?" }],
@@ -377,8 +377,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "36.2% say they'd stay invested and wait for recovery; 22.8% say they'd be very worried and might stop investing.", denominatorLabel: "553" },
     meaning: "Context on self-reported downturn sensitivity, alongside the fear-of-loss barrier finding.",
-    analysisHref: "/findings/analysis?topic=risk-knowledge#downturn-reaction-distribution",
-    analysisLocation: "Findings → Analysis → Risk & knowledge — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=risk-preferences#downturn-reaction-distribution",
+    analysisLocation: "Findings → Analysis → Risk preferences and reactions — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q10M"],
       fieldWordings: [{ code: "Q10M", wording: "Reaction to Market Downturn" }],
@@ -403,8 +403,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "See chart — 9 statements, ranked by share selecting “Not Aware.”", isMultiAnswer: true, denominatorLabel: "553 per item" },
     meaning: "Ranks topics by reported uncertainty — never confidence, accuracy, or a literacy score.",
-    analysisHref: "/findings/analysis?topic=risk-knowledge#knowledge-battery-distributions",
-    analysisLocation: "Findings → Analysis → Knowledge and reported uncertainty.",
+    analysisHref: "/findings/analysis?topic=reported-uncertainty#knowledge-battery-distributions",
+    analysisLocation: "Findings → Analysis → Reported uncertainty.",
     details: {
       fields: Array.from({ length: 9 }, (_, i) => `GRIDxQ15AM[{_${i + 1}}].Q15AM`),
       fieldWordings: [
@@ -660,8 +660,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "Videos (72.5%) and social-media posts (59.9%) are the top-selected formats; Hindi (34.0%) and English (25.5%) the top languages.", isMultiAnswer: true, denominatorLabel: "553" },
     meaning: "Candidate format/channel/topic choices if INDmoney builds education content.",
-    analysisHref: "/findings/analysis?topic=what-could-help#learning-format",
-    analysisLocation: "Findings → Analysis → What could help (format, topics, medium, language) — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=learning-preferences#learning-format",
+    analysisLocation: "Findings → Analysis → Learning preferences (format, topics, medium, language) — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q20CM", "Q20DM", "Q20E", "Q20F"],
       fieldWordings: [
@@ -761,8 +761,8 @@ export const MEASURES: Measure[] = [
       denominatorLabel: "553 of 553 answered",
     },
     meaning: "Shows which financial goals this group ranks as priorities — useful context, not a motivation for MF specifically.",
-    analysisHref: "/findings/analysis?topic=motivations-barriers#financial-goal-ranking",
-    analysisLocation: "Findings → Analysis → Motivations & barriers — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=motivations-financial-goals#financial-goal-ranking",
+    analysisLocation: "Findings → Analysis → Motivations and financial goals — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q6_RANK_GRID.Q6_RANK"],
       fieldWordings: [
@@ -794,8 +794,8 @@ export const MEASURES: Measure[] = [
       denominatorLabel: "266",
     },
     meaning: "Shows which channels are already reaching this group — not whether that source caused them to invest.",
-    analysisHref: "/findings/analysis?topic=what-could-help#awareness-sources-media",
-    analysisLocation: "Findings → Analysis → What could help — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=awareness-media#awareness-sources-media",
+    analysisLocation: "Findings → Analysis → Awareness sources and media — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q4_Q5_NONInv_Filt[{_1_2}].Q4M", "Q4_Q5_NONInv_Filt[{_1_2}].Q5M"],
       fieldWordings: [
@@ -824,8 +824,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "527 of 553 (95.3%) report not having attended any investor-education program.", count: 527, denominatorLabel: "553" },
     meaning: "Baseline context for any future education-content proposal.",
-    analysisHref: "/findings/analysis?topic=what-could-help#education-attendance",
-    analysisLocation: "Findings → Analysis → What could help — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=learning-preferences#education-attendance",
+    analysisLocation: "Findings → Analysis → Learning preferences — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q20AM"],
       fieldWordings: [
@@ -856,8 +856,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "41.0% say they're “familiar… and update myself periodically”; 8.1% say “Don't Know.”", denominatorLabel: "553" },
     meaning: "Context alongside the knowledge-battery findings.",
-    analysisHref: "/findings/analysis?topic=risk-knowledge#stock-market-familiarity",
-    analysisLocation: "Findings → Analysis → Risk & knowledge — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=reported-uncertainty#stock-market-familiarity",
+    analysisLocation: "Findings → Analysis → Reported uncertainty — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q11M"],
       fieldWordings: [{ code: "Q11M", wording: "How familiar are you with investing in stock markets?" }],
@@ -882,8 +882,8 @@ export const MEASURES: Measure[] = [
     status: "calculated",
     result: { summary: "245 of 553 (44.3%) answer correctly (“Less than today”).", count: 245, denominatorLabel: "553" },
     meaning: "A distinct, simple numeracy check — separate from the 9-item knowledge battery, which has no correct-answer key at all.",
-    analysisHref: "/findings/analysis?topic=risk-knowledge#q12m-inflation-numeracy",
-    analysisLocation: "Findings → Analysis → Risk & knowledge — also on the “Who is in our sample?” page.",
+    analysisHref: "/findings/analysis?topic=reported-uncertainty#q12m-inflation-numeracy",
+    analysisLocation: "Findings → Analysis → Reported uncertainty — also on the “Who is in our sample?” page.",
     details: {
       fields: ["Q12M"],
       fieldWordings: [

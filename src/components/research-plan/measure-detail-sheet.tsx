@@ -1,6 +1,6 @@
 "use client"
 
-import type { ReactNode } from "react"
+import type { ReactElement, ReactNode } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +34,7 @@ function SheetSection({ title, children }: { title: string; children: ReactNode 
  * Reuses the project's existing Sheet component (base-ui Dialog underneath), which already
  * provides Escape-to-close and focus-return to the triggering button.
  */
-export function MeasureDetailSheet({ measure: m }: { measure: Measure }) {
+export function MeasureDetailSheet({ measure: m, trigger }: { measure: Measure; trigger?: ReactElement }) {
   const isCalculated = m.status === "calculated"
   const triggerLabel = isCalculated ? "How calculated" : "Why unavailable"
   const accessibleName = isCalculated ? `How “${m.name}” is calculated` : `Why “${m.name}” is unavailable`
@@ -43,9 +43,11 @@ export function MeasureDetailSheet({ measure: m }: { measure: Measure }) {
     <Sheet>
       <SheetTrigger
         render={
-          <Button variant="outline" size="sm" aria-label={accessibleName}>
-            {triggerLabel}
-          </Button>
+          trigger ?? (
+            <Button variant="outline" size="sm" aria-label={accessibleName}>
+              {triggerLabel}
+            </Button>
+          )
         }
       />
       <SheetContent side="right" className="overflow-y-auto sm:max-w-lg">
@@ -58,6 +60,14 @@ export function MeasureDetailSheet({ measure: m }: { measure: Measure }) {
         </SheetHeader>
 
         <div className="flex flex-col gap-5 px-6 pb-6">
+          <SheetSection title="Research question">
+            <p>{m.question}</p>
+          </SheetSection>
+
+          <SheetSection title="Why it matters">
+            <p>{m.whyItMatters}</p>
+          </SheetSection>
+
           {isCalculated ? (
             <>
               {m.details.calculationSteps ? (
@@ -88,7 +98,7 @@ export function MeasureDetailSheet({ measure: m }: { measure: Measure }) {
               </SheetSection>
 
               {m.analysisHref ? (
-                <Link href={m.analysisHref} className="text-sm text-primary underline underline-offset-2">
+                <Link href={m.analysisHref} className="text-sm text-primary underline underline-offset-2 dark:text-white">
                   View analysis →
                 </Link>
               ) : m.analysisLocation ? (
@@ -98,10 +108,18 @@ export function MeasureDetailSheet({ measure: m }: { measure: Measure }) {
               ) : null}
             </>
           ) : (
-            <SheetSection title="Why this isn't available yet">
-              <p>{m.unresolvedReason}</p>
-              <p className="mt-1.5 text-muted-foreground">{m.details.limitations}</p>
-            </SheetSection>
+            <>
+              <SheetSection title="Why this isn't available yet">
+                <p>{m.unresolvedReason}</p>
+                <p className="mt-1.5 text-muted-foreground">{m.details.limitations}</p>
+              </SheetSection>
+              <Link
+                href="/research-plan#research-plan-limitations"
+                className="text-sm text-primary underline underline-offset-2 dark:text-white"
+              >
+                Methods and limitations →
+              </Link>
+            </>
           )}
 
           <Accordion>

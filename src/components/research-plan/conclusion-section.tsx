@@ -25,7 +25,10 @@ export function ConclusionSection() {
         ))}
       </div>
 
-      <Link href="/findings/analysis" className="inline-block text-sm text-primary underline underline-offset-2">
+      <Link
+        href="/findings/analysis"
+        className="inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
+      >
         See the full evidence behind these proposals on the Analysis page →
       </Link>
 

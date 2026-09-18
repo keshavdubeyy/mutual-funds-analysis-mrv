@@ -40,7 +40,7 @@ export function DatasetOverviewSection() {
               href={overview.source_url}
               target="_blank"
               rel="noreferrer"
-              className="text-primary underline underline-offset-3 hover:text-primary/80"
+              className="text-primary underline underline-offset-3 hover:text-primary/80 dark:text-white dark:hover:text-white/80"
             >
               sebi.gov.in — Investor Survey 2025
             </a>

@@ -15,7 +15,12 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Database02Icon, Analytics01Icon, Task02Icon } from "@hugeicons/core-free-icons"
+import {
+  Database02Icon,
+  Analytics01Icon,
+  Task02Icon,
+  ClipboardIcon,
+} from "@hugeicons/core-free-icons"
 
 const data = {
   navMain: [
@@ -48,6 +53,13 @@ const data = {
           ? [{ title: "Respondent data", url: "/findings/respondent-data" }]
           : []),
       ],
+    },
+    {
+      title: "Deliverables",
+      url: "/deliverables",
+      icon: (
+        <HugeiconsIcon icon={ClipboardIcon} strokeWidth={2} />
+      ),
     },
   ],
   githubRepoUrl: "https://github.com/keshavdubeyy/mutual-funds-analysis-mrv",

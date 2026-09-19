@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
+import { AvatarStack } from "@/components/presence/avatar-stack"
 import { ResearchPlanSectionNav } from "@/components/research-plan/section-nav"
 import { UnderstandSection } from "@/components/research-plan/understand-section"
 import { KeyResearchIndicatorsSection } from "@/components/research-plan/key-research-indicators-section"
@@ -54,6 +55,7 @@ export default function ResearchPlanPage() {
             </Breadcrumb>
           </div>
           <div className="ml-auto flex items-center gap-2 px-4">
+            <AvatarStack />
             <Link href="/" className={buttonVariants({ variant: "default", size: "sm" })}>
               Explore the findings
               <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} data-icon="inline-end" />

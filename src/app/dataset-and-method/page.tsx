@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Table02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
+import { AvatarStack } from "@/components/presence/avatar-stack"
 import { SectionNav } from "@/components/dataset-method/section-nav"
 import { DatasetOverviewSection } from "@/components/dataset-method/dataset-overview-section"
 import { ParticipationSection } from "@/components/dataset-method/participation-section"
@@ -57,6 +58,7 @@ export default function DatasetAndMethodPage() {
             </Breadcrumb>
           </div>
           <div className="ml-auto flex items-center gap-2 px-4">
+            <AvatarStack />
             <Link href="/dataset-and-method/view-data" className={buttonVariants({ variant: "outline", size: "sm" })}>
               <HugeiconsIcon icon={Table02Icon} strokeWidth={2} data-icon="inline-start" />
               View data

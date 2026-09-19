@@ -15,6 +15,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { AvatarStack } from "@/components/presence/avatar-stack"
 import { SectionHeading } from "@/components/dataset-method/section-heading"
 import { KpiMappingSection } from "@/components/deliverables/kpi-mapping-section"
 import { FindingsMappingTable } from "@/components/deliverables/findings-mapping-table"
@@ -98,6 +99,9 @@ export default function DeliverablesPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="ml-auto flex items-center gap-2 px-4">
+            <AvatarStack />
           </div>
         </header>
         <main className="flex flex-1 flex-col px-4 py-8 md:px-8">

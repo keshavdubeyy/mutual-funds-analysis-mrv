@@ -13,6 +13,7 @@
     "@hugeicons/core-free-icons": "^4.3.2",
     "@hugeicons/react": "^1.1.10",
     "@shadcn/react": "^0.3.1",
+    "@supabase/supabase-js": "^2.116.0",
     "@svg-maps/india": "^2.0.0",
     "@xyflow/react": "^12.11.6",
     "class-variance-authority": "^0.7.1",

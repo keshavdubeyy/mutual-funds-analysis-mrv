@@ -14,6 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { AvatarStack } from "@/components/presence/avatar-stack"
 import { AnalysisTab } from "@/components/findings/analysis-tab"
 
 export const metadata = {
@@ -45,6 +46,9 @@ export default function AnalysisPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="ml-auto flex items-center gap-2 px-4">
+            <AvatarStack />
           </div>
         </header>
         <main className="flex flex-1 flex-col px-4 py-6 md:px-8">

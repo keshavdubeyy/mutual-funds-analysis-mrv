@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -15,15 +14,18 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { AvatarStack } from "@/components/presence/avatar-stack"
-import { AnalysisTab } from "@/components/findings/analysis-tab"
+import { WhoIsInSampleTab } from "@/components/findings/who-is-in-sample-tab"
+import { SampleOverviewSheet } from "@/components/findings/sample-overview-sheet"
 
 export const metadata = {
-  title: "Analysis — Findings — SEBI Investor Survey 2025",
+  title: "Who is in our sample? — SEBI Investor Survey 2025",
   description:
-    "Reported motivations, concerns and encouragement factors among the selected salaried Gen Z respondents.",
+    "Who the 553 selected salaried Gen Z respondents are — demographics, preferences, income, and reported knowledge.",
 }
 
-export default function AnalysisPage() {
+export default function WhoIsInSamplePage() {
+  const respondentTabEnabled = process.env.NODE_ENV !== "production"
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -38,11 +40,11 @@ export default function AnalysisPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink render={<Link href="/findings/who-is-in-sample" />}>Findings</BreadcrumbLink>
+                  <BreadcrumbLink href="#">SEBI Investor Survey 2025</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Analysis</BreadcrumbPage>
+                  <BreadcrumbPage>Who is in our sample?</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -53,7 +55,18 @@ export default function AnalysisPage() {
         </header>
         <main className="flex flex-1 flex-col px-4 py-6 md:px-8">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-            <AnalysisTab />
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="max-w-3xl">
+                <h1 className="text-2xl font-semibold text-foreground md:text-3xl">Who is in our sample?</h1>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  553 salaried Gen Z respondents (SEBI Investor Survey 2025) who considered mutual funds but do not
+                  currently hold them. Unweighted, descriptive only.
+                </p>
+              </div>
+              <SampleOverviewSheet />
+            </div>
+
+            <WhoIsInSampleTab filteringEnabled={respondentTabEnabled} />
           </div>
         </main>
       </SidebarInset>

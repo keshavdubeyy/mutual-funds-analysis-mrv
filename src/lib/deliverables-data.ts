@@ -4,6 +4,7 @@
  * instead of two copies drifting apart. Groups 1–6 answer "Industry KPIs" (how the segment
  * behaves); groups 7–9 answer "Marketing metrics" (how to reach/persuade it).
  */
+import { analysisHref as sharedAnalysisHref, type TopicKey } from "./analysis-topics"
 
 export interface DeliverableRow {
   question: string
@@ -20,10 +21,8 @@ export interface DeliverableGroup {
   /** This group's category, for the graph view's coloring — matches which of the two
    * deliverables (Industry KPIs vs Marketing metrics) this group answers. */
   category: "kpi" | "marketing"
-  /** This group's tab key on /findings/analysis (see TOPICS in analysis-tab.tsx) — kept in
-   * sync manually since the two files can't share a runtime import (one is a page, this is
-   * data), but every key here is asserted to exist in that list where it's consumed. */
-  topicKey: string
+  /** This group's topic page (see TOPICS in src/lib/analysis-topics.ts). */
+  topicKey: TopicKey
   rows: DeliverableRow[]
 }
 
@@ -116,8 +115,10 @@ export const KPI_AND_MARKETING_GROUPS: DeliverableGroup[] = [
   },
 ]
 
-/** `?topic=<key>` opens the right Analysis tab; adding `#<chartId>` also scrolls to and
- * briefly highlights that specific chart (see the hash effect in analysis-tab.tsx). */
-export function analysisHref(topicKey: string, chartId?: string): string {
-  return `/findings/analysis?topic=${topicKey}${chartId ? `#${chartId}` : ""}`
+/** Links straight to a topic's own page; adding `#<chartId>` also scrolls to and briefly
+ * highlights that specific chart (see the hash effect in analysis-topic-page.tsx). Delegates
+ * to the shared helper in analysis-topics.ts — kept here too since every call site already
+ * imports `analysisHref` from this module. */
+export function analysisHref(topicKey: TopicKey, chartId?: string): string {
+  return sharedAnalysisHref(topicKey, chartId)
 }

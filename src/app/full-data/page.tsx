@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 // Deliberately excluded from src/components/app-sidebar.tsx — reachable only via this direct
 // URL. This is the ENTIRE raw workbook (109,430 respondents x 448 columns, unfiltered,
 // unaggregated) — respondent-level data, so it follows the same dev-only rule as the
-// existing /findings/respondent-data page. The actual gate is server-side
+// existing /respondent-data page. The actual gate is server-side
 // (src/app/api/dev/full-raw-table/route.ts refuses outside next dev); this keeps the page
 // itself from existing at all in a production build.
 export default function FullDataPage() {

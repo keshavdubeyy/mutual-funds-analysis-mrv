@@ -17,43 +17,53 @@ import {
 import { HugeiconsIcon } from "@hugeicons/react"
 import {
   Database02Icon,
-  Analytics01Icon,
+  Table02Icon,
   Task02Icon,
   ClipboardIcon,
+  UserSearch01Icon,
+  UserIcon,
+  BrickWallShieldIcon,
+  Megaphone01Icon,
+  Analytics01Icon,
 } from "@hugeicons/core-free-icons"
+import { GROUPS, TOPICS, TOPIC_ICON, topicPageUrl } from "@/lib/analysis-topics"
+
+// Every group's sidebar entry links straight to its first topic's page (groups have no page
+// of their own), and lists that group's 3 topics as its sub-items — the single source of
+// truth for both is src/lib/analysis-topics.ts, so this can't drift from the pages themselves.
+const GROUP_NAV_ITEMS = GROUPS.map((group) => ({
+  title: group.label,
+  url: topicPageUrl(group.topics[0]),
+  icon: <HugeiconsIcon icon={group.key === "understanding-the-user" ? UserIcon : group.key === "understanding-the-barriers" ? BrickWallShieldIcon : Megaphone01Icon} strokeWidth={2} />,
+  items: group.topics.map((key) => ({
+    title: TOPICS.find((t) => t.key === key)!.label,
+    url: topicPageUrl(key),
+    icon: <HugeiconsIcon icon={TOPIC_ICON[key]} strokeWidth={2} />,
+  })),
+}))
 
 const data = {
   navMain: [
     {
-      title: "Dataset and Method",
+      title: "Platform",
       url: "/dataset-and-method",
       icon: (
         <HugeiconsIcon icon={Database02Icon} strokeWidth={2} />
       ),
       isActive: true,
-    },
-    {
-      title: "Research Plan",
-      url: "/research-plan",
-      icon: (
-        <HugeiconsIcon icon={Task02Icon} strokeWidth={2} />
-      ),
-    },
-    {
-      title: "Findings",
-      url: "/findings/who-is-in-sample",
-      icon: (
-        <HugeiconsIcon icon={Analytics01Icon} strokeWidth={2} />
-      ),
-      isActive: true,
       items: [
-        { title: "Who is in our sample?", url: "/findings/who-is-in-sample" },
-        { title: "Analysis", url: "/findings/analysis" },
-        ...(process.env.NODE_ENV !== "production"
-          ? [{ title: "Respondent data", url: "/findings/respondent-data" }]
-          : []),
+        { title: "Dataset and Method", url: "/dataset-and-method", icon: <HugeiconsIcon icon={Table02Icon} strokeWidth={2} /> },
+        { title: "Research Plan", url: "/research-plan", icon: <HugeiconsIcon icon={Task02Icon} strokeWidth={2} /> },
       ],
     },
+    {
+      title: "Who is in our sample?",
+      url: "/who-is-in-sample",
+      icon: (
+        <HugeiconsIcon icon={UserSearch01Icon} strokeWidth={2} />
+      ),
+    },
+    ...GROUP_NAV_ITEMS,
     {
       title: "Deliverables",
       url: "/deliverables",
@@ -61,6 +71,17 @@ const data = {
         <HugeiconsIcon icon={ClipboardIcon} strokeWidth={2} />
       ),
     },
+    ...(process.env.NODE_ENV !== "production"
+      ? [
+          {
+            title: "Respondent data",
+            url: "/respondent-data",
+            icon: (
+              <HugeiconsIcon icon={Analytics01Icon} strokeWidth={2} />
+            ),
+          },
+        ]
+      : []),
   ],
   githubRepoUrl: "https://github.com/keshavdubeyy/mutual-funds-analysis-mrv",
   team: {

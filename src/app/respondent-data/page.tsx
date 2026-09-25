@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
@@ -19,7 +18,7 @@ import { AvatarStack } from "@/components/presence/avatar-stack"
 import { RespondentDataTab } from "@/components/findings/respondent-data-tab"
 
 export const metadata = {
-  title: "Respondent data — Findings — SEBI Investor Survey 2025",
+  title: "Respondent data — SEBI Investor Survey 2025",
   description: "Local development tool for inspecting individual survey respondents. Not available in production.",
 }
 
@@ -45,7 +44,7 @@ export default function RespondentDataPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink render={<Link href="/findings/who-is-in-sample" />}>Findings</BreadcrumbLink>
+                  <BreadcrumbLink href="#">SEBI Investor Survey 2025</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>

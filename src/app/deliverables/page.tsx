@@ -20,6 +20,8 @@ import { SectionHeading } from "@/components/dataset-method/section-heading"
 import { KpiMappingSection } from "@/components/deliverables/kpi-mapping-section"
 import { FindingsMappingTable } from "@/components/deliverables/findings-mapping-table"
 import { ReportedProblemsSheet } from "@/components/deliverables/reported-problems-sheet"
+import { analysisHref } from "@/lib/deliverables-data"
+import { TOPICS } from "@/lib/analysis-topics"
 
 export const metadata = {
   title: "Deliverables — SEBI Investor Survey 2025",
@@ -49,18 +51,18 @@ const DELIVERABLES: DeliverableSection[] = [
     label: "2–3",
     title: "Industry KPIs and Marketing metrics",
     body:
-      "Groups 1–6 (industry KPIs) cover how the segment behaves. Groups 7–9 (marketing-relevant metrics) cover how to reach and persuade it. Note: groups 7–9 aren't marketing metrics in the standard sense (CAC, conversion rate, ROI) — we have no data on actual marketing activity. Click a KPI name to open its tab on the Analysis page, or a specific question to jump straight to that chart — in either view below.",
+      "Groups 1–6 (industry KPIs) cover how the segment behaves. Groups 7–9 (marketing-relevant metrics) cover how to reach and persuade it. Note: groups 7–9 aren't marketing metrics in the standard sense (CAC, conversion rate, ROI) — we have no data on actual marketing activity. Click a KPI name to open its page, or a specific question to jump straight to that chart — in either view below.",
     content: <KpiMappingSection />,
   },
   {
     label: "4",
     title: "Analysis and visual representations",
-    body: "Every chart, table, and written finding for each KPI and marketing metric lives on the Analysis page. Click a finding below to jump straight to the chart it's based on.",
+    body: "Every chart, table, and written finding for each KPI and marketing metric lives on its own page. Click a finding below to jump straight to the chart it's based on.",
     headerAction: <ReportedProblemsSheet />,
     content: (
       <div className="mt-4 flex flex-col gap-4">
         <Link
-          href="/findings/analysis"
+          href={analysisHref(TOPICS[0].key)}
           className="inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
         >
           To view analysis, click here →

@@ -8,6 +8,7 @@ import {
   FUTURE_COMPANY_KPIS_INTRO,
   FUTURE_COMPANY_KPIS,
 } from "@/lib/research-plan-data"
+import { analysisHref, TOPICS } from "@/lib/analysis-topics"
 
 export function ConclusionSection() {
   return (
@@ -26,10 +27,10 @@ export function ConclusionSection() {
       </div>
 
       <Link
-        href="/findings/analysis"
+        href={analysisHref(TOPICS[0].key)}
         className="inline-block text-sm text-primary underline underline-offset-2 dark:text-white"
       >
-        See the full evidence behind these proposals on the Analysis page →
+        See the full evidence behind these proposals →
       </Link>
 
       <Card size="sm">
